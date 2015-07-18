@@ -1,0 +1,96 @@
+UNITY PROJECT FOLDER STRUCTURE
+
+Gameplay: Everything in-game
+	- Normal: Stage 1 & 2 for each area (free movement)
+		- Scenes: Stage scenes (level[n]-[1 or 2])
+	- Boss: Stage 3 for each area (push scroll)
+		- Scenes: Stage scenes (level[n]-3)
+	- Bonus: Bonus stage between areas
+	- Shared: Things used between two or more of Normal/Boss/Bonus
+		- Sprites: Imagery for shared sprites (player, enemies etc.)
+			- Level 1: Images for all stages of area 1 (tiles, switch replacement sections etc.)
+NonGame: Title sequence, level select, high score entry etc.
+Shared: Things used in both Gameplay and NonGame scenes
+
+KEV GFX RESIZE RATIOS:
+54x71 (build) => 44x44 (final)
+y = * 0.62
+
+Position offsets:
+- Body: 0,0
+	- Bicep: -0.05, 0.11
+		- Forearm: 0, 0.075
+	- Thigh: -0.01, -0.025
+		- Shin: 0, -0.075
+			- Foot: 0, -0.1
+
+
+
+SWITCH RULES
+
+Types: 2-way (switch, button), 1-way (lock), info (screen)
+	- All can activate enemies, bonuses & tools (one-time event)
+	- 1-way replaces sections of environment with list (one-time event)
+	- 2-way replaces flips sections of environment between two lists, regardless of what is there at the moment
+	
+Combi-switches:
+	  1		  2 	  3				A  B
+	-----	-----	-----		------------
+								|
+								|
+
+- 1, 2 & 3 all hidden at start
+- A(on) shows 2 & 3
+- B(on) shows 1 & 2, hides 3
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+NORMAL STAGE
+============
+
+== PLAYING FIELD ==
+Tile map over paralax background
+
+== CAMERA ==
+Moves within bounds of field
+Syncs to player when possible
+
+== PLAYER ==
+Moves left and right at will within bounds of field
+Obeys physics when jumping and falling
+
+
+BOSS STAGE
+==========
+
+== PLAYING FIELD ==
+Tile map over paralax background
+
+== CAMERA ==
+Moves within bounds of field
+Auto scrolls to the right until end of level is reached
+
+
+
+BONUS STAGE
+===========
+
+== PLAYING FIELD ==
+Auto generated paralax star field (do we want to change this? - clouds, cliffs, Kev flying by means other than a spaceship?)
+
+== CAMERA ==
+No vertical movement
+Auto scrolls to the right until player is hit or time runs out

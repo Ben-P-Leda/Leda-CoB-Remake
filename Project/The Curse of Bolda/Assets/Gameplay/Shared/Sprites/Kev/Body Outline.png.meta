@@ -1,0 +1,121 @@
+fileFormatVersion: 2
+guid: 606bf35c080d255479b0ef57a2110a3e
+timeCreated: 1437150019
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Kev Body Outline
+    21300002: Kev Forearm Outline
+    21300004: Kev Thigh Outline
+    21300006: Kev Foot Outline
+    21300008: Kev Bicep Outline
+    21300010: Kev Shin Outline
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 64
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Kev Body Outline
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 14
+        width: 27
+        height: 23
+      alignment: 9
+      pivot: {x: .519999981, y: .219999999}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kev Forearm Outline
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 19
+        width: 15
+        height: 18
+      alignment: 9
+      pivot: {x: .5, y: .699999988}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kev Thigh Outline
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 21
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: .5, y: .699999988}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kev Foot Outline
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2
+        width: 24
+        height: 10
+      alignment: 9
+      pivot: {x: .300000012, y: .600000024}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kev Bicep Outline
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 1
+        width: 17
+        height: 16
+      alignment: 9
+      pivot: {x: .5, y: .699999988}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kev Shin Outline
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 4
+        width: 14
+        height: 15
+      alignment: 9
+      pivot: {x: .5, y: .699999988}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

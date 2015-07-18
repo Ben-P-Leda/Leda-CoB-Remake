@@ -1,0 +1,935 @@
+fileFormatVersion: 2
+guid: 21702ca5eba473040b48b36aafb1457c
+timeCreated: 1436977665
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Area 1 Tiles_0
+    21300002: Area 1 Tiles_1
+    21300004: Area 1 Tiles_2
+    21300006: Area 1 Tiles_3
+    21300008: Area 1 Tiles_4
+    21300010: Area 1 Tiles_5
+    21300012: Area 1 Tiles_6
+    21300014: Area 1 Tiles_7
+    21300016: Area 1 Tiles_8
+    21300018: Area 1 Tiles_9
+    21300020: Area 1 Tiles_10
+    21300022: Area 1 Tiles_11
+    21300024: Area 1 Tiles_12
+    21300026: Area 1 Tiles_13
+    21300028: Area 1 Tiles_14
+    21300030: Area 1 Tiles_15
+    21300032: Area 1 Tiles_16
+    21300034: Area 1 Tiles_17
+    21300036: Area 1 Tiles_18
+    21300038: Area 1 Tiles_19
+    21300040: Area 1 Tiles_20
+    21300042: Area 1 Tiles_21
+    21300044: Area 1 Tiles_22
+    21300046: Area 1 Tiles_23
+    21300048: Area 1 Tiles_24
+    21300050: Area 1 Tiles_25
+    21300052: Area 1 Tiles_26
+    21300054: Area 1 Tiles_27
+    21300056: Area 1 Tiles_28
+    21300058: Area 1 Tiles_29
+    21300060: Area 1 Tiles_30
+    21300062: Area 1 Tiles_31
+    21300064: Area 1 Tiles_32
+    21300066: Area 1 Tiles_33
+    21300068: Area 1 Tiles_34
+    21300070: Area 1 Tiles_35
+    21300072: Area 1 Tiles_36
+    21300074: Area 1 Tiles_37
+    21300076: Area 1 Tiles_38
+    21300078: Area 1 Tiles_39
+    21300080: Area 1 Tiles_40
+    21300082: Area 1 Tiles_41
+    21300084: Area 1 Tiles_42
+    21300086: Area 1 Tiles_43
+    21300088: Area 1 Tiles_44
+    21300090: Area 1 Tiles_45
+    21300092: Area 1 Tiles_46
+    21300094: Area 1 Tiles_47
+    21300096: Area 1 Tiles_48
+    21300098: Area 1 Tiles_49
+    21300100: Area 1 Tiles_50
+    21300102: Area 1 Tiles_51
+    21300104: Area 1 Tiles_52
+    21300106: Area 1 Tiles_53
+    21300108: Area 1 Tiles_54
+    21300110: Area 1 Tiles_55
+    21300112: Area 1 Tiles_56
+    21300114: Area 1 Tiles_57
+    21300116: Area 1 Tiles_58
+    21300118: Area 1 Tiles_59
+    21300120: Area 1 Tiles_60
+    21300122: Area 1 Tiles_61
+    21300124: Area 1 Tiles_62
+    21300126: Area 1 Tiles_63
+    21300128: Area 1 Tiles_64
+    21300130: Area 1 Tiles_65
+    21300132: Area 1 Tiles_66
+    21300134: Area 1 Tiles_67
+    21300136: Area 1 Tiles_68
+    21300138: Area 1 Tiles_69
+    21300140: Area 1 Tiles_70
+    21300142: Area 1 Tiles_71
+    21300144: Area 1 Tiles_72
+    21300146: Area 1 Tiles_73
+    21300148: Area 1 Tiles_74
+    21300150: Area 1 Tiles_75
+    21300152: Area 1 Tiles_76
+    21300154: Area 1 Tiles_77
+    21300156: Area 1 Tiles_78
+    21300158: Area 1 Tiles_79
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 1
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: 4
+  maxTextureSize: 512
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 95
+  alphaIsTransparency: 1
+  textureType: 5
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Area 1 Tiles_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 351
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_1
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 351
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_2
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 351
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_3
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 351
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_4
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 351
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_5
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 351
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_6
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 351
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_7
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 351
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_8
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 351
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_9
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 351
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_10
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 301
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_11
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 301
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_12
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 301
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_13
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 301
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_14
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 301
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_15
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 301
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_16
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 301
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_17
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 301
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_18
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 301
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_19
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 301
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_20
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 251
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_21
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 251
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_22
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 251
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_23
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 251
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_24
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 251
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_25
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 251
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_26
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 251
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_27
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 251
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_28
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 251
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_29
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 251
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_30
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 201
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_31
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 201
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_32
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 201
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_33
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 201
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_34
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 201
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_35
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 201
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_36
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 201
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_37
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 201
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_38
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 201
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_39
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 201
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_40
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 151
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_41
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 151
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_42
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 151
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_43
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 151
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_44
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 151
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_45
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 151
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_46
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 151
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_47
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 151
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_48
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 151
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_49
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 151
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_50
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 101
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_51
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 101
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_52
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 101
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_53
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 101
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_54
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 101
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_55
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 101
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_56
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 101
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_57
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 101
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_58
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 101
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_59
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 101
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_60
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 51
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_61
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 51
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_62
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 51
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_63
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 51
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_64
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 51
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_65
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 51
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_66
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 51
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_67
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 51
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_68
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 51
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_69
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 51
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_70
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_71
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 1
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_72
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 1
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_73
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 1
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_74
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 1
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_75
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 1
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_76
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 1
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_77
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 1
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_78
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 1
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area 1 Tiles_79
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 1
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
