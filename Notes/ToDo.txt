@@ -1,0 +1,23 @@
+=== TO DO ===
+
+Fixes & arising
+===============
+- Make camera scroll to edges of map regardless of screen resolution
+- Prevent player from walking off map
+
+
+Epic-level
+==========
+- Jump-thru platforms
+- Shrinking platforms
+- Gem collection
+- Switches
+- Infoscreens
+- Locks
+- Enemies
+- Player shooting
+- Bonuses
+- Power-ups
+- Status monitoring
+- Support screens
+- Autoplay
