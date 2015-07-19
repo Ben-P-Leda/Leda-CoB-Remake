@@ -19,7 +19,7 @@ namespace Gameplay.Normal.Scripts
 
         private void Start()
         {
-            Vector2 cameraMargins = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, Camera.main.pixelHeight, 0.0f)) * 0.5f;
+            Vector3 cameraMargins = (Camera.main.ViewportToWorldPoint(Vector3.one) - Camera.main.ViewportToWorldPoint(Vector3.zero)) * 0.5f;
             Rect mapBoundaries = LevelMap.GetComponent<TileEditor.TileMap>().Boundary;
 
             _cameraMovementArea = new Rect(

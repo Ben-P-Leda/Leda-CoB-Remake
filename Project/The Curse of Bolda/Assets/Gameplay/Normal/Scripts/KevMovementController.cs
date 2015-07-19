@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 
-using Diagnostics;
-
 namespace Gameplay.Normal.Scripts
 {
     public class KevMovementController : MonoBehaviour
@@ -11,8 +9,6 @@ namespace Gameplay.Normal.Scripts
         private Animator _animator;
         private bool _facingRight;
         private VerticalMovementState _verticalMovementState;
-
-        private float _minVel;
 
         private void Awake()
         {
@@ -25,8 +21,6 @@ namespace Gameplay.Normal.Scripts
         {
             _facingRight = true;
             _verticalMovementState = VerticalMovementState.OnGround;
-
-            _minVel = 0;
         }
 
         private void Update()
@@ -35,12 +29,6 @@ namespace Gameplay.Normal.Scripts
             UpdateHorizontalMovement();
 
             if (Input.GetKeyDown(KeyCode.Escape)) { Application.Quit(); }
-
-            _minVel = Mathf.Min(_minVel, _rigidBody2D.velocity.y);
-            DiagnosticsDisplay.SetDiagnostic("c", _minVel.ToString());
-            DiagnosticsDisplay.SetDiagnostic("w", "w:" + _animator.GetBool("Walking").ToString());
-            DiagnosticsDisplay.SetDiagnostic("j", "j:" + _animator.GetBool("Jumping").ToString());
-            DiagnosticsDisplay.SetDiagnostic("f", "f:" + _animator.GetBool("Falling").ToString());
         }
 
         private void UpdateHorizontalMovement()
@@ -120,6 +108,6 @@ namespace Gameplay.Normal.Scripts
 
         private const float Speed = 2.0f;
         private const float Jump_Power = 300.0f;
-        private const float Fall_Velocity_Threshold = -0.5f;
+        private const float Fall_Velocity_Threshold = -0.6f;
     }
 }
