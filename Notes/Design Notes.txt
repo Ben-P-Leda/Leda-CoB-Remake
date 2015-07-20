@@ -24,7 +24,15 @@ Position offsets:
 		- Shin: 0, -0.075
 			- Foot: 0, -0.1
 			
-Conversion from game to max screen: at 1920x1080, a 50x50 image displays at 80x80 
+Conversion from game to max screen: at 1920x1080, a 50x50 image displays at 80x80
+
+Idea on jump-thru platforms using different physics layers
+- Kev exists on his own layer
+- Two layers that jump-thrus can exist on - default and "above player"
+- Anything on "above player" does NOT interact with Kev's layer
+- Enemies are on the default layer, so always interact
+- Jumpthru controller detects which platforms are above and below Kev and switches their layers accordingly
+
 
 
 
