@@ -23,6 +23,8 @@ Position offsets:
 	- Thigh: -0.01, -0.025
 		- Shin: 0, -0.075
 			- Foot: 0, -0.1
+			
+Conversion from game to max screen: at 1920x1080, a 50x50 image displays at 80x80 
 
 
 

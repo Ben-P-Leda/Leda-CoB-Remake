@@ -2,9 +2,7 @@
 
 Fixes & arising
 ===============
-- Make camera scroll to edges of map regardless of screen resolution
-- Prevent player from walking off map
-
+- Look at if/how Platfor Effector 2D can make one-way platforms - can it be done without applying it to the platforms?
 
 Epic-level
 ==========
