@@ -11,6 +11,8 @@ namespace Gameplay.Shared.Scripts.Activators
         public Sprite OffSprite;
         public Sprite OnSprite;
 
+        public string Message;
+
         private void Awake()
         {
             _renderer = transform.GetComponent<SpriteRenderer>();
@@ -26,8 +28,6 @@ namespace Gameplay.Shared.Scripts.Activators
             {
                 _isActive = !_isActive;
                 _renderer.sprite = (_isActive ? OnSprite : OffSprite);
-
-                Diagnostics.DiagnosticsDisplay.SetDiagnostic("x", _isActive.ToString());
             }
         }
 

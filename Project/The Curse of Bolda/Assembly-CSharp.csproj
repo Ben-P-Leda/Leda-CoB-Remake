@@ -55,7 +55,9 @@
      <Compile Include="Assets\Gameplay\Shared\Scripts\Special Platforms\JumpthroughPlatformManager.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Special Platforms\VanishingPlatform.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Special Platforms\VanishingPlatformManager.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\DisplayBase.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\GemCounter.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\MessagePopup.cs" />
      <Compile Include="Assets\Tile Editor\Scripts\Class\ColliderInfo.cs" />
      <Compile Include="Assets\Tile Editor\Scripts\Class\CollisionType.cs" />
      <Compile Include="Assets\Tile Editor\Scripts\Class\Tile.cs" />
