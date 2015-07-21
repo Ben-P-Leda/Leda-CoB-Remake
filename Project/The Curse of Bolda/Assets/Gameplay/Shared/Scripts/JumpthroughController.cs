@@ -30,7 +30,7 @@ namespace Gameplay.Shared.Scripts
         {
             for (int i = 0; i < _platforms.Length; i++)
             {
-                if (_playerTransform.position.y - Jumpthru_Offset - _playerRigidBody2D.velocity.y > _platforms[i].Transform.position.y)
+                if (_playerTransform.position.y - Jumpthru_Offset > _platforms[i].Transform.position.y)
                 {
                     _platforms[i].GameObject.layer = Below_Player_Sorting_Layer;
                 }
@@ -38,13 +38,6 @@ namespace Gameplay.Shared.Scripts
                 {
                     _platforms[i].GameObject.layer = Above_Player_Sorting_Layer;
                 }
-
-                Diagnostics.DiagnosticsDisplay.SetDiagnostic(
-                    _platforms[i].GameObject.name, 
-                    string.Format("{0}: {1} | {2}", 
-                        _platforms[i].GameObject.name, 
-                        _platforms[i].GameObject.layer,
-                        _platforms[i].Transform.position.y - (_playerTransform.position.y - Jumpthru_Offset - _playerRigidBody2D.velocity.y)));
             }
         }
 

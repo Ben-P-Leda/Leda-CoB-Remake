@@ -29,6 +29,8 @@ namespace Gameplay.Normal.Scripts
             UpdateHorizontalMovement();
 
             if (Input.GetKeyDown(KeyCode.Escape)) { Application.Quit(); }
+
+            Diagnostics.DiagnosticsDisplay.SetDiagnostic("x", _rigidBody2D.velocity.y.ToString());
         }
 
         private void UpdateHorizontalMovement()
@@ -91,7 +93,7 @@ namespace Gameplay.Normal.Scripts
 
         private void HandleFalling()
         {
-            if (_rigidBody2D.velocity.y >= 0.0f)
+            if (_rigidBody2D.velocity.y >= Touchdown_Velocity_Threshold)
             {
                 _verticalMovementState = VerticalMovementState.OnGround;
                 _animator.SetBool("Falling", false);
@@ -109,5 +111,6 @@ namespace Gameplay.Normal.Scripts
         private const float Speed = 2.0f;
         private const float Jump_Power = 300.0f;
         private const float Fall_Velocity_Threshold = -0.6f;
+        private const float Touchdown_Velocity_Threshold = -0.001f;
     }
 }
