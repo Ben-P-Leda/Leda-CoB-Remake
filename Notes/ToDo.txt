@@ -5,7 +5,6 @@ Fixes & arising
 
 Epic-level
 ==========
-- Shrinking platforms
 - Gem collection
 - Switches
 - Infoscreens
