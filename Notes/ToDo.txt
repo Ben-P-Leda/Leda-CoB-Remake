@@ -2,11 +2,9 @@
 
 Fixes & arising
 ===============
-- Look at if/how Platfor Effector 2D can make one-way platforms - can it be done without applying it to the platforms?
 
 Epic-level
 ==========
-- Jump-thru platforms
 - Shrinking platforms
 - Gem collection
 - Switches
@@ -19,3 +17,9 @@ Epic-level
 - Status monitoring
 - Support screens
 - Autoplay
+
+Missing Tiles
+=============
+- Shadows for jump-through type platforms (half height)
+- Twist poles with no shadow
+- Edge brick shadows

@@ -1,29 +1,30 @@
 ﻿using UnityEngine;
 
-namespace Gameplay.Shared.Scripts
+namespace Gameplay.Shared.Scripts.Special_Platforms
 {
-    public class JumpthroughController : MonoBehaviour
+    public class JumpthroughPlatformManager : MonoBehaviour
     {
-        private JumpthroughContainer[] _platforms;
+        private JumpthroughPlatformContainer[] _platforms;
         private Transform _playerTransform;
-        private Rigidbody2D _playerRigidBody2D;
+
+        protected JumpthroughPlatformContainer[] Platforms { get { return _platforms; } }
 
         public GameObject Player;
         public GameObject TileMap;
+        public string MapLayerName;
 
-        private void Awake()
+        protected virtual void Awake()
         {
-            Transform layer = TileMap.transform.FindChild("Jump-Through Platforms");
+            Transform layer = TileMap.transform.FindChild(MapLayerName);
 
-            _platforms = new JumpthroughContainer[layer.childCount];
+            _platforms = new JumpthroughPlatformContainer[layer.childCount];
             for (int i = 0; i < layer.childCount; i++)
             {
                 Transform platformTransform = layer.GetChild(i);
-                _platforms[i] = new JumpthroughContainer(platformTransform, platformTransform.gameObject);
+                _platforms[i] = new JumpthroughPlatformContainer(platformTransform, platformTransform.gameObject);
             }
 
             _playerTransform = Player.transform;
-            _playerRigidBody2D = Player.GetComponent<Rigidbody2D>();
         }
 
         private void Update()
@@ -44,19 +45,5 @@ namespace Gameplay.Shared.Scripts
         private const float Jumpthru_Offset = 0.175f;
         private const int Above_Player_Sorting_Layer = 9;
         private const int Below_Player_Sorting_Layer = 8;
-
-        private class JumpthroughContainer
-        {
-            public Transform Transform { get; private set; }
-            public GameObject GameObject { get; private set; }
-
-            public JumpthroughContainer(Transform transform, GameObject gameObject)
-            {
-                Transform = transform;
-                GameObject = gameObject;
-            }
-        }
     }
-
-
 }
