@@ -4,6 +4,8 @@ namespace Gameplay.Shared.Scripts.Status_Display
 {
     public class MessagePopup : DisplayBase
     {
+        private bool _isDisplaying;
+
         protected override void Start()
         {
             base.Start();
@@ -22,7 +24,29 @@ namespace Gameplay.Shared.Scripts.Status_Display
                 displayArea.height - (Text_Vertical_Margin * 2.0f * Scaling));
 
             TextAlignment = TextAnchor.UpperLeft;
-            Text = "Here is a long piece of text which I am using to test the word wrap on this...";
+
+            _isDisplaying = false;
+        }
+
+        public void Activate(string textToDisplay)
+        {
+            Text = textToDisplay;
+            _isDisplaying = true;
+            Time.timeScale = 0.0f;
+        }
+
+        protected override void OnGUI()
+        {
+            if (_isDisplaying) { base.OnGUI(); }
+        }
+
+        private void Update()
+        {
+            if ((_isDisplaying) && (Input.anyKeyDown))
+            {
+                _isDisplaying = false;
+                Time.timeScale = 1.0f;
+            }
         }
 
         private const float Background_Horizontal_Margin = 60.0f;

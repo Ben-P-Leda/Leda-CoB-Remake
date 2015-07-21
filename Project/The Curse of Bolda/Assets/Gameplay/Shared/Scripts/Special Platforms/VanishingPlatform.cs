@@ -6,14 +6,12 @@ namespace Gameplay.Shared.Scripts.Special_Platforms
     {
         private Transform _transform;
         private SpriteRenderer _renderer;
-        private ParticleSystem _particleSystem;
         private BoxCollider2D[] _colliders;
 
         private void Awake()
         {
             _transform = transform;
             _renderer = GetComponent<SpriteRenderer>();
-            _particleSystem = GetComponent<ParticleSystem>();
             _colliders = GetComponents<BoxCollider2D>();
         }
 

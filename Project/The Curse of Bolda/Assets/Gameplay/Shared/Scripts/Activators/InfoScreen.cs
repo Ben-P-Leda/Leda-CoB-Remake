@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Gameplay.Shared.Scripts.Status_Display;
 
 namespace Gameplay.Shared.Scripts.Activators
 {
@@ -7,9 +8,11 @@ namespace Gameplay.Shared.Scripts.Activators
         private bool _isActive;
         private bool _canBeToggled;
         private SpriteRenderer _renderer;
+        private MessagePopup _messageBox;
 
         public Sprite OffSprite;
         public Sprite OnSprite;
+        public GameObject MessageBoxObject;
 
         public string Message;
 
@@ -17,6 +20,8 @@ namespace Gameplay.Shared.Scripts.Activators
         {
             _renderer = transform.GetComponent<SpriteRenderer>();
             _renderer.sprite = OffSprite;
+
+            _messageBox = MessageBoxObject.GetComponent<Gameplay.Shared.Scripts.Status_Display.MessagePopup>();
 
             _canBeToggled = false;
             _isActive = false;
@@ -28,6 +33,7 @@ namespace Gameplay.Shared.Scripts.Activators
             {
                 _isActive = !_isActive;
                 _renderer.sprite = (_isActive ? OnSprite : OffSprite);
+                _messageBox.Activate(Message);
             }
         }
 
