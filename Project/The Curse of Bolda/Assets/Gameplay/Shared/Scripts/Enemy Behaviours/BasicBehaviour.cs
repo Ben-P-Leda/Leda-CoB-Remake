@@ -4,28 +4,28 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
 {
     public class BasicBehaviour : MonoBehaviour
     {
+        private GameObject _gameObject;
+
         public int HitPoints;
         public int ScoreValue;
         public bool PlayerShotsDoNoDamage;
 
+        protected virtual void Awake()
+        {
+            _gameObject = transform.gameObject;
+        }
+
         protected virtual void OnTriggerEnter2D(Collider2D collider)
         {
-            if (collider.tag == "Player Shot")
+            if ((collider.tag.StartsWith("Kev Shot")) &&  (!PlayerShotsDoNoDamage))
             {
-                if (!PlayerShotsDoNoDamage)
+                HitPoints -= 1;
+                if (HitPoints < 1)
                 {
-                    // TODO:
-                    //      - Get player shot script
-                    //      - Subtract damage value from hit points
+                    //  - Start death effect
+                    //  - Award score
 
-                    if (HitPoints < 1)
-                    {
-                        //  - Switch off enemy
-                        //  - Start death effect
-                        //  - Award score
-                    }
-
-                    //      - Switch off player shot
+                    _gameObject.SetActive(false);
                 }
             }
         }

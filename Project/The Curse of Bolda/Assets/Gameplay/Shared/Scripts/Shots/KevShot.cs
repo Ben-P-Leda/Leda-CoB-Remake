@@ -14,8 +14,6 @@ namespace Gameplay.Shared.Scripts.Shots
 
         public bool IsActive { get { return _gameObject.activeInHierarchy; } }
 
-        public int DamageValue;
-
         private void Awake()
         {
             _transform = transform;
@@ -62,6 +60,11 @@ namespace Gameplay.Shared.Scripts.Shots
         private void OnCollisionEnter2D(Collision2D collision)
         {
             Deactivate();
+        }
+
+        private void OnTriggerEnter2D(Collider2D collider)
+        {
+            if (collider.tag == "Enemy") { Deactivate(); }
         }
 
         private const float Speed = 7.0f;

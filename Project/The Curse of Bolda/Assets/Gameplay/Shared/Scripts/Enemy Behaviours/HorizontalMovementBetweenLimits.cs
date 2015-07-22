@@ -13,8 +13,10 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
         public float RightSideLimitOffset;
         public float Speed;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             _transform = transform;
             _rigidBody2D = GetComponent<Rigidbody2D>();
         }
