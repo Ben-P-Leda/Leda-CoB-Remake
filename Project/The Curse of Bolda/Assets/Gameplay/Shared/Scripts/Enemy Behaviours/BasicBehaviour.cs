@@ -7,11 +7,10 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
         public int HitPoints;
         public int ScoreValue;
         public bool PlayerShotsDoNoDamage;
-        public bool DoesNotStopPlayerShots;
 
         protected virtual void OnTriggerEnter2D(Collider2D collider)
         {
-            if ((collider.tag == "Player Shot") && (!DoesNotStopPlayerShots))
+            if (collider.tag == "Player Shot")
             {
                 if (!PlayerShotsDoNoDamage)
                 {
