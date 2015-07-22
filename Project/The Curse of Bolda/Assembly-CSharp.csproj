@@ -50,6 +50,7 @@
      <Compile Include="Assets\Gameplay\Normal\Scripts\KevMovementController.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\TrackingCameraController.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Activators\InfoScreen.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\HorizontalMovementBetweenLimits.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\GemCollectionController.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Special Platforms\JumpthroughPlatformContainer.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Special Platforms\JumpthroughPlatformManager.cs" />
