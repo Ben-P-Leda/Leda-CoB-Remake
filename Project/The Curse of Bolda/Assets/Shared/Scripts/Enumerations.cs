@@ -7,11 +7,4 @@
         Boss = 3,
         Bonus = 4
     }
-
-    public enum DataItem
-    {
-        Score,
-        Energy,
-        Gems
-    }
 }
