@@ -63,6 +63,7 @@
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\DisplayBase.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\GemCounter.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\MessagePopup.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\Score.cs" />
      <Compile Include="Assets\Shared\Scripts\CurrentGame.cs" />
      <Compile Include="Assets\Shared\Scripts\Enumerations.cs" />
      <Compile Include="Assets\Shared\Scripts\GameData.cs" />
