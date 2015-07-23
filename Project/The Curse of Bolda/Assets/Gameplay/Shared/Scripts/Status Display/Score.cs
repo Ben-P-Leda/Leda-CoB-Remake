@@ -6,6 +6,8 @@ namespace Gameplay.Shared.Scripts.Status_Display
 {
     public class Score : DisplayBase
     {
+        private int _displayedScore;
+
         protected override void Start()
         {
             base.Start();
@@ -18,14 +20,16 @@ namespace Gameplay.Shared.Scripts.Status_Display
 
             DisplayArea = displayArea;
             TextArea = new Rect(displayArea.x, displayArea.y + Text_Vertical_Offset, displayArea.width, displayArea.height - Text_Vertical_Offset);
-            Text = "0";
+
+            _displayedScore = 0;
         }
 
-        public void Refresh()
+        public void Update()
         {
-            Text = CurrentGame.GameData.Score.ToString();
+            if (_displayedScore < CurrentGame.GameData.Score) { _displayedScore += 1; }
+            Text = _displayedScore.ToString();
         }
 
-        private float Text_Vertical_Offset = 10.0f;
+        private float Text_Vertical_Offset = 15.0f;
     }
 }

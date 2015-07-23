@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+using Shared.Scripts;
+
 namespace Gameplay.Shared.Scripts.Enemy_Behaviours
 {
     public class BasicBehaviour : MonoBehaviour
@@ -9,6 +11,7 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
         public int HitPoints;
         public int ScoreValue;
         public bool PlayerShotsDoNoDamage;
+        public float PlayerEnergyDrainValue;
 
         protected virtual void Awake()
         {
@@ -23,7 +26,7 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
                 if (HitPoints < 1)
                 {
                     //  - Start death effect
-                    //  - Award score
+                    CurrentGame.GameData.Score += ScoreValue;
 
                     _gameObject.SetActive(false);
                 }
