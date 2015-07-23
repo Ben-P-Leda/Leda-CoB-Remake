@@ -41,13 +41,9 @@ namespace Gameplay.Shared.Scripts.Shots
 
         private void Update()
         {
-            if (!_particleSystem.IsAlive()) { _gameObject.SetActive(false); }
-
-            if (_particleSystem.isPlaying)
-            {
-                _lifetimeRemaining -= Time.deltaTime;
-                if (_lifetimeRemaining <= 0.0f) { Deactivate(); }
-            }
+            _lifetimeRemaining -= Time.deltaTime;
+            if (_lifetimeRemaining <= 0.0f) { _gameObject.SetActive(false); }
+            else if ((_lifetimeRemaining < TailOff_Duration) && (_collider.enabled)) { Deactivate(); }
         }
 
         public void Deactivate()
@@ -70,6 +66,7 @@ namespace Gameplay.Shared.Scripts.Shots
         private const float Speed = 7.0f;
         private const float Vertical_Offset = 0.1f;
         private const float Horizontal_Offset = 0.15f;
-        private const float Lifespan = 1.2f;
+        private const float Lifespan = 1.0f;
+        private const float TailOff_Duration = 0.2f;
     }
 }
