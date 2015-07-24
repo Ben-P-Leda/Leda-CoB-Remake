@@ -66,6 +66,7 @@
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\MessagePopup.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\PlayerStatus.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\Score.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\StageTimer.cs" />
      <Compile Include="Assets\NonGame\Stage Intro\StageIntroPresenter.cs" />
      <Compile Include="Assets\Shared\Scripts\Constants.cs" />
      <Compile Include="Assets\Shared\Scripts\CurrentGame.cs" />

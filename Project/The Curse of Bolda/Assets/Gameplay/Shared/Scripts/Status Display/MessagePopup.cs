@@ -5,6 +5,7 @@ namespace Gameplay.Shared.Scripts.Status_Display
     public class MessagePopup : DisplayBase
     {
         private bool _isDisplaying;
+        private int _updatesBeforeDeactivationAllowed;
 
         protected override void Start()
         {
@@ -32,6 +33,7 @@ namespace Gameplay.Shared.Scripts.Status_Display
         {
             Text = textToDisplay;
             _isDisplaying = true;
+            _updatesBeforeDeactivationAllowed = Deactivation_Update_Count;
             Time.timeScale = 0.0f;
         }
 
@@ -39,14 +41,13 @@ namespace Gameplay.Shared.Scripts.Status_Display
         {
             if (_isDisplaying) 
             {
-                Diagnostics.DiagnosticsDisplay.SetDiagnostic("msg", "MB:Displayed - sort out input etc for reset!");
                 base.OnGUI(); 
             }
         }
 
         private void Update()
         {
-            if ((_isDisplaying) && (Input.anyKeyDown))
+            if ((_isDisplaying) && (--_updatesBeforeDeactivationAllowed <= 0.0f) && (Input.anyKeyDown))
             {
                 _isDisplaying = false;
                 Time.timeScale = 1.0f;
@@ -57,5 +58,6 @@ namespace Gameplay.Shared.Scripts.Status_Display
         private const float Background_Vertical_Margin = 135.0f;
         private const float Text_Horizontal_Margin = 16.0f;
         private const float Text_Vertical_Margin = 13.0f;
+        private const int Deactivation_Update_Count = 10;
     }
 }

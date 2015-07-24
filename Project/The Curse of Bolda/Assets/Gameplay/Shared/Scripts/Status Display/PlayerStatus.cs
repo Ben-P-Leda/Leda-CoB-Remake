@@ -22,7 +22,7 @@ namespace Gameplay.Shared.Scripts.Status_Display
                 Text_Area * Scaling,
                 Text_Area * Scaling);
 
-            Text = "0";
+            Text = CurrentGame.GameData.Lives.ToString();
 
             _displayedEnergy = 0.0f;
         }
