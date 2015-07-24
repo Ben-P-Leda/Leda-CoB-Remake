@@ -1,33 +1,33 @@
 ﻿using UnityEngine;
 
+using Shared.Scripts;
+
 namespace Gameplay.Shared.Scripts.Status_Display
 {
-    public class DisplayBase : MonoBehaviour
+    public class DisplayBase : ScreenRelativeComponent
     {
         private Rect _displayArea;
         private Rect _textArea;
         private GUIStyle _guiStyle;
         private string _text;
-        private float _scaling;
 
         public Texture2D BackgroundTexture;
         public Font Font;
 
-        protected float Scaling { get { return _scaling; } }
         protected GUIStyle GuiStyle { get { return _guiStyle; } }
         protected string Text { set { _text = value; } }
         protected Rect DisplayArea { set { _displayArea = value; } }
         protected Rect TextArea { set { _textArea = value; } }
         protected TextAnchor TextAlignment { set { _guiStyle.alignment = value; } }
 
-        protected virtual void Start()
+        protected override void Start()
         {
-            _scaling = Screen.height / One_To_One_Screen_Height;
+            base.Start();
 
             _guiStyle = new GUIStyle();
             _guiStyle.alignment = TextAnchor.MiddleCenter;
             _guiStyle.font = Font;
-            _guiStyle.fontSize = (int)(Font_Size * _scaling);
+            _guiStyle.fontSize = (int)(Font_Size * Scaling);
             _guiStyle.normal.textColor = Color.white;
             _guiStyle.wordWrap = true;
         }
@@ -40,7 +40,6 @@ namespace Gameplay.Shared.Scripts.Status_Display
 
         protected const float Margin = 10.0f;
 
-        private const float One_To_One_Screen_Height = 675.0f;
         private const float Font_Size = 26.0f;
     }
 }

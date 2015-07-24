@@ -37,7 +37,11 @@ namespace Gameplay.Shared.Scripts.Status_Display
 
         protected override void OnGUI()
         {
-            if (_isDisplaying) { base.OnGUI(); }
+            if (_isDisplaying) 
+            {
+                Diagnostics.DiagnosticsDisplay.SetDiagnostic("msg", "MB:Displayed - sort out input etc for reset!");
+                base.OnGUI(); 
+            }
         }
 
         private void Update()

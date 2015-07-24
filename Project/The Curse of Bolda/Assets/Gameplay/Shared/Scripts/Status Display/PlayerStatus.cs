@@ -25,8 +25,6 @@ namespace Gameplay.Shared.Scripts.Status_Display
             Text = "0";
 
             _displayedEnergy = 0.0f;
-
-            CurrentGame.GameData.Energy = Constants.Player_Maximum_Energy;
         }
 
         private void Update()

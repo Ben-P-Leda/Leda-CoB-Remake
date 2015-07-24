@@ -3,14 +3,13 @@
 Fixes & arising
 ===============
 
+
 Epic-level
 ==========
-- Gem collection
 - Switches
 - Infoscreens
 - Locks
 - Enemies
-- Player shooting
 - Bonuses
 - Power-ups
 - Status monitoring
@@ -22,3 +21,8 @@ Missing Tiles
 - Shadows for jump-through type platforms (half height)
 - Twist poles with no shadow
 - Edge brick shadows
+
+Effects & nice-to-have
+======================
+- Gem collection effect (sparkles)
+- Enemy deaths (explosions)
