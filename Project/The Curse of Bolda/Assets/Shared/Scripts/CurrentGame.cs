@@ -13,7 +13,7 @@
 
         public static void SetForNewLife()
         {
-            _gameData.Energy = Maximum_Energy;
+            _gameData.Energy = Constants.Player_Maximum_Energy;
         }
 
         public static void SetForLevelStart(int areaIndex, AreaStage stage, float durationInSeconds, int requiredGems)
@@ -28,6 +28,5 @@
         }
 
         private const int Starting_Lives = 5;
-        private const float Maximum_Energy = 100.0f;
     }
 }

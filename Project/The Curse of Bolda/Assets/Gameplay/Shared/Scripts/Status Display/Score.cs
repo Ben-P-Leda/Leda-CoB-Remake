@@ -14,7 +14,7 @@ namespace Gameplay.Shared.Scripts.Status_Display
 
             Rect displayArea = new Rect(
                 (Screen.width - (BackgroundTexture.width * Scaling)) * 0.5f,
-                0.0f,
+                Margin * Scaling,
                 BackgroundTexture.width * Scaling,
                 BackgroundTexture.height * Scaling);
 
@@ -24,7 +24,7 @@ namespace Gameplay.Shared.Scripts.Status_Display
             _displayedScore = 0;
         }
 
-        public void Update()
+        private void Update()
         {
             if (_displayedScore < CurrentGame.GameData.Score) { _displayedScore += 1; }
             Text = _displayedScore.ToString();

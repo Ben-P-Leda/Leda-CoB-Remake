@@ -38,7 +38,8 @@ namespace Gameplay.Shared.Scripts.Status_Display
             GUI.Label(_textArea, _text, _guiStyle);
         }
 
-        private const float Margin = 10.0f;
+        protected const float Margin = 10.0f;
+
         private const float One_To_One_Screen_Height = 675.0f;
         private const float Font_Size = 26.0f;
     }

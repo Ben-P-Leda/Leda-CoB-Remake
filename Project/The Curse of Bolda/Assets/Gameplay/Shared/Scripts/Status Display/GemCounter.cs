@@ -25,7 +25,5 @@ namespace Gameplay.Shared.Scripts.Status_Display
         {
             Text = CurrentGame.GameData.GemsCollected.ToString();
         }
-
-        private const float Margin = 10.0f;
     }
 }
