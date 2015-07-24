@@ -2,12 +2,10 @@
 
 using Shared.Scripts;
 
-namespace Gameplay.Shared.Scripts.Player
+namespace Gameplay.Shared.Scripts
 {
-    public class PlayerSequencer : MonoBehaviour
+    public class LevelSequencer : MonoBehaviour
     {
-        public GameObject Player;
-
         public int Area;
         public AreaStage Stage;
         public float DurationInSeconds;
