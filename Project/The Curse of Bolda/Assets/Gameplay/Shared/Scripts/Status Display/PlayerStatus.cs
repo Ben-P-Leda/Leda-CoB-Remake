@@ -33,13 +33,13 @@ namespace Gameplay.Shared.Scripts.Status_Display
         {
             if (_displayedEnergy != CurrentGame.GameData.Energy)
             {
-                if (Mathf.Abs(CurrentGame.GameData.Energy - _displayedEnergy) < 1.0f) { _displayedEnergy = CurrentGame.GameData.Energy; }
-                else { _displayedEnergy += Mathf.Sign(CurrentGame.GameData.Energy - _displayedEnergy); }
+                if (Mathf.Abs(CurrentGame.GameData.Energy - _displayedEnergy) < Energy_Bar_Step) { _displayedEnergy = CurrentGame.GameData.Energy; }
+                else { _displayedEnergy += (Mathf.Sign(CurrentGame.GameData.Energy - _displayedEnergy) * Energy_Bar_Step); }
 
                 _energyBarContainer = new Rect(
                     (Margin + Energy_Bar_Horizontal_Offset) * Scaling,
                     (Margin + Energy_Bar_Vertical_Offset) * Scaling,
-                    (Energy_Bar_Max_Width * (_displayedEnergy / Constants.Player_Maximum_Energy)) * Scaling,
+                    Mathf.Max((Energy_Bar_Max_Width * (_displayedEnergy / Constants.Player_Maximum_Energy)) * Scaling, 0.0f),
                     EnergyBarTexture.height * Scaling);
             }
         }
@@ -57,5 +57,6 @@ namespace Gameplay.Shared.Scripts.Status_Display
         private const float Energy_Bar_Horizontal_Offset = 71.0f;
         private const float Energy_Bar_Vertical_Offset = 13.0f;
         private const float Energy_Bar_Max_Width = 100.0f;
+        private const float Energy_Bar_Step = 5.0f;
     }
 }

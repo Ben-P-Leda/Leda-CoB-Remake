@@ -10,7 +10,6 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
 
         public int HitPoints;
         public int ScoreValue;
-        public bool PlayerShotsDoNoDamage;
         public float PlayerEnergyDrainValue;
 
         protected virtual void Awake()
@@ -20,17 +19,29 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
 
         protected virtual void OnTriggerEnter2D(Collider2D collider)
         {
-            if ((collider.tag.StartsWith("Kev Shot")) &&  (!PlayerShotsDoNoDamage))
-            {
-                HitPoints -= 1;
-                if (HitPoints < 1)
-                {
-                    //  - Start death effect
-                    CurrentGame.GameData.Score += ScoreValue;
+            if (collider.tag == "Kev Shot") { HandleCollisionWithPlayerShot(); }
+        }
 
-                    _gameObject.SetActive(false);
-                }
+        protected virtual void HandleCollisionWithPlayerShot()
+        {
+            HitPoints -= 1;
+            if (HitPoints < 1)
+            {
+                //  - Start death effect
+                CurrentGame.GameData.Score += ScoreValue;
+
+                _gameObject.SetActive(false);
             }
+        }
+
+        protected virtual void OnTriggerStay2D(Collider2D collider)
+        {
+            if (collider.tag == "Kev") { HandleCollisionWithPlayer(); }
+        }
+
+        protected virtual void HandleCollisionWithPlayer()
+        {
+            CurrentGame.GameData.Energy -= PlayerEnergyDrainValue;
         }
     }
 }

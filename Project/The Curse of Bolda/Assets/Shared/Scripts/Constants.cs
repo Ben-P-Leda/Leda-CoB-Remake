@@ -2,6 +2,6 @@
 {
     public class Constants
     {
-        public const float Player_Maximum_Energy = 100.0f;
+        public const float Player_Maximum_Energy = 150.0f;
     }
 }
