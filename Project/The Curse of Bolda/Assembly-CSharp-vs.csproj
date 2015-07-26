@@ -52,9 +52,10 @@
      <Compile Include="Assets\Gameplay\Shared\Scripts\Activators\InfoScreen.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\BasicBehaviour.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\HorizontalMovementBetweenLimits.cs" />
-     <Compile Include="Assets\Gameplay\Shared\Scripts\GemCollectionController.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\GenericObjectPool.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\LevelSequencer.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Player\GemCollectionController.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Player\Sequencer.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Shots\KevShot.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Shots\KevShotPool.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Special Platforms\JumpthroughPlatformContainer.cs" />

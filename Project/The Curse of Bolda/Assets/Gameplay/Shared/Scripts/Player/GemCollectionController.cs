@@ -3,7 +3,7 @@
 using Shared.Scripts;
 using Gameplay.Shared.Scripts.Status_Display;
 
-namespace Gameplay.Shared.Scripts
+namespace Gameplay.Shared.Scripts.Player
 {
     public class GemCollectionController : MonoBehaviour
     {
