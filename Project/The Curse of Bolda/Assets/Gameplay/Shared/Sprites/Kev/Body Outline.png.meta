@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 606bf35c080d255479b0ef57a2110a3e
-timeCreated: 1437888198
+timeCreated: 1437901111
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -11,7 +11,7 @@ TextureImporter:
     21300008: Kev Bicep Outline
     21300010: Kev Shin Outline
     21300012: Kev Bicep Front Outline
-    21300014: Kev Foot Frnt Outline
+    21300014: Kev Foot Front Outline
     21300016: Kev Forearm Front Outline
     21300018: Kev Body Front Outline
   serializedVersion: 2
@@ -129,7 +129,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .699999988}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Kev Foot Frnt Outline
+    - name: Kev Foot Front Outline
       rect:
         serializedVersion: 2
         x: 19

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: affea5e6e749d1a48bc052d3e0e05397
-timeCreated: 1437887707
+timeCreated: 1437889268
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -13,7 +13,7 @@ TextureImporter:
     21300012: Body_0
     21300014: Kev Bicep Front
     21300016: Kev Foot Front
-    21300018: Kev Forearm Frony
+    21300018: Kev Forearm Front
     21300020: Kev Body Front
   serializedVersion: 2
   mipmaps:
@@ -150,7 +150,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .600000024}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Kev Forearm Frony
+    - name: Kev Forearm Front
       rect:
         serializedVersion: 2
         x: 47
