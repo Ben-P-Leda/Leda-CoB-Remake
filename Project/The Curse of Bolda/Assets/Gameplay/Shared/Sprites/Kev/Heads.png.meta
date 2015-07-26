@@ -1,11 +1,12 @@
 fileFormatVersion: 2
 guid: ae1347f7072b2f545beabed3b38b350d
-timeCreated: 1437098833
+timeCreated: 1437887907
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Kev Normal
     21300002: Kev Normal Face
+    21300004: Kev Death Generic Face
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -58,6 +59,16 @@ TextureImporter:
         y: 2
         width: 44
         height: 30
+      alignment: 9
+      pivot: {x: .5, y: .100000001}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kev Death Generic Face
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 2
+        width: 39
+        height: 29
       alignment: 9
       pivot: {x: .5, y: .100000001}
       border: {x: 0, y: 0, z: 0, w: 0}

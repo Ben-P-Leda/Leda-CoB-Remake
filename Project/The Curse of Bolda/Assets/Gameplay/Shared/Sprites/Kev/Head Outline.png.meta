@@ -1,11 +1,12 @@
 fileFormatVersion: 2
 guid: cedab45755994a04294b50ad2eaf56b6
-timeCreated: 1437149913
+timeCreated: 1437887854
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Kev Head Outline
     21300002: Kev Normal Face
+    21300004: Kev Front Face
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -29,7 +30,7 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -3
-  maxTextureSize: 64
+  maxTextureSize: 128
   textureSettings:
     filterMode: -1
     aniso: 16
@@ -58,6 +59,16 @@ TextureImporter:
         y: 1
         width: 46
         height: 32
+      alignment: 9
+      pivot: {x: .5, y: .100000001}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kev Front Face
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 2
+        width: 41
+        height: 31
       alignment: 9
       pivot: {x: .5, y: .100000001}
       border: {x: 0, y: 0, z: 0, w: 0}

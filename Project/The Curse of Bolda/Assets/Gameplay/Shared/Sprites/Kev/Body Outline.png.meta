@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 606bf35c080d255479b0ef57a2110a3e
-timeCreated: 1437150019
+timeCreated: 1437888198
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -10,6 +10,10 @@ TextureImporter:
     21300006: Kev Foot Outline
     21300008: Kev Bicep Outline
     21300010: Kev Shin Outline
+    21300012: Kev Bicep Front Outline
+    21300014: Kev Foot Frnt Outline
+    21300016: Kev Forearm Front Outline
+    21300018: Kev Body Front Outline
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -33,7 +37,7 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -3
-  maxTextureSize: 64
+  maxTextureSize: 128
   textureSettings:
     filterMode: -1
     aniso: 16
@@ -59,7 +63,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 14
+        y: 59
         width: 27
         height: 23
       alignment: 9
@@ -69,7 +73,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 30
-        y: 19
+        y: 64
         width: 15
         height: 18
       alignment: 9
@@ -79,7 +83,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 47
-        y: 21
+        y: 66
         width: 16
         height: 16
       alignment: 9
@@ -89,7 +93,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 2
+        y: 47
         width: 24
         height: 10
       alignment: 9
@@ -99,7 +103,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 30
-        y: 1
+        y: 46
         width: 17
         height: 16
       alignment: 9
@@ -109,11 +113,51 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 49
-        y: 4
+        y: 49
         width: 14
         height: 15
       alignment: 9
       pivot: {x: .5, y: .699999988}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kev Bicep Front Outline
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 29
+        width: 14
+        height: 16
+      alignment: 9
+      pivot: {x: .5, y: .699999988}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kev Foot Frnt Outline
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 31
+        width: 18
+        height: 12
+      alignment: 9
+      pivot: {x: .5, y: .600000024}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kev Forearm Front Outline
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 31
+        width: 11
+        height: 15
+      alignment: 9
+      pivot: {x: .550000012, y: .699999988}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kev Body Front Outline
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2
+        width: 42
+        height: 24
+      alignment: 9
+      pivot: {x: .5, y: .219999999}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
