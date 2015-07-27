@@ -16,6 +16,7 @@ namespace Shared.Scripts
         public float TransitionSpeed;
 
         public TransitionCompletionCallback TransitionCompletionHandler { private get; set; }
+        public IndependentTimer Timer { private get; set; }
 
         private void Awake()
         {
@@ -55,7 +56,7 @@ namespace Shared.Scripts
 
         private void OnGUI()
         {
-            _alpha = Mathf.Clamp01(_alpha + (TransitionSpeed * _fadeDirection * Time.deltaTime));
+            _alpha = Mathf.Clamp01(_alpha + (TransitionSpeed * _fadeDirection * Timer.ElapsedSinceLastUpdate));
 
             GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, _alpha);
             GUI.depth = _drawDepth;

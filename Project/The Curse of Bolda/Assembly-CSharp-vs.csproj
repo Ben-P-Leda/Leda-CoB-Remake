@@ -74,6 +74,7 @@
      <Compile Include="Assets\Shared\Scripts\Enumerations.cs" />
      <Compile Include="Assets\Shared\Scripts\FadeTransitioner.cs" />
      <Compile Include="Assets\Shared\Scripts\GameData.cs" />
+     <Compile Include="Assets\Shared\Scripts\IndependentTimer.cs" />
      <Compile Include="Assets\Shared\Scripts\ScreenRelativeComponent.cs" />
      <Compile Include="Assets\Tile Editor\Scripts\Class\ColliderInfo.cs" />
      <Compile Include="Assets\Tile Editor\Scripts\Class\CollisionType.cs" />

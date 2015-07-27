@@ -1,4 +1,6 @@
-﻿namespace Shared.Scripts
+﻿using UnityEngine;
+
+namespace Shared.Scripts
 {
     public class GameData
     {
@@ -10,5 +12,6 @@
         public float TimeRemaining { get; set; }
         public int GemsRequired { get; set; }
         public int GemsCollected { get; set; }
+        public Vector2 RestartPoint { get; set; }
     }
 }

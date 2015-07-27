@@ -22,8 +22,6 @@ namespace Gameplay.Shared.Scripts.Status_Display
                 Text_Area * Scaling,
                 Text_Area * Scaling);
 
-            Text = CurrentGame.GameData.Lives.ToString();
-
             _displayedEnergy = 0.0f;
         }
 
@@ -40,6 +38,8 @@ namespace Gameplay.Shared.Scripts.Status_Display
                     Mathf.Max((Energy_Bar_Max_Width * (_displayedEnergy / Constants.Player_Maximum_Energy)) * Scaling, 0.0f),
                     EnergyBarTexture.height * Scaling);
             }
+
+            Text = CurrentGame.GameData.Lives.ToString();
         }
 
         protected override void OnGUI()
