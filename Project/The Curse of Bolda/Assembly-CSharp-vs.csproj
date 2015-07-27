@@ -55,7 +55,7 @@
      <Compile Include="Assets\Gameplay\Shared\Scripts\GenericObjectPool.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\LevelSequencer.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\GemCollectionController.cs" />
-     <Compile Include="Assets\Gameplay\Shared\Scripts\Player\Sequencer.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Player\PlayerSequencer.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Shots\KevShot.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Shots\KevShotPool.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Special Platforms\JumpthroughPlatformContainer.cs" />
@@ -72,6 +72,7 @@
      <Compile Include="Assets\Shared\Scripts\Constants.cs" />
      <Compile Include="Assets\Shared\Scripts\CurrentGame.cs" />
      <Compile Include="Assets\Shared\Scripts\Enumerations.cs" />
+     <Compile Include="Assets\Shared\Scripts\FadeTransitioner.cs" />
      <Compile Include="Assets\Shared\Scripts\GameData.cs" />
      <Compile Include="Assets\Shared\Scripts\ScreenRelativeComponent.cs" />
      <Compile Include="Assets\Tile Editor\Scripts\Class\ColliderInfo.cs" />

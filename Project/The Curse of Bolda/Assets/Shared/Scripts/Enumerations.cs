@@ -7,4 +7,9 @@
         Boss = 3,
         Bonus = 4
     }
+
+    public enum PlayerDeathSequence
+    {
+        Generic = 1
+    }
 }
