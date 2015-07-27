@@ -56,6 +56,7 @@
      <Compile Include="Assets\Gameplay\Shared\Scripts\LevelSequencer.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\GemCollectionController.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\PlayerSequencer.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Restart Points\RestartPoint.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Shots\KevShot.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Shots\KevShotPool.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Special Platforms\JumpthroughPlatformContainer.cs" />
