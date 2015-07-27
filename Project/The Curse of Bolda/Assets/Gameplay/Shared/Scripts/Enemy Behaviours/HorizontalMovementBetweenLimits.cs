@@ -8,10 +8,14 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
         private Rigidbody2D _rigidBody2D;
         private float _leftSideLimit;
         private float _rightSideLimit;
+        private float _targetSpeed;
 
         public float LeftSideLimitOffset;
         public float RightSideLimitOffset;
         public float Speed;
+        public float Acceleration;
+
+        protected float HorizontalSpeed { get { return _rigidBody2D.velocity.x; } }
 
         protected override void Awake()
         {
@@ -29,14 +33,26 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
             float midPoint = _rightSideLimit - _leftSideLimit;
             float startDirection = Mathf.Sign(midPoint - _transform.position.x);
 
-            _rigidBody2D.velocity = new Vector2(Speed * startDirection, 0.0f);
+            _targetSpeed = Speed * startDirection;
+            _rigidBody2D.velocity = new Vector2(_targetSpeed, 0.0f);
             _transform.localScale = new Vector3(_transform.localScale.x * startDirection, _transform.localScale.y, _transform.localScale.z);
         }
 
-        private void Update()
+        protected virtual void Update()
         {
-            if ((Mathf.Sign(_rigidBody2D.velocity.x) < 0) && (_transform.position.x <= _leftSideLimit)) { ChangeDirection(); }
-            if ((Mathf.Sign(_rigidBody2D.velocity.x) > 0) && (_transform.position.x >= _rightSideLimit)) { ChangeDirection(); }
+            if (_transform.position.x <= _leftSideLimit) { ApplyAcceleration(Acceleration); }
+            if (_transform.position.x >= _rightSideLimit) { ApplyAcceleration(-Acceleration); }
+        }
+
+        private void ApplyAcceleration(float acceleration)
+        {
+            float currentDirection = Mathf.Sign(_rigidBody2D.velocity.x);
+            _rigidBody2D.velocity = new Vector2(Mathf.Clamp(_rigidBody2D.velocity.x + acceleration, -Speed, Speed), _rigidBody2D.velocity.y);
+
+            if (Mathf.Sign(_rigidBody2D.velocity.x) != currentDirection)
+            {
+                transform.localScale = new Vector3(-_transform.localScale.x, _transform.localScale.y, _transform.localScale.z);
+            }
         }
 
         private void ChangeDirection()
