@@ -41,7 +41,7 @@ namespace Gameplay.Shared.Scripts
 
         private void SetForLevelStart()
         {
-            CurrentGame.SetForLevelStart(Area, Stage, DurationInSeconds, RequiredGems, PlayerStartPosition);
+            CurrentGame.SetForLevelStart(Area, Stage, RequiredGems, PlayerStartPosition);
 
             if (Stage != AreaStage.Bonus) { SetForNewLife(); }
         }
@@ -66,9 +66,10 @@ namespace Gameplay.Shared.Scripts
 
         private void UpdateForInPlay()
         {
-            CurrentGame.GameData.TimeRemaining -= Time.deltaTime;
+            CurrentGame.GameData.TimeRemaining = Mathf.Max(CurrentGame.GameData.TimeRemaining - Time.deltaTime, 0.0f);
 
             if (CurrentGame.GameData.Energy <= 0.0f) { HandlePlayerDeath(); }
+            if (CurrentGame.GameData.TimeRemaining <= 0.0f) { HandlePlayerDeath(); }
         }
 
         private void HandlePlayerDeath()
@@ -95,6 +96,8 @@ namespace Gameplay.Shared.Scripts
             _levelState = LevelState.GetReady;
 
             Time.timeScale = 0.0f;
+
+            if (CurrentGame.GameData.TimeRemaining <= 0.0f) { CurrentGame.GameData.TimeRemaining = DurationInSeconds; }
             CurrentGame.SetForNewLife();
             
             _fadeTransitioner.FadeIn();

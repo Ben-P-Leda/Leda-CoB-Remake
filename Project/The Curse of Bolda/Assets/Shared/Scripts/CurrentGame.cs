@@ -18,11 +18,10 @@ namespace Shared.Scripts
             _gameData.Energy = Constants.Player_Maximum_Energy;
         }
 
-        public static void SetForLevelStart(int areaIndex, AreaStage stage, float durationInSeconds, int requiredGems, Vector2 startPosition)
+        public static void SetForLevelStart(int areaIndex, AreaStage stage, int requiredGems, Vector2 startPosition)
         {
             _gameData.Area = areaIndex;
             _gameData.Stage = stage;
-            _gameData.TimeRemaining = durationInSeconds;
             _gameData.GemsRequired = requiredGems;
             _gameData.GemsCollected = 0;
             _gameData.RestartPoint = startPosition;
