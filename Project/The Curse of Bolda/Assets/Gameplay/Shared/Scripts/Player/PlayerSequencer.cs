@@ -65,14 +65,13 @@ namespace Gameplay.Shared.Scripts.Player
 
         public void StartNewLife()
         {
+            _state = SequenceState.Ready;
+
             SequencedAvatar.SetActive(false);
             InputDrivenAvatar.SetActive(true);
 
             _inputDrivenAvatarTransform = InputDrivenAvatar.GetComponent<Transform>();
-            _inputDrivenAvatarTransform.position = new Vector3(
-                CurrentGame.GameData.RestartPoint.x,
-                CurrentGame.GameData.RestartPoint.y,
-                _inputDrivenAvatarTransform.position.z);
+            _inputDrivenAvatarTransform.position = CurrentGame.GameData.RestartPoint;
 
             // TODO: "Let's rock!" sequence
         }

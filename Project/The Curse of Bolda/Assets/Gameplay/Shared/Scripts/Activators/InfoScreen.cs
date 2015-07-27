@@ -3,48 +3,25 @@ using Gameplay.Shared.Scripts.Status_Display;
 
 namespace Gameplay.Shared.Scripts.Activators
 {
-    public class InfoScreen : MonoBehaviour
+    public class InfoScreen : ActivatorBase
     {
-        private bool _isActive;
-        private bool _canBeToggled;
-        private SpriteRenderer _renderer;
         private MessagePopup _messageBox;
 
-        public Sprite OffSprite;
-        public Sprite OnSprite;
         public GameObject MessageBoxObject;
 
         public string Message;
 
-        private void Awake()
+        protected override void Awake()
         {
-            _renderer = transform.GetComponent<SpriteRenderer>();
-            _renderer.sprite = OffSprite;
-
+            base.Awake();
             _messageBox = MessageBoxObject.GetComponent<Gameplay.Shared.Scripts.Status_Display.MessagePopup>();
-
-            _canBeToggled = false;
-            _isActive = false;
         }
 
-        private void Update()
+        protected override void SetActive(bool isActive)
         {
-            if ((Input.GetKeyDown(KeyCode.S)) && (_canBeToggled))
-            {
-                _isActive = !_isActive;
-                _renderer.sprite = (_isActive ? OnSprite : OffSprite);
-                _messageBox.Activate(Message);
-            }
-        }
+            base.SetActive(isActive);
 
-        private void OnTriggerEnter2D(Collider2D collider)
-        {
-            _canBeToggled = true;
-        }
-
-        private void OnTriggerExit2D(Collider2D collider)
-        {
-            _canBeToggled = false;
+            _messageBox.Activate(Message);
         }
     }
 }
