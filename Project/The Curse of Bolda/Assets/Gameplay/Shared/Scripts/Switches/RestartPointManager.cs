@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 using Shared.Scripts;
 
-namespace Gameplay.Shared.Scripts.Activators
+namespace Gameplay.Shared.Scripts.Switches
 {
     public class RestartPointManager : MonoBehaviour
     {

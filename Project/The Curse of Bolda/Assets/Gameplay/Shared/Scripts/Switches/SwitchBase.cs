@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Gameplay.Shared.Scripts.Activators
+namespace Gameplay.Shared.Scripts.Switches
 {
-    public class ActivatorBase : MonoBehaviour
+    public class SwitchBase : MonoBehaviour
     {
         private bool _isActive;
         private bool _canBeToggled;

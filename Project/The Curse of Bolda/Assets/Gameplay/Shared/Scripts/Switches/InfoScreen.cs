@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using Gameplay.Shared.Scripts.Status_Display;
 
-namespace Gameplay.Shared.Scripts.Activators
+namespace Gameplay.Shared.Scripts.Switches
 {
-    public class InfoScreen : ActivatorBase
+    public class InfoScreen : SwitchBase
     {
         private MessagePopup _messageBox;
 

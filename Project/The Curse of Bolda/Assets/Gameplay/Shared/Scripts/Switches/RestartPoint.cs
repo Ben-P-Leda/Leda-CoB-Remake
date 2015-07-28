@@ -2,9 +2,9 @@
 
 using Shared.Scripts;
 
-namespace Gameplay.Shared.Scripts.Activators
+namespace Gameplay.Shared.Scripts.Switches
 {
-    public class RestartPoint : ActivatorBase
+    public class RestartPoint : SwitchBase
     {
         public delegate void ActivationCallback(string objectName);
 
