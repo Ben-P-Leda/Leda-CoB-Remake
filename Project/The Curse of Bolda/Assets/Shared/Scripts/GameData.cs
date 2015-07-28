@@ -13,5 +13,6 @@ namespace Shared.Scripts
         public int GemsRequired { get; set; }
         public int GemsCollected { get; set; }
         public Vector3 RestartPoint { get; set; }
+        public bool CarryingKey { get; set; }
     }
 }

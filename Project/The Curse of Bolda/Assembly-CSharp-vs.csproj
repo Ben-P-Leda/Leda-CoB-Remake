@@ -49,6 +49,8 @@
      <Compile Include="Assets\Diagnostics\DiagnosticsDisplay.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\KevMovementController.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\TrackingCameraController.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Collectables\CollectableBase.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Collectables\Key.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\BasicBehaviour.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\HorizontalMovementBetweenLimits.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type11Movement.cs" />

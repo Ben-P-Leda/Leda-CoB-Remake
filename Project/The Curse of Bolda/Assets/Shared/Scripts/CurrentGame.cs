@@ -25,6 +25,7 @@ namespace Shared.Scripts
             _gameData.GemsRequired = requiredGems;
             _gameData.GemsCollected = 0;
             _gameData.RestartPoint = startPosition;
+            _gameData.CarryingKey = false;
 
             SetForNewLife();
         }
