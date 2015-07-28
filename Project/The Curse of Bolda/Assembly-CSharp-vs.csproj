@@ -69,6 +69,7 @@
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\PlayerStatus.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\Score.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\StageTimer.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Switches\ActivatorBase.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Switches\InfoScreen.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Switches\RestartPoint.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Switches\RestartPointManager.cs" />

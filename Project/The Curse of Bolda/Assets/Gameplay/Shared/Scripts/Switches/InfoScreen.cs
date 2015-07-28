@@ -3,7 +3,7 @@ using Gameplay.Shared.Scripts.Status_Display;
 
 namespace Gameplay.Shared.Scripts.Switches
 {
-    public class InfoScreen : SwitchBase
+    public class InfoScreen : ActivatorBase
     {
         private MessagePopup _messageBox;
 

@@ -45,19 +45,14 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
 
         protected virtual void ApplyAcceleration(float acceleration)
         {
-            float currentDirection = Mathf.Sign(_rigidBody2D.velocity.x);
+            float currentDirection = _rigidBody2D.velocity.x == 0.0f ? 0.0f : Mathf.Sign(_rigidBody2D.velocity.x);
             _rigidBody2D.velocity = new Vector2(Mathf.Clamp(_rigidBody2D.velocity.x + acceleration, -Speed, Speed), _rigidBody2D.velocity.y);
 
-            if (Mathf.Sign(_rigidBody2D.velocity.x) != currentDirection)
+            if ((_rigidBody2D.velocity.x != 0.0f) && (Mathf.Sign(_rigidBody2D.velocity.x) != currentDirection))
             {
-                transform.localScale = new Vector3(-_transform.localScale.x, _transform.localScale.y, _transform.localScale.z);
+                _transform.localScale = new Vector3(
+                    Mathf.Abs(_transform.localScale.x) * Mathf.Sign(_rigidBody2D.velocity.x), _transform.localScale.y, _transform.localScale.z);
             }
-        }
-
-        private void ChangeDirection()
-        {
-            _rigidBody2D.velocity = new Vector2(-_rigidBody2D.velocity.x, _rigidBody2D.velocity.y);
-            _transform.localScale = new Vector3(-_transform.localScale.x, _transform.localScale.y, _transform.localScale.z);
         }
     }
 }

@@ -50,6 +50,7 @@
     <Compile Include="Assets\Diagnostics\DiagnosticsDisplay.cs" />
     <Compile Include="Assets\Gameplay\Normal\Scripts\KevMovementController.cs" />
     <Compile Include="Assets\Gameplay\Normal\Scripts\TrackingCameraController.cs" />
+    <Compile Include="Assets\Gameplay\Shared\Scripts\Switches\ActivatorBase.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\Switches\SwitchBase.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\Switches\InfoScreen.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\Switches\RestartPoint.cs" />
