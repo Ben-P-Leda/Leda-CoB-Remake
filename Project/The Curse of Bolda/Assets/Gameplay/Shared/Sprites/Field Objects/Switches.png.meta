@@ -1,11 +1,15 @@
 fileFormatVersion: 2
-guid: 0d99bbe3ed5aae649a30008f24672f22
-timeCreated: 1437462079
+guid: ce3f6af3381ff40439263e21caaa80ff
+timeCreated: 1438114857
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: InfoScreen Off
-    21300002: InfoScreen On
+    21300000: Infoscreen Off
+    21300002: Infoscreen On
+    21300004: Restart Point Off
+    21300006: Restart Point On
+    21300008: Switch Off
+    21300010: Switch On
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -29,7 +33,7 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 128
+  maxTextureSize: 256
   textureSettings:
     filterMode: -1
     aniso: 16
@@ -51,21 +55,61 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: InfoScreen Off
+    - name: Infoscreen Off
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 55
         width: 50
         height: 50
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: InfoScreen On
+    - name: Infoscreen On
       rect:
         serializedVersion: 2
         x: 52
+        y: 55
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Restart Point Off
+      rect:
+        serializedVersion: 2
+        x: 108
         y: 0
+        width: 42
+        height: 101
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Restart Point On
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 0
+        width: 52
+        height: 105
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Switch Off
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Switch On
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 3
         width: 50
         height: 50
       alignment: 0
