@@ -56,6 +56,7 @@
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\BasicBehaviour.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\HorizontalMovementBetweenLimits.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type11Movement.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type12Movement.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\GenericObjectPool.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\LevelSequencer.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\GemCollectionController.cs" />

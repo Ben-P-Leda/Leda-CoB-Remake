@@ -8,13 +8,13 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
         private Rigidbody2D _rigidBody2D;
         private float _leftSideLimit;
         private float _rightSideLimit;
-        private float _targetSpeed;
 
         public float LeftSideLimitOffset;
         public float RightSideLimitOffset;
         public float Speed;
         public float Acceleration;
 
+        protected Vector2 Position { get { return _transform.position; } }
         protected float HorizontalSpeed { get { return _rigidBody2D.velocity.x; } }
 
         protected override void Awake()
@@ -33,8 +33,7 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
             float midPoint = _rightSideLimit - _leftSideLimit;
             float startDirection = Mathf.Sign(midPoint - _transform.position.x);
 
-            _targetSpeed = Speed * startDirection;
-            _rigidBody2D.velocity = new Vector2(_targetSpeed, 0.0f);
+            _rigidBody2D.velocity = new Vector2(Speed * startDirection, 0.0f);
             _transform.localScale = new Vector3(_transform.localScale.x * startDirection, _transform.localScale.y, _transform.localScale.z);
         }
 
@@ -44,7 +43,7 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
             if (_transform.position.x >= _rightSideLimit) { ApplyAcceleration(-Acceleration); }
         }
 
-        private void ApplyAcceleration(float acceleration)
+        protected virtual void ApplyAcceleration(float acceleration)
         {
             float currentDirection = Mathf.Sign(_rigidBody2D.velocity.x);
             _rigidBody2D.velocity = new Vector2(Mathf.Clamp(_rigidBody2D.velocity.x + acceleration, -Speed, Speed), _rigidBody2D.velocity.y);
