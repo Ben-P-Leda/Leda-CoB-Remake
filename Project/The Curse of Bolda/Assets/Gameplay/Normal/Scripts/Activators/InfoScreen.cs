@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 
-using Gameplay.Shared.Scripts.Switches;
 using Gameplay.Normal.Scripts.Status_Display;
 
-namespace Gameplay.Normal.Scripts.Switches
+namespace Gameplay.Normal.Scripts.Activators
 {
     public class InfoScreen : ActivatorBase
     {

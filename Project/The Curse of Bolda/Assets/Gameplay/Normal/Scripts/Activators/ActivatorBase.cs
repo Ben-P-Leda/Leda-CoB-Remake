@@ -2,7 +2,9 @@
 
 using System.Collections.Generic;
 
-namespace Gameplay.Shared.Scripts.Switches
+using Gameplay.Shared.Scripts.Switches;
+
+namespace Gameplay.Normal.Scripts.Activators
 {
     public class ActivatorBase : SwitchBase
     {
