@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ce3f6af3381ff40439263e21caaa80ff
-timeCreated: 1438114857
+timeCreated: 1438203432
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -10,6 +10,8 @@ TextureImporter:
     21300006: Restart Point On
     21300008: Switch Off
     21300010: Switch On
+    21300012: Lock Off
+    21300014: Lock On
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -59,7 +61,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 55
+        y: 103
         width: 50
         height: 50
       alignment: 0
@@ -69,7 +71,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 52
-        y: 55
+        y: 103
         width: 50
         height: 50
       alignment: 0
@@ -79,7 +81,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 108
-        y: 0
+        y: 49
         width: 42
         height: 101
       alignment: 7
@@ -89,7 +91,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 154
-        y: 0
+        y: 49
         width: 52
         height: 105
       alignment: 7
@@ -99,7 +101,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 3
+        y: 52
         width: 50
         height: 50
       alignment: 0
@@ -109,7 +111,27 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 52
-        y: 3
+        y: 52
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lock Off
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lock On
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 0
         width: 50
         height: 50
       alignment: 0
