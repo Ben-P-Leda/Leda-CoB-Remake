@@ -31,8 +31,6 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
             {
                 ApplyAcceleration(-HorizontalSpeed);
             }
-
-            
         }
 
         private const float Vertical_Margin = 0.45f;

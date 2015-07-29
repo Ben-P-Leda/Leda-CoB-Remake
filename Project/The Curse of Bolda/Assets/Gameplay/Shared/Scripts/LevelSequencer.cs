@@ -2,6 +2,7 @@
 
 using Shared.Scripts;
 using Gameplay.Shared.Scripts.Player;
+using Gameplay.Shared.Scripts.Enemy_Behaviours;
 
 namespace Gameplay.Shared.Scripts
 {
@@ -26,7 +27,10 @@ namespace Gameplay.Shared.Scripts
             _fadeTransitioner = GetComponent<FadeTransitioner>();
             _fadeTransitioner.Timer = GetComponent<IndependentTimer>();
             _playerSequencer = PlayerSequencer.GetComponent<PlayerSequencer>();
+        }
 
+        private void Start()
+        {
             if (DebuggingLevel)
             {
                 CurrentGame.SetForNewGame();
@@ -99,7 +103,7 @@ namespace Gameplay.Shared.Scripts
 
             if (CurrentGame.GameData.TimeRemaining <= 0.0f) { CurrentGame.GameData.TimeRemaining = DurationInSeconds; }
             CurrentGame.SetForNewLife();
-            
+
             _fadeTransitioner.FadeIn();
         }
 
