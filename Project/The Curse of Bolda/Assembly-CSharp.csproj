@@ -49,6 +49,7 @@
      <Compile Include="Assets\Diagnostics\DiagnosticsDisplay.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Player Movement\KevMovementController.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Player Movement\TrackingCameraController.cs" />
+     <Compile Include="Assets\Gameplay\Normal\Scripts\Status Display\KeyDisplay.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Status Display\MessagePopup.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Switches\InfoScreen.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Collectables\CollectableBase.cs" />
@@ -56,6 +57,7 @@
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\BasicBehaviour.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\HorizontalMovementBetweenLimits.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\ICanBeFrozen.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type01Movement.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type11Movement.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type12Movement.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\GenericObjectPool.cs" />
