@@ -15,6 +15,8 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
 
         public override void SetFrozen(bool freeze)
         {
+            if (_animator == null) { _animator = GetComponent<Animator>(); }
+
             base.SetFrozen(freeze);
 
             _animator.enabled = !freeze;
