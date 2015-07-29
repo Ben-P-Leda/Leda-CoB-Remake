@@ -11,6 +11,7 @@ namespace Gameplay.Shared.Scripts
         private LevelState _levelState;
         private FadeTransitioner _fadeTransitioner;
         private PlayerSequencer _playerSequencer;
+        private ICanBeFrozen[] _freezableEnemyScripts;
 
         public int Area;
         public AreaStage Stage;
@@ -21,12 +22,18 @@ namespace Gameplay.Shared.Scripts
         public bool DebuggingLevel;
 
         public GameObject PlayerSequencer;
+        public GameObject Enemies;
 
         private void Awake()
         {
             _fadeTransitioner = GetComponent<FadeTransitioner>();
-            _fadeTransitioner.Timer = GetComponent<IndependentTimer>();
             _playerSequencer = PlayerSequencer.GetComponent<PlayerSequencer>();
+
+            _freezableEnemyScripts = new ICanBeFrozen[Enemies.transform.childCount];
+            for (int i=0; i<_freezableEnemyScripts.Length; i++)
+            {
+                _freezableEnemyScripts[i] = Enemies.transform.GetChild(i).GetComponent<ICanBeFrozen>();
+            }
         }
 
         private void Start()
@@ -50,6 +57,24 @@ namespace Gameplay.Shared.Scripts
             if (Stage != AreaStage.Bonus) { SetForNewLife(); }
         }
 
+        private void SetForNewLife()
+        {
+            _playerSequencer.StartNewLife();
+            _levelState = LevelState.GetReady;
+
+            if (CurrentGame.GameData.TimeRemaining <= 0.0f) { CurrentGame.GameData.TimeRemaining = DurationInSeconds; }
+            CurrentGame.SetForNewLife();
+
+            SetEnemiesFreezeState(true);
+
+            _fadeTransitioner.FadeIn();
+        }
+
+        private void SetEnemiesFreezeState(bool freeze)
+        {
+            for (int i = 0; i < _freezableEnemyScripts.Length; i++) { _freezableEnemyScripts[i].SetFrozen(freeze); }
+        }
+
         private void Update()
         {
             switch (_levelState)
@@ -63,8 +88,8 @@ namespace Gameplay.Shared.Scripts
         {
             if (Input.anyKeyDown)
             {
-                Time.timeScale = 1.0f;
                 _levelState = LevelState.InPlay;
+                SetEnemiesFreezeState(false);
             }
         }
 
@@ -92,19 +117,6 @@ namespace Gameplay.Shared.Scripts
             {
                 // TODO: Game over
             }
-        }
-
-        private void SetForNewLife()
-        {
-            _playerSequencer.StartNewLife();
-            _levelState = LevelState.GetReady;
-
-            Time.timeScale = 0.0f;
-
-            if (CurrentGame.GameData.TimeRemaining <= 0.0f) { CurrentGame.GameData.TimeRemaining = DurationInSeconds; }
-            CurrentGame.SetForNewLife();
-
-            _fadeTransitioner.FadeIn();
         }
 
         private enum LevelState

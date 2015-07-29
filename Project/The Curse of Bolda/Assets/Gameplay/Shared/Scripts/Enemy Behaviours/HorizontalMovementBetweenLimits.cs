@@ -2,12 +2,13 @@
 
 namespace Gameplay.Shared.Scripts.Enemy_Behaviours
 {
-    public class HorizontalMovementBetweenLimits : BasicBehaviour
+    public class HorizontalMovementBetweenLimits : BasicBehaviour, ICanBeFrozen
     {
         private Transform _transform;
         private Rigidbody2D _rigidBody2D;
         private float _leftSideLimit;
         private float _rightSideLimit;
+        private Vector2 _velocityBeforeFreeze;
 
         public float LeftSideLimitOffset;
         public float RightSideLimitOffset;
@@ -33,7 +34,8 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
             float midPoint = _rightSideLimit - _leftSideLimit;
             float startDirection = Mathf.Sign(midPoint - _transform.position.x);
 
-            _rigidBody2D.velocity = new Vector2(Speed * startDirection, 0.0f);
+            _velocityBeforeFreeze = new Vector2(Speed * startDirection, 0.0f);
+            _rigidBody2D.velocity = _velocityBeforeFreeze;
             _transform.localScale = new Vector3(_transform.localScale.x * startDirection, _transform.localScale.y, _transform.localScale.z);
         }
 
@@ -52,6 +54,23 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
             {
                 _transform.localScale = new Vector3(
                     Mathf.Abs(_transform.localScale.x) * Mathf.Sign(_rigidBody2D.velocity.x), _transform.localScale.y, _transform.localScale.z);
+            }
+        }
+
+        public virtual void SetFrozen(bool freeze)
+        {
+            // This needs to be here as for some reason Unity doesn't get the component back in time from the Awake call...
+            if (_rigidBody2D == null) { _rigidBody2D = GetComponent<Rigidbody2D>(); }
+
+            if (freeze) 
+            {
+                _velocityBeforeFreeze = _rigidBody2D.velocity;
+                _rigidBody2D.Sleep();
+            }
+            else 
+            { 
+                _rigidBody2D.WakeUp();
+                _rigidBody2D.velocity = _velocityBeforeFreeze;
             }
         }
     }

@@ -53,6 +53,7 @@
      <Compile Include="Assets\Gameplay\Shared\Scripts\Collectables\Key.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\BasicBehaviour.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\HorizontalMovementBetweenLimits.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\ICanBeFrozen.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type11Movement.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type12Movement.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\GenericObjectPool.cs" />
@@ -82,7 +83,6 @@
      <Compile Include="Assets\Shared\Scripts\Enumerations.cs" />
      <Compile Include="Assets\Shared\Scripts\FadeTransitioner.cs" />
      <Compile Include="Assets\Shared\Scripts\GameData.cs" />
-     <Compile Include="Assets\Shared\Scripts\IndependentTimer.cs" />
      <Compile Include="Assets\Shared\Scripts\ScreenRelativeComponent.cs" />
      <Compile Include="Assets\Tile Editor\Scripts\Class\ColliderInfo.cs" />
      <Compile Include="Assets\Tile Editor\Scripts\Class\CollisionType.cs" />
