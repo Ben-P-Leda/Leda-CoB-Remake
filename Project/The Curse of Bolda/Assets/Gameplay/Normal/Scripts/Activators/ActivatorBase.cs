@@ -23,28 +23,17 @@ namespace Gameplay.Normal.Scripts.Activators
         {
             base.SetActive(isActive);
 
-            if (!HasBeenActivated) { ActivateOneWayObjects(); }
-            ToggleTwoWayObjects();
+            if (!HasBeenActivated) { ToggleObjects(OneWayActivations); }
+            ToggleObjects(TwoWayActivations);
 
             HasBeenActivated = true;
         }
 
-        private void ActivateOneWayObjects()
+        private void ToggleObjects(List<GameObject> toToggle)
         {
-            for (int i = 0; i < OneWayActivations.Count; i++) 
+            for (int i = 0; i < toToggle.Count; i++)
             {
-                if (!OneWayActivations[i].activeInHierarchy)
-                {
-                    OneWayActivations[i].SetActive(true);
-                }
-            }
-        }
-
-        private void ToggleTwoWayObjects()
-        {
-            for (int i=0; i<TwoWayActivations.Count; i++)
-            {
-                TwoWayActivations[i].SetActive(!TwoWayActivations[i].activeInHierarchy);
+                toToggle[i].SetActive(!toToggle[i].activeInHierarchy);
             }
         }
     }

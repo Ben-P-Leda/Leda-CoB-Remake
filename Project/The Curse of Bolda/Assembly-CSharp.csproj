@@ -49,6 +49,7 @@
      <Compile Include="Assets\Diagnostics\DiagnosticsDisplay.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Activators\ActivatorBase.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Activators\InfoScreen.cs" />
+     <Compile Include="Assets\Gameplay\Normal\Scripts\Activators\Lock.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Player Movement\KevMovementController.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Player Movement\TrackingCameraController.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Status Display\KeyDisplay.cs" />
