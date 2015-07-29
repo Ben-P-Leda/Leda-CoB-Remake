@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Gameplay.Normal.Scripts
+namespace Gameplay.Normal.Scripts.Player_Movement
 {
     public class TrackingCameraController : MonoBehaviour
     {

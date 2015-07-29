@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Gameplay.Shared.Scripts.Status_Display
+using Gameplay.Shared.Scripts.Status_Display;
+
+namespace Gameplay.Normal.Scripts.Status_Display
 {
     public class MessagePopup : DisplayBase
     {

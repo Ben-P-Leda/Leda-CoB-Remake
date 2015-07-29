@@ -47,8 +47,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Diagnostics\DiagnosticsDisplay.cs" />
-     <Compile Include="Assets\Gameplay\Normal\Scripts\KevMovementController.cs" />
-     <Compile Include="Assets\Gameplay\Normal\Scripts\TrackingCameraController.cs" />
+     <Compile Include="Assets\Gameplay\Normal\Scripts\Player Movement\KevMovementController.cs" />
+     <Compile Include="Assets\Gameplay\Normal\Scripts\Player Movement\TrackingCameraController.cs" />
+     <Compile Include="Assets\Gameplay\Normal\Scripts\Status Display\MessagePopup.cs" />
+     <Compile Include="Assets\Gameplay\Normal\Scripts\Switches\InfoScreen.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Collectables\CollectableBase.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Collectables\Key.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\BasicBehaviour.cs" />
@@ -68,12 +70,10 @@
      <Compile Include="Assets\Gameplay\Shared\Scripts\Special Platforms\VanishingPlatformManager.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\DisplayBase.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\GemCounter.cs" />
-     <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\MessagePopup.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\PlayerStatus.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\Score.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\StageTimer.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Switches\ActivatorBase.cs" />
-     <Compile Include="Assets\Gameplay\Shared\Scripts\Switches\InfoScreen.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Switches\RestartPoint.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Switches\RestartPointManager.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Switches\SwitchBase.cs" />

@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
-using Gameplay.Shared.Scripts.Status_Display;
 
-namespace Gameplay.Shared.Scripts.Switches
+using Gameplay.Shared.Scripts.Switches;
+using Gameplay.Normal.Scripts.Status_Display;
+
+namespace Gameplay.Normal.Scripts.Switches
 {
     public class InfoScreen : ActivatorBase
     {
@@ -14,7 +16,7 @@ namespace Gameplay.Shared.Scripts.Switches
         protected override void Awake()
         {
             base.Awake();
-            _messageBox = MessageBoxObject.GetComponent<Gameplay.Shared.Scripts.Status_Display.MessagePopup>();
+            _messageBox = MessageBoxObject.GetComponent<MessagePopup>();
         }
 
         protected override void SetActive(bool isActive)
