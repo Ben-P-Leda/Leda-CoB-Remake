@@ -1,2 +1,2 @@
 # Leda-CoB-Remake
-Remake of TheCurse of Bolda
+Remake of The Curse of Bolda
