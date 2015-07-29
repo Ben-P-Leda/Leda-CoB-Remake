@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+using System.Collections.Generic;
+
 namespace Gameplay.Shared.Scripts.Special_Platforms
 {
     public class JumpthroughPlatformManager : MonoBehaviour
@@ -13,16 +15,24 @@ namespace Gameplay.Shared.Scripts.Special_Platforms
         public GameObject Player;
         public GameObject TileMap;
         public string MapLayerName;
+        public List<GameObject> TileMapIndependentPlatforms;
 
         protected virtual void Awake()
         {
             Transform layer = TileMap.transform.FindChild(MapLayerName);
 
-            _platforms = new JumpthroughPlatformContainer[layer.childCount];
+            _platforms = new JumpthroughPlatformContainer[layer.childCount + TileMapIndependentPlatforms.Count];
+
             for (int i = 0; i < layer.childCount; i++)
             {
                 Transform platformTransform = layer.GetChild(i);
                 _platforms[i] = new JumpthroughPlatformContainer(platformTransform, platformTransform.gameObject);
+            }
+
+            for (int i = 0; i < TileMapIndependentPlatforms.Count; i++ )
+            {
+                Transform platformTransform = TileMapIndependentPlatforms[i].transform;
+                _platforms[layer.childCount + i] = new JumpthroughPlatformContainer(platformTransform, platformTransform.gameObject);
             }
 
             _playerTransform = Player.transform;

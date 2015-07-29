@@ -13,6 +13,8 @@ namespace Gameplay.Shared.Scripts.Special_Platforms
             _transform = transform;
             _renderer = GetComponent<SpriteRenderer>();
             _colliders = GetComponents<BoxCollider2D>();
+
+            SetActiveState(true);
         }
 
         private void OnTriggerStay2D(Collider2D collider)
@@ -36,6 +38,11 @@ namespace Gameplay.Shared.Scripts.Special_Platforms
             for (int i = 0; i < _colliders.Length; i++) { _colliders[i].enabled = isActive; }
 
             _transform.localScale = isActive ? Vector3.one : Vector3.zero;
+        }
+
+        private void OnEnable()
+        {
+            SetActiveState(true);
         }
 
         private const float Shrink_Rate = 0.02f;
