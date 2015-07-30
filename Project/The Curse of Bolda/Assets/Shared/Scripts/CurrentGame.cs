@@ -27,7 +27,14 @@ namespace Shared.Scripts
             _gameData.RestartPoint = startPosition;
             _gameData.CarryingKey = false;
 
+            if (stage == AreaStage.One) { ClearInventory(); }
+
             RestorePlayerEnergy();
+        }
+
+        private static void ClearInventory()
+        {
+            for (int i = 0; i < _gameData.ToolCounts.Length; i++) { _gameData.ToolCounts[i] = 0; }
         }
 
         private const int Starting_Lives = 5;

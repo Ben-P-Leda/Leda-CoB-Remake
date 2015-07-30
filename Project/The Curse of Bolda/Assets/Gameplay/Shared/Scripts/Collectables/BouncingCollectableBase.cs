@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 
-using Shared.Scripts;
-
 namespace Gameplay.Shared.Scripts.Collectables
 {
     public class BouncingCollectableBase : CollectableBase
@@ -22,12 +20,6 @@ namespace Gameplay.Shared.Scripts.Collectables
             if (_transform.position.y <= _bouncePlainY + Bounce_Plain_Tolerance) { _rigidBody2D.velocity = new Vector2(0.0f, 5.0f); }
         }
 
-        protected override void HandlePlayerContact()
-        {
-            CurrentGame.RestorePlayerEnergy();
-            base.HandlePlayerContact();
-        }
-
-        private const float Bounce_Plain_Tolerance = 0.01f;
+        private const float Bounce_Plain_Tolerance = 0.05f;
     }
 }
