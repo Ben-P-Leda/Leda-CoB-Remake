@@ -13,7 +13,7 @@ namespace Shared.Scripts
             _gameData.Score = 0;
         }
 
-        public static void SetForNewLife()
+        public static void RestorePlayerEnergy()
         {
             _gameData.Energy = Constants.Player_Maximum_Energy;
         }
@@ -27,7 +27,7 @@ namespace Shared.Scripts
             _gameData.RestartPoint = startPosition;
             _gameData.CarryingKey = false;
 
-            SetForNewLife();
+            RestorePlayerEnergy();
         }
 
         private const int Starting_Lives = 5;

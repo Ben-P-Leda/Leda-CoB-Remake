@@ -9,6 +9,9 @@ namespace Gameplay.Shared.Scripts.Collectables
             if (collider.tag == "Kev") { HandlePlayerContact(); }
         }
 
-        protected virtual void HandlePlayerContact() { }
+        protected virtual void HandlePlayerContact() 
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

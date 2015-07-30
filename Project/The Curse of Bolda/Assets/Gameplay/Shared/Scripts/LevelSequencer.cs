@@ -63,7 +63,7 @@ namespace Gameplay.Shared.Scripts
             _levelState = LevelState.GetReady;
 
             if (CurrentGame.GameData.TimeRemaining <= 0.0f) { CurrentGame.GameData.TimeRemaining = DurationInSeconds; }
-            CurrentGame.SetForNewLife();
+            CurrentGame.RestorePlayerEnergy();
 
             SetEnemiesFreezeState(true);
 
