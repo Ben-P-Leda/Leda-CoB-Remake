@@ -73,7 +73,7 @@ namespace Gameplay.Shared.Scripts
 
         private void SetEnemiesFreezeState(bool freeze)
         {
-            for (int i = 0; i < _freezableEnemyScripts.Length; i++) { _freezableEnemyScripts[i].SetFrozen(freeze); }
+            for (int i = 0; i < _freezableEnemyScripts.Length; i++) { _freezableEnemyScripts[i].Frozen = freeze; }
         }
 
         private void Update()

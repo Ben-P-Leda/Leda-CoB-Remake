@@ -10,6 +10,8 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
         private float _rightSideLimit;
         private Vector2 _velocityBeforeFreeze;
 
+        public bool Frozen { get; set; }
+
         public float LeftSideLimitOffset;
         public float RightSideLimitOffset;
         public float Speed;
@@ -41,8 +43,34 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
 
         protected virtual void Update()
         {
+            if (ShouldSwitchFreezeState) { SwitchFreezeState(); }
+
             if (_transform.position.x <= _leftSideLimit) { ApplyAcceleration(Acceleration); }
             if (_transform.position.x >= _rightSideLimit) { ApplyAcceleration(-Acceleration); }
+        }
+
+        public virtual void SwitchFreezeState()
+        {
+            if (Frozen) 
+            {
+                _velocityBeforeFreeze = _rigidBody2D.velocity;
+                _rigidBody2D.Sleep();
+            }
+            else 
+            { 
+                _rigidBody2D.WakeUp();
+                _rigidBody2D.velocity = _velocityBeforeFreeze;
+            }
+        }
+
+        private bool ShouldSwitchFreezeState
+        {
+            get
+            {
+                if ((_rigidBody2D.IsSleeping()) && (!Frozen)) { return true; }
+                if ((!_rigidBody2D.IsSleeping()) && (Frozen)) { return true; }
+                return false;
+            }
         }
 
         protected virtual void ApplyAcceleration(float acceleration)
@@ -54,23 +82,6 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
             {
                 _transform.localScale = new Vector3(
                     Mathf.Abs(_transform.localScale.x) * Mathf.Sign(_rigidBody2D.velocity.x), _transform.localScale.y, _transform.localScale.z);
-            }
-        }
-
-        public virtual void SetFrozen(bool freeze)
-        {
-            // This needs to be here as for some reason Unity doesn't get the component back in time from the Awake call...
-            if (_rigidBody2D == null) { _rigidBody2D = GetComponent<Rigidbody2D>(); }
-
-            if (freeze) 
-            {
-                _velocityBeforeFreeze = _rigidBody2D.velocity;
-                _rigidBody2D.Sleep();
-            }
-            else 
-            { 
-                _rigidBody2D.WakeUp();
-                _rigidBody2D.velocity = _velocityBeforeFreeze;
             }
         }
     }

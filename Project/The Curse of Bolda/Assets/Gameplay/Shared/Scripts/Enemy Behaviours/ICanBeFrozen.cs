@@ -2,6 +2,6 @@
 {
     public interface ICanBeFrozen
     {
-        void SetFrozen(bool freeze);
+        bool Frozen { set; }
     }
 }

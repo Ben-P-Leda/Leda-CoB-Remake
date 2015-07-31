@@ -19,12 +19,16 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
 
         protected virtual void OnTriggerEnter2D(Collider2D collider)
         {
-            if (collider.tag == "Kev Shot") { HandleCollisionWithPlayerShot(); }
+            if (collider.tag == "Kev Shot") 
+            { 
+                HandleCollisionWithPlayerShot(1);
+                collider.enabled = false;
+            }
         }
 
-        protected virtual void HandleCollisionWithPlayerShot()
+        protected virtual void HandleCollisionWithPlayerShot(int hitPointDelta)
         {
-            HitPoints -= 1;
+            HitPoints -= hitPointDelta;
             if (HitPoints < 1)
             {
                 //  - Start death effect
