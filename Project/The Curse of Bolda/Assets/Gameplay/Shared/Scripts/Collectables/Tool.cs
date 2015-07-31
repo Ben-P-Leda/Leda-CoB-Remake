@@ -15,11 +15,11 @@ namespace Gameplay.Shared.Scripts.Collectables
 
     public enum ToolType
     {
-        Invincibility = 1,
-        Jetpack = 2,
-        SuperJump = 3,
-        FirepowerUp = 4,
-        Pickaxe = 5,
-        FireExtinguisher = 6
+        Invincibility = 0,
+        Jetpack = 1,
+        SuperJump = 2,
+        FirepowerUp = 3,
+        Pickaxe = 4,
+        FireExtinguisher = 5
     }
 }
