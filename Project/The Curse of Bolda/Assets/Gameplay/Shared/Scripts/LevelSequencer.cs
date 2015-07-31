@@ -18,6 +18,7 @@ namespace Gameplay.Shared.Scripts
         public float DurationInSeconds;
         public int RequiredGems;
         public Vector2 PlayerStartPosition;
+        public bool PlayerStartFacingLeft;
 
         public bool DebuggingLevel;
 
@@ -52,7 +53,7 @@ namespace Gameplay.Shared.Scripts
 
         private void SetForLevelStart()
         {
-            CurrentGame.SetForLevelStart(Area, Stage, RequiredGems, PlayerStartPosition);
+            CurrentGame.SetForLevelStart(Area, Stage, RequiredGems, PlayerStartPosition, PlayerStartFacingLeft);
 
             if (Stage != AreaStage.Bonus) { SetForNewLife(); }
         }

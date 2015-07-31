@@ -18,13 +18,14 @@ namespace Shared.Scripts
             _gameData.Energy = Constants.Player_Maximum_Energy;
         }
 
-        public static void SetForLevelStart(int areaIndex, AreaStage stage, int requiredGems, Vector3 startPosition)
+        public static void SetForLevelStart(int areaIndex, AreaStage stage, int requiredGems, Vector3 startPosition, bool facingLeft)
         {
             _gameData.Area = areaIndex;
             _gameData.Stage = stage;
             _gameData.GemsRequired = requiredGems;
             _gameData.GemsCollected = 0;
             _gameData.RestartPoint = startPosition;
+            _gameData.RestartScale = new Vector3(facingLeft ? -1.0f : 1.0f, 1.0f, 1.0f);
             _gameData.CarryingKey = false;
 
             if (stage == AreaStage.One) { ClearInventory(); }
