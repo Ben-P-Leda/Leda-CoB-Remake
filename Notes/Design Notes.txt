@@ -54,6 +54,34 @@ Combi-switches:
 - B(on) shows 1 & 2, hides 3
 
 
+ENEMY TYPES:
+1: Slow walk
+2: Missile robot
+3: Croc head (fast walk)
+4: Spike shell (Insta-death)
+5: Sine-wave flier (bomb drop)
+6:
+7: Water drop
+8: Springy
+9: Lightning zap
+10: Homer
+11: Inertia flier
+12: Shove-dozer
+13: Fire
+
+BACKGROUNDS:
+Caverns: Rolling hills, clouds
+Tech World: City, night sky
+Bolda's Dungeon: Jungle (think Indiana Jones & Temple of Doom)
+Office Land: City daytime
+Mountain Country: Mountains
+
+COB (OLD) ACCESS CODES:
+Tech World: KILLERWATTCPE1704TKS
+Bolda's Dungeon: DAMOCLESDFO6409WDJMB
+Office Land: MUGINZMAVKKA9435JJPH
+Mountain Country: HOTNSPICEYCHP7428LYF
+
 	
 
 

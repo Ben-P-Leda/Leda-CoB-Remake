@@ -26,3 +26,4 @@ Effects & nice-to-have
 ======================
 - Gem collection effect (sparkles)
 - Enemy deaths (explosions)
+- Parallax backgrounds
