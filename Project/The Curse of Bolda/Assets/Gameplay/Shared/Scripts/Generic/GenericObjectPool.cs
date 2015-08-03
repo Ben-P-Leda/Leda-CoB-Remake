@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Gameplay.Shared.Scripts
+namespace Gameplay.Shared.Scripts.Generic
 {
     public abstract class GenericObjectPool<T> : MonoBehaviour
     {

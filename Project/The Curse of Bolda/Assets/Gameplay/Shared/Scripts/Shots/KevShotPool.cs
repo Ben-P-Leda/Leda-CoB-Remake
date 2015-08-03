@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Gameplay.Shared.Scripts;
+using Gameplay.Shared.Scripts.Generic;
 
 namespace Gameplay.Shared.Scripts.Shots
 {

@@ -2,7 +2,7 @@
 
 namespace Gameplay.Shared.Scripts.Collectables
 {
-    public class Tool : BouncingCollectableBase
+    public class Tool : CollectableBase
     {
         public ToolType ToolType;
 

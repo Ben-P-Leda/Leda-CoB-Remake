@@ -3,7 +3,7 @@
 using Shared.Scripts;
 using Gameplay.Shared.Scripts.Status_Display;
 
-namespace Gameplay.Shared.Normal.Status_Display
+namespace Gameplay.Normal.Status_Display
 {
     public class KeyDisplay : DisplayBase
     {

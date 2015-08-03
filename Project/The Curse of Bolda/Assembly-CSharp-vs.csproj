@@ -54,7 +54,6 @@
      <Compile Include="Assets\Gameplay\Normal\Scripts\Player Movement\TrackingCameraController.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Status Display\KeyDisplay.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Status Display\MessagePopup.cs" />
-     <Compile Include="Assets\Gameplay\Shared\Scripts\Collectables\BouncingCollectableBase.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Collectables\CollectableBase.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Collectables\EnergyRestore.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Collectables\Key.cs" />
@@ -63,11 +62,13 @@
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\HorizontalMovementBetweenLimits.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\ICanBeFrozen.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type01Movement.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type08Movement.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type10Movement.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type10PlayerInteraction.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type11Movement.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type12Movement.cs" />
-     <Compile Include="Assets\Gameplay\Shared\Scripts\GenericObjectPool.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Generic\GenericBouncingMovementController.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Generic\GenericObjectPool.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\LevelSequencer.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\GemCollectionController.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\PlayerSequencer.cs" />
