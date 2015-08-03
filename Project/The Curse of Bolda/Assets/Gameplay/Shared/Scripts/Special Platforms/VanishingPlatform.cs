@@ -19,7 +19,7 @@ namespace Gameplay.Shared.Scripts.Special_Platforms
 
         private void OnTriggerStay2D(Collider2D collider)
         {
-            if (_transform.localScale.x > 0.0f)
+            if ((collider.tag == "Kev") && (_transform.localScale.x > 0.0f))
             {
                 _transform.localScale = new Vector3(Mathf.Clamp01(_transform.localScale.x - Shrink_Rate), 1.0f, 1.0f);
 

@@ -63,6 +63,8 @@
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\HorizontalMovementBetweenLimits.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\ICanBeFrozen.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type01Movement.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type10Movement.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type10PlayerInteraction.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type11Movement.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type12Movement.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\GenericObjectPool.cs" />
