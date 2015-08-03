@@ -67,11 +67,12 @@ namespace Gameplay.Shared.Scripts.Player
         {
             _state = SequenceState.Ready;
 
-            SequencedAvatar.SetActive(false);
-            InputDrivenAvatar.SetActive(true);
-
             _inputDrivenAvatarTransform = InputDrivenAvatar.GetComponent<Transform>();
             _inputDrivenAvatarTransform.position = CurrentGame.GameData.RestartPoint;
+            _inputDrivenAvatarTransform.localScale = CurrentGame.GameData.RestartScale;
+
+            SequencedAvatar.SetActive(false);
+            InputDrivenAvatar.SetActive(true);
 
             // TODO: "Let's rock!" sequence
         }

@@ -4,10 +4,6 @@ Fixes & arising
 ===============
 
 Enemy types required for area 1.1: Type 2 (Missile robot), Type 4 (Croc-head), Type 8 (Springy), Type 10 (Homer), Type 5 (Sine wave)
-Bugs:
-	- Hits to kill sporadic
-	- Type 1 move freeze not working?
-
 
 Epic-level
 ==========
@@ -30,3 +26,4 @@ Effects & nice-to-have
 ======================
 - Gem collection effect (sparkles)
 - Enemy deaths (explosions)
+- Parallax backgrounds

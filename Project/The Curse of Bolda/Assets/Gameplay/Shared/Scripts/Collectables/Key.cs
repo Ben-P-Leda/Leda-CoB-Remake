@@ -9,7 +9,7 @@ namespace Gameplay.Shared.Scripts.Collectables
             if (!CurrentGame.GameData.CarryingKey)
             {
                 CurrentGame.GameData.CarryingKey = true;
-                gameObject.SetActive(false);
+                base.HandlePlayerContact();
             }
         }
     }

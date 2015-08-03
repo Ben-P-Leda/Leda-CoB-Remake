@@ -54,8 +54,11 @@
      <Compile Include="Assets\Gameplay\Normal\Scripts\Player Movement\TrackingCameraController.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Status Display\KeyDisplay.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Status Display\MessagePopup.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Collectables\BouncingCollectableBase.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Collectables\CollectableBase.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Collectables\EnergyRestore.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Collectables\Key.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Collectables\Tool.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\BasicBehaviour.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\HorizontalMovementBetweenLimits.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\ICanBeFrozen.cs" />
@@ -77,6 +80,7 @@
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\PlayerStatus.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\Score.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\StageTimer.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\Toolbox.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Switches\RestartPoint.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Switches\RestartPointManager.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Switches\SwitchBase.cs" />

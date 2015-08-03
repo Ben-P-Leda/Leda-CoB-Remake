@@ -66,7 +66,7 @@ namespace Gameplay.Shared.Scripts.Special_Platforms
             return true;
         }
 
-        private const float Jumpthru_Offset = 0.175f;
+        private const float Jumpthru_Offset = 0.365f;
         private const float Horizontal_Margin = 0.35f;
         private const int Above_Player_Sorting_Layer = 9;
         private const int Below_Player_Sorting_Layer = 8;

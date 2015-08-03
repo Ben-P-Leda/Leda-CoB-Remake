@@ -30,8 +30,15 @@ namespace Gameplay.Shared.Scripts.Switches
         {
             for (int i=0; i<_restartPoints.Length; i++)
             {
-                if (_restartPoints[i].name == name) { CurrentGame.GameData.RestartPoint = _playerTransform.position; }
-                else { ((RestartPoint)_restartPoints[i].GetComponent<RestartPoint>()).Reset(); }
+                if (_restartPoints[i].name == name) 
+                { 
+                    CurrentGame.GameData.RestartPoint = _playerTransform.position;
+                    CurrentGame.GameData.RestartScale = _playerTransform.localScale;
+                }
+                else 
+                { 
+                    ((RestartPoint)_restartPoints[i].GetComponent<RestartPoint>()).Reset(); 
+                }
             }
         }
     }

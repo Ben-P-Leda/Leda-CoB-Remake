@@ -35,6 +35,11 @@ namespace Gameplay.Shared.Scripts.Status_Display
         protected virtual void OnGUI()
         {
             GUI.DrawTexture(_displayArea, BackgroundTexture);
+            DrawText();
+        }
+
+        protected virtual void DrawText()
+        {
             GUI.Label(_textArea, _text, _guiStyle);
         }
 

@@ -19,7 +19,17 @@ namespace Gameplay.Normal.Scripts.Player_Movement
 
         private void Start()
         {
-            _facingRight = true;
+            Reset();
+        }
+
+        private void OnEnable()
+        {
+            Reset();
+        }
+
+        private void Reset()
+        {
+            _facingRight = (_transform.localScale.x > 0.0f);
             _verticalMovementState = VerticalMovementState.OnGround;
         }
 
