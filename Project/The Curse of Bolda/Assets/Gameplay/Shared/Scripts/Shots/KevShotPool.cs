@@ -7,6 +7,8 @@ namespace Gameplay.Shared.Scripts.Shots
     {
         private Transform _playerTransform;
 
+        public bool CanShoot { private get; set; }
+
         public GameObject Player;
 
         protected override void Awake()
@@ -17,7 +19,7 @@ namespace Gameplay.Shared.Scripts.Shots
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.RightShift))
+            if ((CanShoot) && (Input.GetKeyDown(KeyCode.RightShift)))
             {
                 KevShot shot = GetFirstAvailableObject();
                 if (shot != null) 

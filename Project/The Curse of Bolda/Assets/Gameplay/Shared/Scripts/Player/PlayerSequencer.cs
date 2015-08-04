@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 using Shared.Scripts;
+using Gameplay.Shared.Scripts.Shots;
 
 namespace Gameplay.Shared.Scripts.Player
 {
@@ -11,6 +12,7 @@ namespace Gameplay.Shared.Scripts.Player
         private Animator _animator;
         private Transform _inputDrivenAvatarTransform;
         private Transform _sequencedAvatarTransform;
+        private KevShotPool _basicShotPool;
 
         private SequenceState _state;
         private float _sequenceDurationRemaining;
@@ -24,6 +26,8 @@ namespace Gameplay.Shared.Scripts.Player
         {
             _sequencedAvatarTransform = SequencedAvatar.GetComponent<Transform>();
             _animator = SequencedAvatar.GetComponent<Animator>();
+
+            _basicShotPool = transform.FindChild("Kev Basic Shots").GetComponent<KevShotPool>();
 
             _state = SequenceState.Ready;
 
@@ -43,6 +47,8 @@ namespace Gameplay.Shared.Scripts.Player
         {
             if (_state == SequenceState.Ready)
             {
+                _basicShotPool.CanShoot = false;
+
                 InputDrivenAvatar.SetActive(false);
 
                 _sequencedAvatarTransform.position = _inputDrivenAvatarTransform.position;
@@ -73,6 +79,8 @@ namespace Gameplay.Shared.Scripts.Player
 
             SequencedAvatar.SetActive(false);
             InputDrivenAvatar.SetActive(true);
+
+            _basicShotPool.CanShoot = true;
 
             // TODO: "Let's rock!" sequence
         }
