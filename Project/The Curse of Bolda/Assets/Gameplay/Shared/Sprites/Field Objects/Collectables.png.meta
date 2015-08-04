@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 246e52c35e7ae764c8e8c73814f151eb
-timeCreated: 1438619715
+timeCreated: 1438674312
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -10,6 +10,8 @@ TextureImporter:
     21300006: Pickaxe Flash
     21300008: Jetpack
     21300010: Jetpack Flash
+    21300012: Fire Extinguisher
+    21300014: Fire Extingusher Flash
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -99,7 +101,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 104
-        y: 54
+        y: 52
         width: 50
         height: 50
       alignment: 0
@@ -109,7 +111,27 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 156
-        y: 54
+        y: 52
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Fire Extinguisher
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 104
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Fire Extingusher Flash
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 104
         width: 50
         height: 50
       alignment: 0
