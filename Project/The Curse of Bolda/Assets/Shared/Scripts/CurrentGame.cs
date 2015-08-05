@@ -38,6 +38,28 @@ namespace Shared.Scripts
             for (int i = 0; i < _gameData.ToolCounts.Length; i++) { _gameData.ToolCounts[i] = 0; }
         }
 
+        public static void AddTool(ToolType toolType)
+        {
+            _gameData.ToolCounts[(int)toolType] += 1;
+        }
+
+        public static bool HasTool(ToolType toolType)
+        {
+            return _gameData.ToolCounts[(int)toolType] > 0;
+        }
+
+        public static void ActivateTool(ToolType toolType)
+        {
+            _gameData.ToolCounts[(int)toolType] -= 1;
+
+            switch (toolType)
+            {
+                case ToolType.FireExtinguisher: _gameData.ToolActiveTimeRemaining = Constants.Fire_Extinguisher_Duration; break;
+            }
+        }
+
+        public static bool ToolIsActive { get { return _gameData.ToolActiveTimeRemaining > 0.0f; } }
+
         private const int Starting_Lives = 5;
     }
 }

@@ -6,7 +6,7 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
 {
     public class BasicBehaviour : MonoBehaviour
     {
-        private GameObject _gameObject;
+        protected GameObject GameObject { get; private set; }
 
         public int HitPoints;
         public int ScoreValue;
@@ -14,7 +14,7 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
 
         protected virtual void Awake()
         {
-            _gameObject = transform.gameObject;
+            GameObject = transform.gameObject;
         }
 
         protected virtual void OnTriggerEnter2D(Collider2D collider)
@@ -34,7 +34,7 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
                 //  - Start death effect
                 CurrentGame.GameData.Score += ScoreValue;
 
-                _gameObject.SetActive(false);
+                GameObject.SetActive(false);
             }
         }
 

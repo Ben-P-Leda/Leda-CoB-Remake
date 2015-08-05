@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
 using Shared.Scripts;
-using Gameplay.Shared.Scripts.Collectables;
 
 namespace Gameplay.Normal.Scripts.Player_Control
 {
@@ -10,10 +9,13 @@ namespace Gameplay.Normal.Scripts.Player_Control
         private Transform _transform;
         private Rigidbody2D _rigidBody2D;
         private Animator _animator;
+
         private bool _facingRight;
         private VerticalMovementState _verticalMovementState;
         private bool _isMoving;
         private bool _lockMovement;
+
+        private ToolType? _activeTool;
 
         private void Awake()
         {
@@ -39,6 +41,8 @@ namespace Gameplay.Normal.Scripts.Player_Control
 
             _lockMovement = false;
             _isMoving = false;
+
+            _activeTool = null;
         }
 
         private void Update()
@@ -49,6 +53,7 @@ namespace Gameplay.Normal.Scripts.Player_Control
             UpdateHorizontalMovement();
 
             CheckForToolActivation();
+            CheckForToolDeactivation();
 
             if (Input.GetKeyDown(KeyCode.Escape)) { Application.Quit(); }
         }
@@ -130,17 +135,25 @@ namespace Gameplay.Normal.Scripts.Player_Control
 
         private void CheckForToolActivation()
         {
-            if (Input.GetKeyDown(KeyCode.F6)) { AttemptFireExtinguisherActivation(); }
+            if ((Input.GetKeyDown(KeyCode.F6)) && (CurrentGame.HasTool(ToolType.FireExtinguisher)) && (!_isMoving)) { ActivateFireExtinguisher(); }
         }
 
-        private void AttemptFireExtinguisherActivation()
+        private void ActivateFireExtinguisher()
         {
-            if ((!_isMoving) && (CurrentGame.GameData.ToolCounts[(int)ToolType.FireExtinguisher] > 0))
-            {
-                _lockMovement = true;
-                _animator.SetBool("Extinguisher", true);
+            _lockMovement = true;
+            _animator.SetBool("Extinguisher", true);
 
-                CurrentGame.GameData.ToolCounts[(int)ToolType.FireExtinguisher]--;
+            CurrentGame.ActivateTool(ToolType.FireExtinguisher);
+            _activeTool = ToolType.FireExtinguisher;
+        }
+
+        private void CheckForToolDeactivation()
+        {
+            if ((_activeTool != null) && (!CurrentGame.ToolIsActive))
+            {
+                _animator.SetBool("Extinguisher", false);
+                _lockMovement = false;
+                _activeTool = null;
             }
         }
 
