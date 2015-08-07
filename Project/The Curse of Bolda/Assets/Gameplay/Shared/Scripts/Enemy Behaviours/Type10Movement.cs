@@ -82,7 +82,7 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
         }
 
         private const float Activation_Proximity = 8.0f;
-        private const float Acceleration = 0.05f;
+        private const float Acceleration = 0.1f;
         private const float Maximum_Speed = 3.5f;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Gameplay.Shared.Scripts.Enemy_Behaviours
 {
-    public class Type10PlayerInteraction : BasicBehaviour
+    public class DamageComponentBehaviour : BasicBehaviour
     {
         private GameObject _physicsComponent;
 

@@ -24,8 +24,15 @@ namespace Gameplay.Shared.Scripts.Generic
 
         protected virtual void Update()
         {
-            if (_bounceStartDelay > 0) { _bounceStartDelay -= Time.deltaTime; }
-            else if (_transform.position.y <= _bouncePlainY + Bounce_Plain_Tolerance) { HandleGroundImpact(); }
+            if (_bounceStartDelay > 0) 
+            { 
+                _bounceStartDelay -= Time.deltaTime; 
+            }
+            else
+            {
+                if (_transform.position.y < _bouncePlainY) { _transform.position = new Vector3(_transform.position.x, _bouncePlainY, _transform.position.z); }
+                if (_transform.position.y <= _bouncePlainY + Bounce_Plain_Tolerance) { HandleGroundImpact(); }
+            }
         }
 
         protected virtual void HandleGroundImpact()

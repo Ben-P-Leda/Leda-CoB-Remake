@@ -96,6 +96,10 @@ namespace Gameplay.Normal.Scripts.Player_Control
         private void UpdateVerticalMovement()
         {
             if ((_rigidBody2D.velocity.y < Fall_Velocity_Threshold) && (_verticalMovementState != VerticalMovementState.Falling)) { StartFalling(); }
+            if (_rigidBody2D.velocity.y > Normal_Jump_Max_Vertical_Velocity)
+            {
+                _rigidBody2D.velocity = new Vector2(_rigidBody2D.velocity.x, Normal_Jump_Max_Vertical_Velocity);
+            }
 
             switch (_verticalMovementState)
             {
@@ -166,6 +170,7 @@ namespace Gameplay.Normal.Scripts.Player_Control
 
         private const float Speed = 2.0f;
         private const float Jump_Power = 290.0f;
+        private const float Normal_Jump_Max_Vertical_Velocity = 5.6f;
         private const float Fall_Velocity_Threshold = -0.6f;
         private const float Touchdown_Velocity_Threshold = -0.001f;
     }
