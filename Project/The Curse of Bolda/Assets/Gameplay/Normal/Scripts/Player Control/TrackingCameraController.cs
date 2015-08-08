@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+using System.Collections.Generic;
+
+using Gameplay.Shared.Scripts.Environment;
+
 namespace Gameplay.Normal.Scripts.Player_Control
 {
     public class TrackingCameraController : MonoBehaviour
@@ -8,18 +12,20 @@ namespace Gameplay.Normal.Scripts.Player_Control
         private Transform _objectToTrack;
         private Transform _bgTransform;
         private Rect _cameraMovementArea;
-        private Vector2 _levelCenter;
         private Vector2 _bgMovementExtent;
+        private BackgroundLayer[] _backgroundLayers;
 
         public GameObject ObjectToTrack;
         public GameObject LevelMap;
-        public GameObject ParalaxBackground;
+        public List<GameObject> BackgroundLayers;
 
         private void Awake()
         {
             _transform = transform;
             _objectToTrack = ObjectToTrack.transform;
-            _bgTransform = ParalaxBackground.transform;
+
+            _backgroundLayers = new BackgroundLayer[BackgroundLayers.Count];
+            for (int i = 0; i < BackgroundLayers.Count; i++) { _backgroundLayers[i] = BackgroundLayers[i].GetComponent<BackgroundLayer>(); }
         }
 
         private void Start()
@@ -33,17 +39,10 @@ namespace Gameplay.Normal.Scripts.Player_Control
                 Mathf.Max(mapBoundaries.width - (cameraMargins.x * 2.0f), 0),
                 Mathf.Max(mapBoundaries.height - (cameraMargins.y * 2.0f), 0));
 
-            _levelCenter = new Vector2(
-                LevelMap.transform.position.x + (mapBoundaries.width * 0.5f),
-                LevelMap.transform.position.y + (mapBoundaries.height * 0.5f));
-
-            SpriteRenderer bgSpriteRenderer = ParalaxBackground.GetComponent<SpriteRenderer>();
-            _bgMovementExtent = new Vector2(
-                bgSpriteRenderer.sprite.bounds.extents.x - cameraMargins.x,
-                bgSpriteRenderer.sprite.bounds.extents.y - cameraMargins.y);
+            for (int i = 0; i < _backgroundLayers.Length; i++) { _backgroundLayers[i].CalculateMovementExtent(cameraMargins); }
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             _transform.position = new Vector3(
                 Mathf.Clamp(_objectToTrack.position.x, _cameraMovementArea.xMin, _cameraMovementArea.xMax),
@@ -52,12 +51,9 @@ namespace Gameplay.Normal.Scripts.Player_Control
 
             Vector2 offset = new Vector2(
                 (_transform.position.x - _cameraMovementArea.center.x) / (_cameraMovementArea.width * 0.5f),
-                (_transform.position.y - _cameraMovementArea.center.y) / (_cameraMovementArea.width * 0.5f));
+                (_transform.position.y - _cameraMovementArea.center.y) / (_cameraMovementArea.height * 0.5f));
 
-            _bgTransform.position = new Vector3(
-                _transform.position.x - (_bgMovementExtent.x * offset.x),
-                _transform.position.y - (_bgMovementExtent.y * offset.y),  
-                _bgTransform.position.z);
+            for (int i = 0; i < _backgroundLayers.Length; i++) { _backgroundLayers[i].PositionRelativeToCamera(_transform.position, offset); }
         }
     }
 }
