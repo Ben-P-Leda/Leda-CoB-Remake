@@ -7,6 +7,8 @@ namespace Gameplay.Shared.Scripts.Environment
         private Transform _transform;
         private Vector2 _movementExtent;
 
+        public float HeightOffset;
+
         private void Awake()
         {
             _transform = transform;
@@ -17,14 +19,14 @@ namespace Gameplay.Shared.Scripts.Environment
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
             _movementExtent = new Vector2(
                 spriteRenderer.sprite.bounds.extents.x - cameraMargins.x,
-                spriteRenderer.sprite.bounds.extents.y - cameraMargins.y);
+                (spriteRenderer.sprite.bounds.extents.y + HeightOffset) - cameraMargins.y);
         }
 
         public void PositionRelativeToCamera(Vector3 cameraPosition, Vector2 offset)
         {
             _transform.position = new Vector3(
                 cameraPosition.x - (_movementExtent.x * offset.x),
-                cameraPosition.y - (_movementExtent.y * offset.y),
+                cameraPosition.y - ((_movementExtent.y * offset.y) + HeightOffset),
                 _transform.position.z);
         }
     }
