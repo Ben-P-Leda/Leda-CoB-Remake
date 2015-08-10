@@ -24,7 +24,7 @@ namespace Gameplay.Shared.Scripts.Status_Display
         {
             if (CurrentGame.ToolIsActive)
             {
-                Diagnostics.DiagnosticsDisplay.SetDiagnostic("tooltimer", CurrentGame.GameData.ToolActiveTimeRemaining.ToString());
+                //Diagnostics.DiagnosticsDisplay.SetDiagnostic("tooltimer", CurrentGame.GameData.ToolActiveTimeRemaining.ToString());
 
                 CurrentGame.GameData.ToolActiveTimeRemaining -= Time.deltaTime;
             }

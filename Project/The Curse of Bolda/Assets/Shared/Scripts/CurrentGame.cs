@@ -35,7 +35,7 @@ namespace Shared.Scripts
 
         private static void ClearInventory()
         {
-            for (int i = 0; i < _gameData.ToolCounts.Length; i++) { _gameData.ToolCounts[i] = 10; }
+            for (int i = 0; i < _gameData.ToolCounts.Length; i++) { _gameData.ToolCounts[i] = 0; }
         }
 
         public static void AddTool(ToolType toolType)

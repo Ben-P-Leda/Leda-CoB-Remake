@@ -3,16 +3,14 @@
 Fixes & arising
 ===============
 
-Enemy types required for area 1.1: Type 2 (Missile robot), Type 4 (Croc-head), Type 8 (Springy), Type 10 (Homer), Type 5 (Sine wave)
+Lag from first use of fire extinguisher
+Enemy types required for area 1.1: Type 2 (Missile robot), Type 4 (Croc-head), Type 5 (Sine wave)
 
 Epic-level
 ==========
-- Switches
-- Locks
 - Enemies
 - Bonuses
 - Power-ups
-- Status monitoring
 - Support screens
 - Autoplay
 
@@ -26,4 +24,3 @@ Effects & nice-to-have
 ======================
 - Gem collection effect (sparkles)
 - Enemy deaths (explosions)
-- Parallax backgrounds
