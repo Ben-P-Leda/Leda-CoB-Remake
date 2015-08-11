@@ -104,6 +104,7 @@ namespace Gameplay.Shared.Scripts
 
         private void HandlePlayerDeath()
         {
+            SetEnemiesFreezeState(true);
             CurrentGame.GameData.Lives -= 1;
 
             if (CurrentGame.GameData.Lives > 0)
