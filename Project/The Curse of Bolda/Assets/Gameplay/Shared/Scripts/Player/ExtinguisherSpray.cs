@@ -6,13 +6,11 @@ namespace Gameplay.Shared.Scripts.Player
     {
         private Transform _transform;
         private Transform _parentTransform;
-        private ParticleSystem _particleSystem;
 
         private void Awake()
         {
             _transform = transform;
             _parentTransform = _transform.parent;
-            _particleSystem = GetComponent<ParticleSystem>();
         }
 
         private void OnEnable()
