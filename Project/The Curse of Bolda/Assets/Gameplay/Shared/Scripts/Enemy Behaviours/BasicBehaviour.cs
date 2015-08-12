@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 using Shared.Scripts;
+using Gameplay.Shared.Scripts.Effects;
 
 namespace Gameplay.Shared.Scripts.Enemy_Behaviours
 {
@@ -38,7 +39,7 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
             HitPoints -= hitPointDelta;
             if (HitPoints < 1)
             {
-                //  - Start death effect
+                SmokeCloudPool.ActivateSmokeCloud(transform.position);
                 CurrentGame.GameData.Score += ScoreValue;
 
                 GameObject.SetActive(false);
