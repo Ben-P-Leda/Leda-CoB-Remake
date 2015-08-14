@@ -4,11 +4,9 @@ using Gameplay.Shared.Scripts.Generic;
 
 namespace Gameplay.Shared.Scripts.Enemy_Behaviours
 {
-    public class Type08Movement : GenericBouncingMovementController, ICanBeFrozen
+    public class Type08Movement : GenericBouncingMovementController
     {
         private SpriteRenderer _renderer;
-
-        public bool Frozen { get; set; }
 
         public Sprite CompressedSprite;
         public Sprite ExpandedSprite;
@@ -19,11 +17,6 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
 
             _renderer = transform.GetComponent<SpriteRenderer>();
             _renderer.sprite = CompressedSprite;
-        }
-
-        protected override void Update()
-        {
-            if (!Frozen) { base.Update(); }
         }
 
         protected override void HandleGroundImpact()

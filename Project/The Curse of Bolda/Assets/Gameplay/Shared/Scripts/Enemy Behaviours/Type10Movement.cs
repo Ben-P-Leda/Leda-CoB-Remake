@@ -21,10 +21,6 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
             _playerTransform = Player.transform;
         }
 
-        private void Start()
-        {
-        }
-
         protected virtual void Update()
         {
             if (ShouldSwitchFreezeState) { SwitchFreezeState(); }

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using System.Collections.Generic;
 using Shared.Scripts;
 using Gameplay.Shared.Scripts.Player;
 using Gameplay.Shared.Scripts.Enemy_Behaviours;
@@ -11,7 +11,7 @@ namespace Gameplay.Shared.Scripts
         private LevelState _levelState;
         private FadeTransitioner _fadeTransitioner;
         private PlayerSequencer _playerSequencer;
-        private ICanBeFrozen[] _freezableEnemyScripts;
+        private List<ICanBeFrozen> _freezableEnemyScripts;
 
         public int Area;
         public AreaStage Stage;
@@ -30,10 +30,11 @@ namespace Gameplay.Shared.Scripts
             _fadeTransitioner = GetComponent<FadeTransitioner>();
             _playerSequencer = PlayerSequencer.GetComponent<PlayerSequencer>();
 
-            _freezableEnemyScripts = new ICanBeFrozen[Enemies.transform.childCount];
-            for (int i=0; i<_freezableEnemyScripts.Length; i++)
+            _freezableEnemyScripts = new List<ICanBeFrozen>();
+            for (int i = 0; i < Enemies.transform.childCount; i++)
             {
-                _freezableEnemyScripts[i] = Enemies.transform.GetChild(i).GetComponent<ICanBeFrozen>();
+                ICanBeFrozen freezableScript = Enemies.transform.GetChild(i).GetComponent<ICanBeFrozen>();
+                if (freezableScript != null) { _freezableEnemyScripts.Add(freezableScript); }
             }
         }
 
@@ -73,7 +74,7 @@ namespace Gameplay.Shared.Scripts
 
         private void SetEnemiesFreezeState(bool freeze)
         {
-            for (int i = 0; i < _freezableEnemyScripts.Length; i++) { _freezableEnemyScripts[i].Frozen = freeze; }
+            for (int i = 0; i < _freezableEnemyScripts.Count; i++) { _freezableEnemyScripts[i].Frozen = freeze; }
         }
 
         private void Update()
