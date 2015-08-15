@@ -3,10 +3,10 @@ using Gameplay.Shared.Scripts.Generic;
 
 namespace Gameplay.Shared.Scripts.Effects
 {
-    public sealed class SmokeCloudPool : GenericObjectPool<SmokeCloud>
+    public sealed class SmokeCloudPool : GenericObjectPool<PooledParticleEffect>
     {
         private static SmokeCloudPool _instance = null;
-        public static SmokeCloud ActivateSmokeCloud(Vector2 position) { return _instance.ActivateCloudAt(position); }
+        public static PooledParticleEffect ActivateSmokeCloud(Vector2 position) { return _instance.ActivateCloudAt(position); }
 
         protected override void Awake()
         {
@@ -15,14 +15,14 @@ namespace Gameplay.Shared.Scripts.Effects
             if (_instance == null) { _instance = this; }
         }
 
-        protected override bool ObjectIsAvailable(SmokeCloud objectToCheck)
+        protected override bool ObjectIsAvailable(PooledParticleEffect objectToCheck)
         {
             return !objectToCheck.IsActive;
         }
 
-        private SmokeCloud ActivateCloudAt(Vector2 position)
+        private PooledParticleEffect ActivateCloudAt(Vector2 position)
         {
-            SmokeCloud cloud = GetFirstAvailableObject();
+            PooledParticleEffect cloud = GetFirstAvailableObject();
             if (cloud != null) { cloud.Activate(position); }
 
             return cloud;

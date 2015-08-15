@@ -2,7 +2,7 @@
 
 namespace Gameplay.Shared.Scripts.Effects
 {
-    public class SmokeCloud : MonoBehaviour
+    public class PooledParticleEffect : MonoBehaviour
     {
         private Transform _transform = null;
         private ParticleSystem _particleSystem = null;

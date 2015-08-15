@@ -2,6 +2,7 @@
 
 using Shared.Scripts;
 using Gameplay.Shared.Scripts.Status_Display;
+using Gameplay.Shared.Scripts.Effects;
 
 namespace Gameplay.Shared.Scripts.Player
 {
@@ -20,6 +21,8 @@ namespace Gameplay.Shared.Scripts.Player
         {
             if (collider.tag == "Gem")
             {
+                GemCollectSparklePool.ActivateGemCollectSparkle(collider.transform.position);
+
                 collider.gameObject.SetActive(false);
 
                 CurrentGame.GameData.GemsCollected++;

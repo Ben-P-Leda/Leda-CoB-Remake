@@ -91,5 +91,7 @@ namespace Gameplay.Shared.Scripts.Player
             Running,
             Complete
         }
+
+        public const int Player_Physics_Layer_Index = 1024;
     }
 }

@@ -3,8 +3,10 @@
 Fixes & arising
 ===============
 
-Lag from first use of fire extinguisher
-Enemy types required for area 1.1: Type 2 (Missile robot), Type 4 (Croc-head), Type 5 (Sine wave)
+Type 5s to drop bombs
+Type 2 to fire missiles
+Exit gate
+
 
 Epic-level
 ==========
@@ -23,4 +25,4 @@ Missing Tiles
 Effects & nice-to-have
 ======================
 - Gem collection effect (sparkles)
-- Enemy deaths (explosions)
+
