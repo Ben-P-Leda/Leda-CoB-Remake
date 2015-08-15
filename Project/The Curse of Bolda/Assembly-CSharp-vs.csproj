@@ -83,6 +83,7 @@
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\GemCollectionController.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\PlayerSequencer.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Shots\EnemyBomb.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Shots\EnemyMissile.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Shots\KevShot.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Shots\KevShotPool.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Special Platforms\JumpthroughPlatformContainer.cs" />
