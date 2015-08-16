@@ -3,17 +3,16 @@
 Fixes & arising
 ===============
 
-Type 5s to drop bombs
-Type 2 to fire missiles
+Give key (in field) an "eyecatch" effect (sparkle or similar)
 Exit gate
 
 
 Epic-level
 ==========
-- Enemies
-- Bonuses
-- Power-ups
-- Support screens
+- Enemies (Types 3, 9)
+- Bonuses (Time stop, Extra life)
+- Tools (Invincibility, Jetpack functionality, Super-jump, Firepower-up, Pickaxe functionality)
+- Support
 - Autoplay
 
 Missing Tiles
@@ -24,5 +23,5 @@ Missing Tiles
 
 Effects & nice-to-have
 ======================
-- Gem collection effect (sparkles)
+
 
