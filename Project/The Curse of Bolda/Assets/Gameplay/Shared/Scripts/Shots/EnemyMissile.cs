@@ -18,7 +18,7 @@ namespace Gameplay.Shared.Scripts.Shots
             _gameObject = gameObject;
         }
 
-        public void Activate(Vector2 position, int direction)
+        public void Activate(Vector2 position, float direction)
         {
             _transform.position = position;
             _transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f * direction);
