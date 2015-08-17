@@ -3,7 +3,6 @@
 Fixes & arising
 ===============
 
-Give key (in field) an "eyecatch" effect (sparkle or similar)
 Exit gate
 
 
