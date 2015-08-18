@@ -89,7 +89,6 @@ namespace Gameplay.Shared.Scripts.Player
             if (_gateBeingEntered == GateType.Exit) 
             { 
                 CurrentGame.GameData.GameplayState = GameplayState.LevelComplete;
-                Diagnostics.DiagnosticsDisplay.SetDiagnostic("x", "CLEARED");
             }
         }
 
