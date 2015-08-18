@@ -13,6 +13,14 @@ namespace Shared.Scripts
             _gameData.Score = 0;
         }
 
+        public static void SetForNewLife()
+        {
+            RestorePlayerEnergy();
+
+            _gameData.TimerIsFrozen = true;
+            _gameData.GameplayState = GameplayState.GetReady;
+        }
+
         public static void RestorePlayerEnergy()
         {
             _gameData.Energy = Constants.Player_Maximum_Energy;
@@ -36,6 +44,17 @@ namespace Shared.Scripts
         private static void ClearInventory()
         {
             for (int i = 0; i < _gameData.ToolCounts.Length; i++) { _gameData.ToolCounts[i] = 0; }
+        }
+
+        public static void StartGameplay()
+        {
+            _gameData.GameplayState = GameplayState.InPlay;
+            _gameData.TimerIsFrozen = false;
+        }
+
+        public static void UpdateTimer(float deltaTime)
+        {
+            if (!_gameData.TimerIsFrozen) { _gameData.TimeRemaining = Mathf.Max(_gameData.TimeRemaining - deltaTime, 0.0f); }
         }
 
         public static void AddTool(ToolType toolType)

@@ -8,6 +8,15 @@
         Bonus = 4
     }
 
+    public enum GameplayState
+    {
+        GetReady,
+        InPlay,
+        SequenceRunning,
+        LevelComplete,
+        GameOver
+    }
+
     public enum PlayerDeathSequence
     {
         Generic = 1
@@ -21,5 +30,12 @@
         FirepowerUp = 3,
         Pickaxe = 4,
         FireExtinguisher = 5
+    }
+
+    public enum GateType
+    {
+        None = 0,
+        Exit = 1,
+        Warp = 2
     }
 }

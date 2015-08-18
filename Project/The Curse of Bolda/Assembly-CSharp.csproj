@@ -84,6 +84,7 @@
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\ExtinguisherSpray.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\GemCollectionController.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\PlayerSequencer.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Player\SequencedPlayer.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Shots\EnemyBomb.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Shots\EnemyMissile.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Shots\KevShot.cs" />
@@ -118,6 +119,7 @@
      <Compile Include="Assets\Tile Editor\Scripts\Class\TileMap.cs" />
      <Compile Include="Assets\Tile Editor\Scripts\Class\TileSet.cs" />
      <Compile Include="Assets\Tile Editor\Scripts\Class\TileSetManager.cs" />
+     <None Include="Assets\Gameplay\Normal\CroppingShader.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity5/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

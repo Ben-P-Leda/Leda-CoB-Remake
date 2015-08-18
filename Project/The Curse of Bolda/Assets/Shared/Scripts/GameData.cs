@@ -9,7 +9,9 @@ namespace Shared.Scripts
         public float Energy { get; set; }
         public int Area { get; set; }
         public AreaStage Stage { get; set; }
+        public GameplayState GameplayState { get; set; }
         public float TimeRemaining { get; set; }
+        public bool TimerIsFrozen { get; set; }
         public int GemsRequired { get; set; }
         public int GemsCollected { get; set; }
         public Vector3 RestartPoint { get; set; }

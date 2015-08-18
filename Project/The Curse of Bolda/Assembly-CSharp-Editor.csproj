@@ -49,6 +49,7 @@
      <Compile Include="Assets\Tile Editor\Scripts\Editor\TileMapInspector.cs" />
      <Compile Include="Assets\Tile Editor\Scripts\Editor\TileMapWizard.cs" />
      <Compile Include="Assets\Tile Editor\Scripts\Editor\TileSetNameWizard.cs" />
+     <None Include="Assets\Gameplay\Normal\CroppingShader.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity5/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

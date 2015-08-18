@@ -22,7 +22,7 @@ namespace Diagnostics
             _font = new GUIStyle();
             _font.fontStyle = FontStyle.Bold;
             _font.fontSize = 12;
-            _font.normal.textColor = Color.white;
+            _font.normal.textColor = Color.black;
         }
 
         private void OnGUI()

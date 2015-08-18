@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 using Shared.Scripts;
+using Gameplay.Shared.Scripts.Player;
 
 namespace Gameplay.Normal.Scripts.Player_Control
 {
@@ -9,11 +10,15 @@ namespace Gameplay.Normal.Scripts.Player_Control
         private Transform _transform;
         private Rigidbody2D _rigidBody2D;
         private Animator _animator;
+        private PlayerSequencer _sequenceController;
 
         private bool _facingRight;
         private VerticalMovementState _verticalMovementState;
         private bool _isMoving;
         private bool _lockMovement;
+        private float _gateCenterX;
+        private bool _enteringGate;
+        private GateType _activeGateType;
 
         private ToolType? _activeTool;
 
@@ -22,6 +27,8 @@ namespace Gameplay.Normal.Scripts.Player_Control
             _transform = GetComponent<Transform>();
             _rigidBody2D = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
+
+            _sequenceController = _transform.parent.GetComponent<PlayerSequencer>();
         }
 
         private void Start()
@@ -42,6 +49,10 @@ namespace Gameplay.Normal.Scripts.Player_Control
             _lockMovement = false;
             _isMoving = false;
 
+            _activeGateType = GateType.None;
+            _gateCenterX = 0.0f;
+            _enteringGate = false;
+
             _activeTool = null;
         }
 
@@ -55,6 +66,9 @@ namespace Gameplay.Normal.Scripts.Player_Control
             CheckForToolActivation();
             CheckForToolDeactivation();
 
+            CheckForGateActivation();
+            CheckForGateEntry();;
+
             if (Input.GetKeyDown(KeyCode.Escape)) { Application.Quit(); }
         }
 
@@ -63,8 +77,8 @@ namespace Gameplay.Normal.Scripts.Player_Control
             if (!_lockMovement)
             {
                 int direction = 0;
-                if (Input.GetKey(KeyCode.A)) { direction = -1; }
-                if (Input.GetKey(KeyCode.D)) { direction = 1; }
+                if (_enteringGate) { direction = GetDirectionFromGateCenter(); }
+                else { direction = GetDirectionFromInput(); }
 
                 _rigidBody2D.velocity = new Vector2(direction * Speed, _rigidBody2D.velocity.y);
 
@@ -73,6 +87,19 @@ namespace Gameplay.Normal.Scripts.Player_Control
 
                 if (direction != 0) { _isMoving = true; }
             }
+        }
+
+        private int GetDirectionFromGateCenter()
+        {
+            return (int)Mathf.Sign(_gateCenterX - _transform.position.x);
+        }
+
+        private int GetDirectionFromInput()
+        {
+            if (Input.GetKey(KeyCode.A)) { return -1; }
+            if (Input.GetKey(KeyCode.D)) { return 1; }
+
+            return 0;
         }
 
         private bool FacingDirectionHasChanged(int movementDirection)
@@ -119,7 +146,7 @@ namespace Gameplay.Normal.Scripts.Player_Control
 
         private void CheckForJumpStart()
         {
-            if ((!_lockMovement) && (Input.GetKeyDown(KeyCode.W)))
+            if ((!_lockMovement) && (!_enteringGate) && (Input.GetKeyDown(KeyCode.W)))
             {
                 _rigidBody2D.AddForce(new Vector2(0.0f, Jump_Power));
                 _verticalMovementState = VerticalMovementState.Rising;
@@ -161,6 +188,41 @@ namespace Gameplay.Normal.Scripts.Player_Control
             }
         }
 
+        private void OnTriggerEnter2D(Collider2D collider)
+        {
+            if (collider.tag == "Exit Gate")
+            {
+                _gateCenterX = collider.transform.position.x;
+                _activeGateType = GateType.Exit;
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collider)
+        {
+            if (collider.tag == "Exit Gate")
+            {
+                _gateCenterX = 0.0f;
+                _activeGateType = GateType.None;
+            }
+        }
+
+        private void CheckForGateActivation()
+        {
+            if ((!_enteringGate) && (_verticalMovementState == VerticalMovementState.OnGround) && (Input.GetKeyDown(KeyCode.S)) && (_gateCenterX > 0.0f))
+            {
+                _enteringGate = true;
+            }
+        }
+
+        private void CheckForGateEntry()
+        {
+            if ((_enteringGate) && (Mathf.Abs(_gateCenterX - _transform.position.x) <Gate_Entry_Center_Proximity))
+            {
+                _enteringGate = false;
+                _sequenceController.EnterGate(_activeGateType);
+            }
+        }
+
         private enum VerticalMovementState
         {
             OnGround,
@@ -173,5 +235,6 @@ namespace Gameplay.Normal.Scripts.Player_Control
         private const float Normal_Jump_Max_Vertical_Velocity = 5.6f;
         private const float Fall_Velocity_Threshold = -0.6f;
         private const float Touchdown_Velocity_Threshold = -0.001f;
+        private const float Gate_Entry_Center_Proximity = 0.05f;
     }
 }
