@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 
 using Shared.Scripts;
+using Gameplay.Shared.Scripts.Effects;
 
 namespace Gameplay.Shared.Scripts.Enemy_Behaviours
 {
     public class BasicBehaviour : MonoBehaviour
     {
-        private GameObject _gameObject;
+        private float _lastHitTime;
+
+        protected GameObject GameObject { get; private set; }
 
         public int HitPoints;
         public int ScoreValue;
@@ -14,14 +17,19 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
 
         protected virtual void Awake()
         {
-            _gameObject = transform.gameObject;
+            GameObject = transform.gameObject;
+
+            _lastHitTime = 0.0f;
         }
 
         protected virtual void OnTriggerEnter2D(Collider2D collider)
         {
-            if (collider.tag == "Kev Shot") 
-            { 
-                HandleCollisionWithPlayerShot(1);
+            if (collider.tag == "Kev Shot")
+            {
+                // Nasty little hack to make sure that we only take the right number of hits
+                if (Time.timeSinceLevelLoad - _lastHitTime > Minimum_Time_Between_Hits) { HandleCollisionWithPlayerShot(1); }
+                _lastHitTime = Time.timeSinceLevelLoad;
+
                 collider.enabled = false;
             }
         }
@@ -31,10 +39,10 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
             HitPoints -= hitPointDelta;
             if (HitPoints < 1)
             {
-                //  - Start death effect
+                SmokeCloudPool.ActivateSmokeCloud(transform.position);
                 CurrentGame.GameData.Score += ScoreValue;
 
-                _gameObject.SetActive(false);
+                GameObject.SetActive(false);
             }
         }
 
@@ -47,5 +55,7 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
         {
             CurrentGame.GameData.Energy -= PlayerEnergyDrainValue;
         }
+
+        private float Minimum_Time_Between_Hits = 0.0001f;
     }
 }

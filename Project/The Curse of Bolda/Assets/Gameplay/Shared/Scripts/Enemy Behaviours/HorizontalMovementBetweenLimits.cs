@@ -17,7 +17,7 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
         public float Speed;
         public float Acceleration;
 
-        protected Vector2 Position { get { return _transform.position; } }
+        protected Vector2 Position { get { return _transform.position; } set { _transform.position = value; } }
         protected float HorizontalSpeed { get { return _rigidBody2D.velocity.x; } }
 
         protected override void Awake()
@@ -28,7 +28,7 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
             _rigidBody2D = GetComponent<Rigidbody2D>();
         }
 
-        private void Start()
+        protected virtual void Start()
         {
             _leftSideLimit = _transform.position.x - LeftSideLimitOffset;
             _rightSideLimit = _transform.position.x + RightSideLimitOffset;

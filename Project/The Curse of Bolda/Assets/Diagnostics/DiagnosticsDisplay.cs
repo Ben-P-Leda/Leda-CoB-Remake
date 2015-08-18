@@ -22,12 +22,12 @@ namespace Diagnostics
             _font = new GUIStyle();
             _font.fontStyle = FontStyle.Bold;
             _font.fontSize = 12;
-            _font.normal.textColor = Color.white;
+            _font.normal.textColor = Color.black;
         }
 
         private void OnGUI()
         {
-            Rect container = new Rect(0, 100, 1000, 15);
+            Rect container = new Rect(0, 200, 1000, 15);
             foreach (KeyValuePair<string,string> kvp in _diagnostics)
             {
                 GUI.Label(container, kvp.Value, _font);

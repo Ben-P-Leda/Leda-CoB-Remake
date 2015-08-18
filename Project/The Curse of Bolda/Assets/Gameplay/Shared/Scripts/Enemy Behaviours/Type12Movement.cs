@@ -23,7 +23,7 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
 
         protected override void Update()
         {
-            if (_activationArea.Contains(_playerTransform.position))
+            if ((_activationArea.Contains(_playerTransform.position)) && (!Frozen))
             {
                 ApplyAcceleration((Acceleration * Mathf.Sign(_playerTransform.position.x - Position.x)));
             }

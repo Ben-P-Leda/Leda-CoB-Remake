@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
-using Gameplay.Shared.Scripts;
+using Gameplay.Shared.Scripts.Generic;
 
 namespace Gameplay.Shared.Scripts.Shots
 {
     public class KevShotPool : GenericObjectPool<KevShot>
     {
         private Transform _playerTransform;
+
+        public bool CanShoot { private get; set; }
 
         public GameObject Player;
 
@@ -17,7 +19,7 @@ namespace Gameplay.Shared.Scripts.Shots
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.RightShift))
+            if ((CanShoot) && (Input.GetKeyDown(KeyCode.RightShift)))
             {
                 KevShot shot = GetFirstAvailableObject();
                 if (shot != null) 

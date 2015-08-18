@@ -3,17 +3,15 @@
 Fixes & arising
 ===============
 
-Enemy types required for area 1.1: Type 2 (Missile robot), Type 4 (Croc-head), Type 8 (Springy), Type 10 (Homer), Type 5 (Sine wave)
+Exit gate
+
 
 Epic-level
 ==========
-- Switches
-- Locks
-- Enemies
-- Bonuses
-- Power-ups
-- Status monitoring
-- Support screens
+- Enemies (Types 3, 9)
+- Bonuses (Time stop, Extra life)
+- Tools (Invincibility, Jetpack functionality, Super-jump, Firepower-up, Pickaxe functionality)
+- Support
 - Autoplay
 
 Missing Tiles
@@ -24,6 +22,5 @@ Missing Tiles
 
 Effects & nice-to-have
 ======================
-- Gem collection effect (sparkles)
-- Enemy deaths (explosions)
-- Parallax backgrounds
+
+

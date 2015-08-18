@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using System.Collections.Generic;
 using Shared.Scripts;
 using Gameplay.Shared.Scripts.Player;
 using Gameplay.Shared.Scripts.Enemy_Behaviours;
@@ -8,10 +8,10 @@ namespace Gameplay.Shared.Scripts
 {
     public class LevelSequencer : MonoBehaviour
     {
-        private LevelState _levelState;
         private FadeTransitioner _fadeTransitioner;
         private PlayerSequencer _playerSequencer;
-        private ICanBeFrozen[] _freezableEnemyScripts;
+        private List<ICanBeFrozen> _freezableEnemyScripts;
+        private GameObject _levelClearSequencer;
 
         public int Area;
         public AreaStage Stage;
@@ -30,10 +30,13 @@ namespace Gameplay.Shared.Scripts
             _fadeTransitioner = GetComponent<FadeTransitioner>();
             _playerSequencer = PlayerSequencer.GetComponent<PlayerSequencer>();
 
-            _freezableEnemyScripts = new ICanBeFrozen[Enemies.transform.childCount];
-            for (int i=0; i<_freezableEnemyScripts.Length; i++)
+            _levelClearSequencer = transform.FindChild("End Level Sequencer").gameObject;
+
+            _freezableEnemyScripts = new List<ICanBeFrozen>();
+            for (int i = 0; i < Enemies.transform.childCount; i++)
             {
-                _freezableEnemyScripts[i] = Enemies.transform.GetChild(i).GetComponent<ICanBeFrozen>();
+                ICanBeFrozen freezableScript = Enemies.transform.GetChild(i).GetComponent<ICanBeFrozen>();
+                if (freezableScript != null) { _freezableEnemyScripts.Add(freezableScript); }
             }
         }
 
@@ -61,10 +64,9 @@ namespace Gameplay.Shared.Scripts
         private void SetForNewLife()
         {
             _playerSequencer.StartNewLife();
-            _levelState = LevelState.GetReady;
 
             if (CurrentGame.GameData.TimeRemaining <= 0.0f) { CurrentGame.GameData.TimeRemaining = DurationInSeconds; }
-            CurrentGame.RestorePlayerEnergy();
+            CurrentGame.SetForNewLife();
 
             SetEnemiesFreezeState(true);
 
@@ -73,15 +75,16 @@ namespace Gameplay.Shared.Scripts
 
         private void SetEnemiesFreezeState(bool freeze)
         {
-            for (int i = 0; i < _freezableEnemyScripts.Length; i++) { _freezableEnemyScripts[i].Frozen = freeze; }
+            for (int i = 0; i < _freezableEnemyScripts.Count; i++) { _freezableEnemyScripts[i].Frozen = freeze; }
         }
 
         private void Update()
         {
-            switch (_levelState)
+            switch (CurrentGame.GameData.GameplayState)
             {
-                case LevelState.GetReady: UpdateForGetReady(); break;
-                case LevelState.InPlay: UpdateForInPlay(); break;
+                case GameplayState.GetReady: UpdateForGetReady(); break;
+                case GameplayState.InPlay: UpdateForInPlay(); break;
+                case GameplayState.LevelComplete: UpdateForLevelCleared(); break;
             }
         }
 
@@ -89,14 +92,14 @@ namespace Gameplay.Shared.Scripts
         {
             if (Input.anyKeyDown)
             {
-                _levelState = LevelState.InPlay;
+                CurrentGame.StartGameplay();
                 SetEnemiesFreezeState(false);
             }
         }
 
         private void UpdateForInPlay()
         {
-            CurrentGame.GameData.TimeRemaining = Mathf.Max(CurrentGame.GameData.TimeRemaining - Time.deltaTime, 0.0f);
+            CurrentGame.UpdateTimer(Time.deltaTime);
 
             if (CurrentGame.GameData.Energy <= 0.0f) { HandlePlayerDeath(); }
             if (CurrentGame.GameData.TimeRemaining <= 0.0f) { HandlePlayerDeath(); }
@@ -104,27 +107,35 @@ namespace Gameplay.Shared.Scripts
 
         private void HandlePlayerDeath()
         {
+            SetEnemiesFreezeState(true);
+            CurrentGame.GameData.TimerIsFrozen = true;
             CurrentGame.GameData.Lives -= 1;
 
+            CurrentGame.GameData.GameplayState = GameplayState.SequenceRunning;
+
+            _fadeTransitioner.TransitionCompletionHandler = SetForNewLife;
+            _playerSequencer.StartDeathSequence(PlayerDeathSequence.Generic, HandleLifeLossSequenceComplete);
+        }
+
+        private void HandleLifeLossSequenceComplete()
+        {
             if (CurrentGame.GameData.Lives > 0)
             {
-                _levelState = LevelState.SequenceRunning;
-
-                _fadeTransitioner.TransitionCompletionHandler = SetForNewLife;
-                _playerSequencer.SequenceCompleteHandler = _fadeTransitioner.FadeOut;
-                _playerSequencer.StartDeathSequence(PlayerDeathSequence.Generic);
+                _fadeTransitioner.FadeOut();
             }
             else
             {
+                CurrentGame.GameData.GameplayState = GameplayState.GameOver;
                 // TODO: Game over
             }
         }
 
-        private enum LevelState
+        private void UpdateForLevelCleared()
         {
-            GetReady,
-            InPlay,
-            SequenceRunning
+            if (!_levelClearSequencer.activeInHierarchy)
+            {
+                _levelClearSequencer.SetActive(true);
+            }
         }
     }
 }
