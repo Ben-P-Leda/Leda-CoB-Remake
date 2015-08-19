@@ -56,7 +56,7 @@ namespace Gameplay.Shared.Scripts
 
         private void SetForLevelStart()
         {
-            CurrentGame.SetForLevelStart(Area, Stage, RequiredGems, PlayerStartPosition, PlayerStartFacingLeft);
+            CurrentGame.SetForLevelStart(Area, Stage, DurationInSeconds, RequiredGems, PlayerStartPosition, PlayerStartFacingLeft);
 
             if (Stage != AreaStage.Bonus) { SetForNewLife(); }
         }
@@ -65,7 +65,6 @@ namespace Gameplay.Shared.Scripts
         {
             _playerSequencer.StartNewLife();
 
-            if (CurrentGame.GameData.TimeRemaining <= 0.0f) { CurrentGame.GameData.TimeRemaining = DurationInSeconds; }
             CurrentGame.SetForNewLife();
 
             SetEnemiesFreezeState(true);

@@ -17,6 +17,7 @@ namespace Shared.Scripts
         {
             RestorePlayerEnergy();
 
+            if (_gameData.TimeRemaining <= 0.0f) { _gameData.TimeRemaining = _gameData.TotalTime; }
             _gameData.TimerIsFrozen = true;
             _gameData.GameplayState = GameplayState.GetReady;
         }
@@ -26,10 +27,11 @@ namespace Shared.Scripts
             _gameData.Energy = Constants.Player_Maximum_Energy;
         }
 
-        public static void SetForLevelStart(int areaIndex, AreaStage stage, int requiredGems, Vector3 startPosition, bool facingLeft)
+        public static void SetForLevelStart(int areaIndex, AreaStage stage, float duration, int requiredGems, Vector3 startPosition, bool facingLeft)
         {
             _gameData.Area = areaIndex;
             _gameData.Stage = stage;
+            _gameData.TotalTime = duration;
             _gameData.GemsRequired = requiredGems;
             _gameData.GemsCollected = 0;
             _gameData.RestartPoint = startPosition;

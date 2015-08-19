@@ -62,6 +62,12 @@ namespace Gameplay.Shared.Scripts.Player
 
         public void StartNewLife()
         {
+            if (_sequencedAvatarAnimator != null)
+            {
+                _sequencedAvatarAnimator.SetInteger("DeathSequence", 0);
+                _sequencedAvatarTransform.FindChild("Generic Death Particles").gameObject.SetActive(false);
+            }
+
             _inputDrivenAvatarTransform = InputDrivenAvatar.GetComponent<Transform>();
             _inputDrivenAvatarTransform.position = CurrentGame.GameData.RestartPoint;
             _inputDrivenAvatarTransform.localScale = CurrentGame.GameData.RestartScale;
