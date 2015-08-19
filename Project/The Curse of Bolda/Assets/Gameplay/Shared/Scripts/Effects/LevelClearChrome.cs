@@ -37,8 +37,6 @@ namespace Gameplay.Shared.Scripts.Effects
 
         public void EntryCompleteCallback()
         {
-            CurrentGame.GameData.GemsCollected = 50;
-
             _entryComplete = true;
             _timeBonus = Time_Bonus_Increment * (int)Mathf.Floor(10.0f * (CurrentGame.GameData.TimeRemaining / CurrentGame.GameData.TotalTime));
             _timeBonusDisplayCounter = 0;

@@ -11,7 +11,8 @@ namespace Gameplay.Shared.Scripts
         private FadeTransitioner _fadeTransitioner;
         private PlayerSequencer _playerSequencer;
         private List<ICanBeFrozen> _freezableEnemyScripts;
-        private GameObject _levelClearSequencer;
+        private GameObject _getReadySequencer;
+        private GameObject _endLevelSequencer;
 
         public int Area;
         public AreaStage Stage;
@@ -30,7 +31,8 @@ namespace Gameplay.Shared.Scripts
             _fadeTransitioner = GetComponent<FadeTransitioner>();
             _playerSequencer = PlayerSequencer.GetComponent<PlayerSequencer>();
 
-            _levelClearSequencer = transform.FindChild("End Level Sequencer").gameObject;
+            _getReadySequencer = transform.FindChild("Get Ready Sequencer").gameObject;
+            _endLevelSequencer = transform.FindChild("End Level Sequencer").gameObject;
 
             _freezableEnemyScripts = new List<ICanBeFrozen>();
             for (int i = 0; i < Enemies.transform.childCount; i++)
@@ -69,6 +71,7 @@ namespace Gameplay.Shared.Scripts
 
             SetEnemiesFreezeState(true);
 
+            _getReadySequencer.SetActive(true);
             _fadeTransitioner.FadeIn();
         }
 
@@ -131,9 +134,9 @@ namespace Gameplay.Shared.Scripts
 
         private void UpdateForLevelCleared()
         {
-            if (!_levelClearSequencer.activeInHierarchy)
+            if (!_endLevelSequencer.activeInHierarchy)
             {
-                _levelClearSequencer.SetActive(true);
+                _endLevelSequencer.SetActive(true);
             }
         }
     }

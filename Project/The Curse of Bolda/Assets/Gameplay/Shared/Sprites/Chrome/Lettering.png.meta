@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 73c4ffc54098e584981ca03d33921e1b
-timeCreated: 1439927666
+timeCreated: 1440001924
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -11,6 +11,9 @@ TextureImporter:
     21300008: 3
     21300010: Got
     21300012: Kev
+    21300014: Get
+    21300016: Ready
+    21300018: Exclamation
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -66,16 +69,6 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: 1
-      rect:
-        serializedVersion: 2
-        x: 302
-        y: 154
-        width: 49
-        height: 75
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
     - name: Past
       rect:
         serializedVersion: 2
@@ -119,10 +112,50 @@ TextureImporter:
     - name: Kev
       rect:
         serializedVersion: 2
-        x: 191
+        x: 192
         y: 1
         width: 189
         height: 74
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Get
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 309
+        width: 182
+        height: 75
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ready
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 231
+        width: 299
+        height: 74
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Exclamation
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 155
+        width: 43
+        height: 75
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 1
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 154
+        width: 49
+        height: 75
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

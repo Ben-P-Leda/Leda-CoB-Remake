@@ -83,3 +83,7 @@ Cmd: compileSnippet
   api=8 type=1 insize=1985 outsize=2316 kw= ok=1
 Cmd: compileSnippet
   api=4 type=1 insize=1985 outsize=1493 kw=PIXELSNAP_ON ok=1
+Unhandled exception: Readfile from pipe failed. GLE=The pipe has been ended.
+
+
+Quitting shader compiler process
