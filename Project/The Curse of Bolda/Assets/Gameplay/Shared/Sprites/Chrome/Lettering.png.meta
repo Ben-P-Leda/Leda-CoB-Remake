@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 73c4ffc54098e584981ca03d33921e1b
-timeCreated: 1440001924
+timeCreated: 1440014520
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -14,6 +14,13 @@ TextureImporter:
     21300014: Get
     21300016: Ready
     21300018: Exclamation
+    21300020: G
+    21300022: E
+    21300024: A
+    21300026: R
+    21300028: O
+    21300030: M
+    21300032: V
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -156,6 +163,76 @@ TextureImporter:
         y: 154
         width: 49
         height: 75
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: G
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 309
+        width: 74
+        height: 74
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: E
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 309
+        width: 71
+        height: 74
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: A
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 311
+        width: 81
+        height: 73
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: R
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 235
+        width: 77
+        height: 72
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: O
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 237
+        width: 78
+        height: 73
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: M
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 154
+        width: 88
+        height: 72
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: V
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 81
+        width: 78
+        height: 71
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

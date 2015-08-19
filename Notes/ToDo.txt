@@ -6,7 +6,6 @@ Fixes & arising
 To complete level 1-1:
 	- Pickaxe functionality
 	- Jetpack functionality
-	- "Get Ready" message
 	- Game over sequence
 	- Level complete exit to next scene
 

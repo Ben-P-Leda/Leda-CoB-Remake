@@ -13,6 +13,7 @@ namespace Gameplay.Shared.Scripts
         private List<ICanBeFrozen> _freezableEnemyScripts;
         private GameObject _getReadySequencer;
         private GameObject _endLevelSequencer;
+        private GameObject _gameOverSequencer;
 
         public int Area;
         public AreaStage Stage;
@@ -33,6 +34,7 @@ namespace Gameplay.Shared.Scripts
 
             _getReadySequencer = transform.FindChild("Get Ready Sequencer").gameObject;
             _endLevelSequencer = transform.FindChild("End Level Sequencer").gameObject;
+            _gameOverSequencer = transform.FindChild("Game Over Sequencer").gameObject;
 
             _freezableEnemyScripts = new List<ICanBeFrozen>();
             for (int i = 0; i < Enemies.transform.childCount; i++)
@@ -128,7 +130,7 @@ namespace Gameplay.Shared.Scripts
             else
             {
                 CurrentGame.GameData.GameplayState = GameplayState.GameOver;
-                // TODO: Game over
+                _gameOverSequencer.SetActive(true);
             }
         }
 
