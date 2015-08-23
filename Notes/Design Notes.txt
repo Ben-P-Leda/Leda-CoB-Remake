@@ -26,12 +26,24 @@ Position offsets:
 			
 Conversion from game to max screen: at 1920x1080, a 50x50 image displays at 80x80
 
-Idea on jump-thru platforms using different physics layers
-- Kev exists on his own layer
-- Two layers that jump-thrus can exist on - default and "above player"
-- Anything on "above player" does NOT interact with Kev's layer
-- Enemies are on the default layer, so always interact
-- Jumpthru controller detects which platforms are above and below Kev and switches their layers accordingly
+HOW TO MAKE THE FONT:
+- Text: Osmanthus, 72pt, White
+- Duplicate layer, invert (make black layer 1)
+- Fragment black layer - 16 frags, distance 4
+- Duplicate black layer 1 x14 & merge duplicates
+- Duplicate black layer & fragment again - 16 frags, distance 4 (make black layer 2)
+- Duplicate black layer 2 layer 9 & merge duplicates
+- On black layer 2 Magic wand select outside (0 tolerance) & invert selection
+- New layer, bevel selection (white, black, radius 4)
+- Duplicate black layer 2, invert colours and merge with black BG to make alpha mask
+- Alpha mask onto bevel layer
+- Duplicate black layer 2, fragment 16 frags, distance 2 (make black layer 3)
+- Duplicate black layer 3 x 9 & merge
+- Gauss blur original text layer (radius 1)
+- Merge all together
+
+
+
 
 
 
@@ -84,7 +96,32 @@ Mountain Country: HOTNSPICEYCHP7428LYF
 
 	
 
-
+Level 1-2 Activators (Block positions)
+- Button (4, 19):
+	Vanishing platforms (6, 18/8, 17/10, 16)
+	Blocks (14, 13-15) - OBJECT
+	Jumpthru platform (13-14, 5)
+- Switch (17, 2): 
+	Open wall (17-18, 18-22) - OBJECT
+	Jetpack power up (8, 21)
+- Infoscreen (58, 25):
+	"Is this a key I see before me?"
+	Key (55, 26)
+- Infoscreen (52, 40):
+	"In case of emergency, pull the switch on your left"
+- Switch (50, 40):
+	Time freeze bonus
+	Health restore bonus
+- Button (25, 45):
+	Jumpthru platform (44-47, 39)
+- Lock (22, 32):
+	Key (37, 34)
+	SuperJump power up (36, 34)
+- Infoscreen (51, 12):
+	"In need of a lift?"
+	Jetpack power up (49, 12)
+- Lock (47, 1):
+	Exit gate
 
 
 
