@@ -6,7 +6,6 @@ Fixes & arising
 To complete level 1-1:
 	- Pickaxe functionality
 	- Jetpack functionality
-	- Game over sequence
 	- Level complete exit to next scene
 
 
@@ -23,6 +22,8 @@ Missing Tiles
 - Shadows for jump-through type platforms (half height)
 - Twist poles with no shadow
 - Edge brick shadows
+- Platform extending off edge of rock (see 1-2 secret room)
+- Warp door tops (jump-through)
 
 Effects & nice-to-have
 ======================

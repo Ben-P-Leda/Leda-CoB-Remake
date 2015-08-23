@@ -14,6 +14,7 @@ namespace Gameplay.Shared.Scripts
         private GameObject _getReadySequencer;
         private GameObject _endLevelSequencer;
         private GameObject _gameOverSequencer;
+        private float _timeSinceGameOver;
 
         public int Area;
         public AreaStage Stage;
@@ -89,6 +90,7 @@ namespace Gameplay.Shared.Scripts
                 case GameplayState.GetReady: UpdateForGetReady(); break;
                 case GameplayState.InPlay: UpdateForInPlay(); break;
                 case GameplayState.LevelComplete: UpdateForLevelCleared(); break;
+                case GameplayState.GameOver: UpdateForGameOver(); break;
             }
         }
 
@@ -130,6 +132,7 @@ namespace Gameplay.Shared.Scripts
             else
             {
                 CurrentGame.GameData.GameplayState = GameplayState.GameOver;
+                _timeSinceGameOver = 0.0f;
                 _gameOverSequencer.SetActive(true);
             }
         }
@@ -141,5 +144,24 @@ namespace Gameplay.Shared.Scripts
                 _endLevelSequencer.SetActive(true);
             }
         }
+
+        private void UpdateForGameOver()
+        {
+            if ((Input.GetKeyDown(KeyCode.RightShift)) || 
+                ((_timeSinceGameOver <= Game_Over_State_Duration) && (_timeSinceGameOver + Time.deltaTime > Game_Over_State_Duration)))
+            {
+                _fadeTransitioner.TransitionCompletionHandler = ExitGame;
+                _fadeTransitioner.FadeOut();
+            }
+
+            _timeSinceGameOver += Time.deltaTime;
+        }
+
+        private void ExitGame()
+        {
+            Application.LoadLevel("TitleScene");
+        }
+
+        private const float Game_Over_State_Duration = 5.0f;
     }
 }
