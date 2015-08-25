@@ -26,6 +26,7 @@ namespace Gameplay.Shared.Scripts.Shots
 
         private void Deactivate()
         {
+            BoltBurstPool.ActivateBoltBurst(_transform.position);
             gameObject.SetActive(false);
         }
 
