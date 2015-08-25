@@ -9,7 +9,7 @@ namespace Shared.Scripts
 
         public static void SetForNewGame()
         {
-            _gameData.Lives = Starting_Lives; ;
+            _gameData.Lives = Constants.Player_Starting_Lives; ;
             _gameData.Score = 0;
         }
 
@@ -38,14 +38,15 @@ namespace Shared.Scripts
             _gameData.RestartScale = new Vector3(facingLeft ? -1.0f : 1.0f, 1.0f, 1.0f);
             _gameData.CarryingKey = false;
 
-            if (stage == AreaStage.One) { ClearInventory(); }
+            //if (stage == AreaStage.One) 
+            { ClearInventory(); }
 
             RestorePlayerEnergy();
         }
 
         private static void ClearInventory()
         {
-            for (int i = 0; i < _gameData.ToolCounts.Length; i++) { _gameData.ToolCounts[i] = 0; }
+            for (int i = 0; i < _gameData.ToolCounts.Length; i++) { _gameData.ToolCounts[i] = 10; }
         }
 
         public static void StartGameplay()
@@ -75,12 +76,11 @@ namespace Shared.Scripts
 
             switch (toolType)
             {
+                case ToolType.Jetpack: _gameData.ToolActiveTimeRemaining = Constants.Jetpack_Duration; break;
                 case ToolType.FireExtinguisher: _gameData.ToolActiveTimeRemaining = Constants.Fire_Extinguisher_Duration; break;
             }
         }
 
         public static bool ToolIsActive { get { return _gameData.ToolActiveTimeRemaining > 0.0f; } }
-
-        private const int Starting_Lives = 5;
     }
 }

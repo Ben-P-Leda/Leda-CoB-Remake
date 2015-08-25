@@ -1,10 +1,11 @@
 fileFormatVersion: 2
 guid: 1dc78542db6bfa34f96f64c87732e701
-timeCreated: 1438705480
+timeCreated: 1440532212
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Extinguisher
+    21300002: Jetpack
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -28,7 +29,7 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 256
+  maxTextureSize: 128
   textureSettings:
     filterMode: -1
     aniso: 16
@@ -57,6 +58,16 @@ TextureImporter:
         y: 0
         width: 41
         height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Jetpack
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 0
+        width: 22
+        height: 27
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

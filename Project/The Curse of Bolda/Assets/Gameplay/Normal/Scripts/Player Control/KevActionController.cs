@@ -72,6 +72,65 @@ namespace Gameplay.Normal.Scripts.Player_Control
             if (Input.GetKeyDown(KeyCode.Escape)) { Application.Quit(); }
         }
 
+        private void UpdateVerticalMovement()
+        {
+            if (_activeTool == ToolType.Jetpack) { HandleJetpackVerticalMovement(); }
+            else { HandleNormalVerticalMovement(); }
+        }
+
+        private void HandleJetpackVerticalMovement()
+        {
+            float verticalSpeed = 0.0f;
+            if (Input.GetKey(KeyCode.W)) { verticalSpeed = Speed; }
+            if (Input.GetKey(KeyCode.S)) { verticalSpeed = -Speed; }
+
+            _rigidBody2D.velocity = new Vector2(_rigidBody2D.velocity.x, verticalSpeed);
+        }
+
+        private void HandleNormalVerticalMovement()
+        {
+            if ((_rigidBody2D.velocity.y < Fall_Velocity_Threshold) && (_verticalMovementState != VerticalMovementState.Falling)) { StartFalling(); }
+            if (_rigidBody2D.velocity.y > Normal_Jump_Max_Vertical_Velocity)
+            {
+                _rigidBody2D.velocity = new Vector2(_rigidBody2D.velocity.x, Normal_Jump_Max_Vertical_Velocity);
+            }
+
+            switch (_verticalMovementState)
+            {
+                case VerticalMovementState.OnGround: CheckForJumpStart(); break;
+                case VerticalMovementState.Falling: HandleFalling(); break;
+            }
+
+            if (_verticalMovementState != VerticalMovementState.OnGround) { _isMoving = true; }
+        }
+
+        private void StartFalling()
+        {
+            _verticalMovementState = VerticalMovementState.Falling;
+            _animator.SetBool("Falling", true);
+            _animator.SetBool("Jumping", false);
+        }
+
+        private void CheckForJumpStart()
+        {
+            if ((!_lockMovement) && (!_enteringGate) && (Input.GetKeyDown(KeyCode.W)))
+            {
+                _rigidBody2D.AddForce(new Vector2(0.0f, Jump_Power));
+                _verticalMovementState = VerticalMovementState.Rising;
+                _animator.SetBool("Jumping", true);
+            }
+        }
+
+        private void HandleFalling()
+        {
+            if (_rigidBody2D.velocity.y >= Touchdown_Velocity_Threshold)
+            {
+                _verticalMovementState = VerticalMovementState.OnGround;
+                _animator.SetBool("Falling", false);
+                _animator.SetBool("Walking", _rigidBody2D.velocity.x != 0.0f);
+            }
+        }
+
         private void UpdateHorizontalMovement()
         {
             if (!_lockMovement)
@@ -120,69 +179,46 @@ namespace Gameplay.Normal.Scripts.Player_Control
             _facingRight = !_facingRight;
         }
 
-        private void UpdateVerticalMovement()
-        {
-            if ((_rigidBody2D.velocity.y < Fall_Velocity_Threshold) && (_verticalMovementState != VerticalMovementState.Falling)) { StartFalling(); }
-            if (_rigidBody2D.velocity.y > Normal_Jump_Max_Vertical_Velocity)
-            {
-                _rigidBody2D.velocity = new Vector2(_rigidBody2D.velocity.x, Normal_Jump_Max_Vertical_Velocity);
-            }
-
-            switch (_verticalMovementState)
-            {
-                case VerticalMovementState.OnGround: CheckForJumpStart(); break;
-                case VerticalMovementState.Falling: HandleFalling(); break;
-            }
-
-            if (_verticalMovementState != VerticalMovementState.OnGround) { _isMoving = true; }
-        }
-
-        private void StartFalling()
-        {
-            _verticalMovementState = VerticalMovementState.Falling;
-            _animator.SetBool("Falling", true);
-            _animator.SetBool("Jumping", false);
-        }
-
-        private void CheckForJumpStart()
-        {
-            if ((!_lockMovement) && (!_enteringGate) && (Input.GetKeyDown(KeyCode.W)))
-            {
-                _rigidBody2D.AddForce(new Vector2(0.0f, Jump_Power));
-                _verticalMovementState = VerticalMovementState.Rising;
-                _animator.SetBool("Jumping", true);
-            }
-        }
-
-        private void HandleFalling()
-        {
-            if (_rigidBody2D.velocity.y >= Touchdown_Velocity_Threshold)
-            {
-                _verticalMovementState = VerticalMovementState.OnGround;
-                _animator.SetBool("Falling", false);
-                _animator.SetBool("Walking", _rigidBody2D.velocity.x != 0.0f);
-            }
-        }
-
         private void CheckForToolActivation()
         {
+            if ((Input.GetKeyDown(KeyCode.F2)) && (CurrentGame.HasTool(ToolType.Jetpack))) { ActivateJetpack(); }
             if ((Input.GetKeyDown(KeyCode.F6)) && (CurrentGame.HasTool(ToolType.FireExtinguisher)) && (!_isMoving)) { ActivateFireExtinguisher(); }
+        }
+
+        private void ActivateJetpack()
+        {
+            if (_activeTool == null)
+            {
+                _animator.SetBool("Jumping", false);
+                _animator.SetBool("Jetpack", true);
+
+                _rigidBody2D.gravityScale = 0.0f;
+                _rigidBody2D.velocity = new Vector2(_rigidBody2D.velocity.x, 0.0f);
+
+                CurrentGame.ActivateTool(ToolType.Jetpack);
+                _activeTool = ToolType.Jetpack;
+            }
         }
 
         private void ActivateFireExtinguisher()
         {
-            _lockMovement = true;
-            _animator.SetBool("Extinguisher", true);
+            if (_activeTool == null)
+            {
+                _lockMovement = true;
+                _animator.SetBool("Extinguisher", true);
 
-            CurrentGame.ActivateTool(ToolType.FireExtinguisher);
-            _activeTool = ToolType.FireExtinguisher;
+                CurrentGame.ActivateTool(ToolType.FireExtinguisher);
+                _activeTool = ToolType.FireExtinguisher;
+            }
         }
 
         private void CheckForToolDeactivation()
         {
             if ((_activeTool != null) && (!CurrentGame.ToolIsActive))
             {
+                _animator.SetBool("Jetpack", false);
                 _animator.SetBool("Extinguisher", false);
+                _rigidBody2D.gravityScale = 1.0f;
                 _lockMovement = false;
                 _activeTool = null;
             }
@@ -208,9 +244,19 @@ namespace Gameplay.Normal.Scripts.Player_Control
 
         private void CheckForGateActivation()
         {
-            if ((!_enteringGate) && (_verticalMovementState == VerticalMovementState.OnGround) && (Input.GetKeyDown(KeyCode.S)) && (_gateCenterX > 0.0f))
+            if ((GateEntryPermitted) && (Input.GetKeyDown(KeyCode.S))) { _enteringGate = true; }
+        }
+
+        private bool GateEntryPermitted
+        {
+            get
             {
-                _enteringGate = true;
+                if (_enteringGate) { return false; }
+                if (_verticalMovementState != VerticalMovementState.OnGround) { return false; }
+                if (_gateCenterX <= 0.0f) { return false; }
+                if (_activeTool != null) { return false; }
+
+                return true;
             }
         }
 
