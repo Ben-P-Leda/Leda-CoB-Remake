@@ -2,7 +2,7 @@
 
 namespace Gameplay.Shared.Scripts.Enemy_Behaviours
 {
-    public class Type05EyeMovement : MonoBehaviour
+    public class PlayerFollowEyeMovement : MonoBehaviour
     {
         private Transform _transform;
         private Transform _parentTransform;
