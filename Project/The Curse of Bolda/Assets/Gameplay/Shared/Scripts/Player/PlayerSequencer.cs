@@ -62,7 +62,7 @@ namespace Gameplay.Shared.Scripts.Player
 
         public void StartNewLife()
         {
-            if (_sequencedAvatarAnimator != null)
+            if ((SequencedAvatar.activeInHierarchy) && (_sequencedAvatarAnimator != null))
             {
                 _sequencedAvatarAnimator.SetInteger("DeathSequence", 0);
                 _sequencedAvatarTransform.FindChild("Generic Death Particles").gameObject.SetActive(false);
@@ -87,6 +87,7 @@ namespace Gameplay.Shared.Scripts.Player
             CurrentGame.GameData.TimerIsFrozen = true;
             SwitchToSequencedAvatar();
             _sequencedAvatarController.SequenceCompleteHandler = CompleteGateEntrySequence;
+            _sequencedAvatarAnimator.SetInteger("DeathSequence", 0);
             _sequencedAvatarAnimator.SetBool("EnteringGate", true);
         }
 

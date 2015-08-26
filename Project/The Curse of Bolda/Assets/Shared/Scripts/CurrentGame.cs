@@ -18,6 +18,8 @@ namespace Shared.Scripts
             RestorePlayerEnergy();
 
             if (_gameData.TimeRemaining <= 0.0f) { _gameData.TimeRemaining = _gameData.TotalTime; }
+            _gameData.ActiveTool = ToolType.None;
+            _gameData.ActiveToolTimeRemaining = 0.0f;
             _gameData.TimerIsFrozen = true;
             _gameData.GameplayState = GameplayState.GetReady;
         }
@@ -72,15 +74,22 @@ namespace Shared.Scripts
 
         public static void ActivateTool(ToolType toolType)
         {
+            _gameData.ActiveTool = toolType;
             _gameData.ToolCounts[(int)toolType] -= 1;
 
             switch (toolType)
             {
-                case ToolType.Jetpack: _gameData.ToolActiveTimeRemaining = Constants.Jetpack_Duration; break;
-                case ToolType.FireExtinguisher: _gameData.ToolActiveTimeRemaining = Constants.Fire_Extinguisher_Duration; break;
+                case ToolType.Jetpack: _gameData.ActiveToolTimeRemaining = Constants.Jetpack_Duration; break;
+                case ToolType.FireExtinguisher: _gameData.ActiveToolTimeRemaining = Constants.Fire_Extinguisher_Duration; break;
             }
         }
 
-        public static bool ToolIsActive { get { return _gameData.ToolActiveTimeRemaining > 0.0f; } }
+        public static bool ToolIsActive { get { return _gameData.ActiveToolTimeRemaining > 0.0f; } }
+        public static bool ToolReadyForDeactivation { get { return ((_gameData.ActiveTool != ToolType.None) && (_gameData.ActiveToolTimeRemaining <= 0.0f)); } }
+
+        public static void DeactivateTool()
+        {
+            _gameData.ActiveTool = ToolType.None;
+        }
     }
 }

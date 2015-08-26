@@ -2,6 +2,8 @@
 
 using System.Collections.Generic;
 
+using Shared.Scripts;
+
 namespace Gameplay.Shared.Scripts.Special_Platforms
 {
     public class JumpthroughPlatformManager : MonoBehaviour
@@ -59,6 +61,8 @@ namespace Gameplay.Shared.Scripts.Special_Platforms
 
         private bool ShouldApplyPhysicsToPlayer(Vector3 platformPosition)
         {
+            if (CurrentGame.GameData.ActiveTool == ToolType.Jetpack) { return true; }
+
             if (_playerTransform.position.y - Jumpthru_Offset <= platformPosition.y) { return false; }
             if (_playerTransform.position.x + Horizontal_Margin < platformPosition.x) { return false; }
             if (_playerTransform.position.x - Horizontal_Margin > platformPosition.x) { return false; }

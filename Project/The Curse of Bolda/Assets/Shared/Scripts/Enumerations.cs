@@ -24,6 +24,7 @@
 
     public enum ToolType
     {
+        None = -1,
         Invincibility = 0,
         Jetpack = 1,
         SuperJump = 2,

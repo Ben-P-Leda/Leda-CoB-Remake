@@ -25,11 +25,11 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
         {
             if (_extinguished)
             {
-                float toolDurationFraction = CurrentGame.GameData.ToolActiveTimeRemaining / Constants.Fire_Extinguisher_Duration;
+                float toolDurationFraction = CurrentGame.GameData.ActiveToolTimeRemaining / Constants.Fire_Extinguisher_Duration;
                 _particleSystem.startLifetime = toolDurationFraction;
                 _spriteRenderer.color = Color.Lerp(_transparent, Color.white, toolDurationFraction);
 
-                if (CurrentGame.GameData.ToolActiveTimeRemaining <= 0.0f) { GameObject.SetActive(false); }
+                if (CurrentGame.GameData.ActiveToolTimeRemaining <= 0.0f) { GameObject.SetActive(false); }
             }
         }
 

@@ -7,6 +7,10 @@ To complete level 1-1:
 	- Pickaxe functionality
 	- Jetpack functionality
 	- Level complete exit to next scene
+	- Enforce gem limit
+	
+Bugs:
+	- Fire extinguisher spray collects gems
 
 
 Epic-level

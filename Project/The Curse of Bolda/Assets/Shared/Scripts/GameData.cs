@@ -19,7 +19,8 @@ namespace Shared.Scripts
         public Vector3 RestartScale { get; set; }
         public bool CarryingKey { get; set; }
         public int[] ToolCounts { get; set; }
-        public float ToolActiveTimeRemaining { get; set; }
+        public ToolType ActiveTool { get; set; }
+        public float ActiveToolTimeRemaining { get; set; }
 
         public GameData()
         {

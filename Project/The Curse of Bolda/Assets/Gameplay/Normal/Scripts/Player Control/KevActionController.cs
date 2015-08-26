@@ -20,8 +20,6 @@ namespace Gameplay.Normal.Scripts.Player_Control
         private bool _enteringGate;
         private GateType _activeGateType;
 
-        private ToolType? _activeTool;
-
         private void Awake()
         {
             _transform = GetComponent<Transform>();
@@ -52,8 +50,6 @@ namespace Gameplay.Normal.Scripts.Player_Control
             _activeGateType = GateType.None;
             _gateCenterX = 0.0f;
             _enteringGate = false;
-
-            _activeTool = null;
         }
 
         private void Update()
@@ -74,7 +70,7 @@ namespace Gameplay.Normal.Scripts.Player_Control
 
         private void UpdateVerticalMovement()
         {
-            if (_activeTool == ToolType.Jetpack) { HandleJetpackVerticalMovement(); }
+            if (CurrentGame.GameData.ActiveTool == ToolType.Jetpack) { HandleJetpackVerticalMovement(); }
             else { HandleNormalVerticalMovement(); }
         }
 
@@ -187,7 +183,7 @@ namespace Gameplay.Normal.Scripts.Player_Control
 
         private void ActivateJetpack()
         {
-            if (_activeTool == null)
+            if (!CurrentGame.ToolIsActive)
             {
                 _animator.SetBool("Jumping", false);
                 _animator.SetBool("Jetpack", true);
@@ -196,31 +192,31 @@ namespace Gameplay.Normal.Scripts.Player_Control
                 _rigidBody2D.velocity = new Vector2(_rigidBody2D.velocity.x, 0.0f);
 
                 CurrentGame.ActivateTool(ToolType.Jetpack);
-                _activeTool = ToolType.Jetpack;
             }
         }
 
         private void ActivateFireExtinguisher()
         {
-            if (_activeTool == null)
+            if (!CurrentGame.ToolIsActive)
             {
                 _lockMovement = true;
                 _animator.SetBool("Extinguisher", true);
 
                 CurrentGame.ActivateTool(ToolType.FireExtinguisher);
-                _activeTool = ToolType.FireExtinguisher;
             }
         }
 
         private void CheckForToolDeactivation()
         {
-            if ((_activeTool != null) && (!CurrentGame.ToolIsActive))
+            if (CurrentGame.ToolReadyForDeactivation)
             {
                 _animator.SetBool("Jetpack", false);
                 _animator.SetBool("Extinguisher", false);
+                _animator.SetBool("Walking", false);
                 _rigidBody2D.gravityScale = 1.0f;
                 _lockMovement = false;
-                _activeTool = null;
+
+                CurrentGame.DeactivateTool();
             }
         }
 
@@ -254,7 +250,7 @@ namespace Gameplay.Normal.Scripts.Player_Control
                 if (_enteringGate) { return false; }
                 if (_verticalMovementState != VerticalMovementState.OnGround) { return false; }
                 if (_gateCenterX <= 0.0f) { return false; }
-                if (_activeTool != null) { return false; }
+                if (CurrentGame.ToolIsActive) { return false; }
 
                 return true;
             }
