@@ -85,6 +85,7 @@
     <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type11Movement.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type12Movement.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\Environment\BackgroundLayer.cs" />
+    <Compile Include="Assets\Gameplay\Shared\Scripts\Environment\Water.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\Generic\GenericBouncingMovementController.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\Generic\GenericObjectPool.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\LevelSequencer.cs" />

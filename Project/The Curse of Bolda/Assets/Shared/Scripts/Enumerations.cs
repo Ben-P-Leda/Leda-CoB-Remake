@@ -19,7 +19,9 @@
 
     public enum PlayerDeathSequence
     {
-        Generic = 1
+        Generic = 1,
+        Drowning = 2,
+        Burning = 3
     }
 
     public enum ToolType

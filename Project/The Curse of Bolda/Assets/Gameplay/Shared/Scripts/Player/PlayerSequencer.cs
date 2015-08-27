@@ -16,6 +16,8 @@ namespace Gameplay.Shared.Scripts.Player
         private bool _sequenceRunning;
         private GateType _gateBeingEntered;
 
+        public PlayerDeathSequence DeathSequence { private get; set; }
+
         public SequencedPlayer.PlayerSequenceCompleteCallback SequenceCompletionHandler
         {
             set { _sequencedAvatarController.SequenceCompleteHandler = value; }
@@ -76,6 +78,8 @@ namespace Gameplay.Shared.Scripts.Player
             InputDrivenAvatar.SetActive(true);
 
             _basicShotPool.CanShoot = true;
+
+            DeathSequence = PlayerDeathSequence.Generic;
 
             // TODO: "Let's rock!" sequence
         }

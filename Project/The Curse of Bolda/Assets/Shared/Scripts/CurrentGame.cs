@@ -40,15 +40,14 @@ namespace Shared.Scripts
             _gameData.RestartScale = new Vector3(facingLeft ? -1.0f : 1.0f, 1.0f, 1.0f);
             _gameData.CarryingKey = false;
 
-            //if (stage == AreaStage.One) 
-            { ClearInventory(); }
+            if (stage == AreaStage.One) { ClearInventory(); }
 
             RestorePlayerEnergy();
         }
 
         private static void ClearInventory()
         {
-            for (int i = 0; i < _gameData.ToolCounts.Length; i++) { _gameData.ToolCounts[i] = 10; }
+            for (int i = 0; i < _gameData.ToolCounts.Length; i++) { _gameData.ToolCounts[i] = 0; }
         }
 
         public static void StartGameplay()

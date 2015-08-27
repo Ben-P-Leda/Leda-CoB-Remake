@@ -186,10 +186,12 @@ namespace Gameplay.Normal.Scripts.Player_Control
             if (!CurrentGame.ToolIsActive)
             {
                 _animator.SetBool("Jumping", false);
+                _animator.SetBool("Walking", false);
                 _animator.SetBool("Jetpack", true);
 
                 _rigidBody2D.gravityScale = 0.0f;
                 _rigidBody2D.velocity = new Vector2(_rigidBody2D.velocity.x, 0.0f);
+                _rigidBody2D.AddForce(new Vector2(0.0f, 100.0f));
 
                 CurrentGame.ActivateTool(ToolType.Jetpack);
             }
@@ -222,11 +224,18 @@ namespace Gameplay.Normal.Scripts.Player_Control
 
         private void OnTriggerEnter2D(Collider2D collider)
         {
-            if (collider.tag == "Exit Gate")
+            switch (collider.tag)
             {
-                _gateCenterX = collider.transform.position.x;
-                _activeGateType = GateType.Exit;
+                case "Exit Gate": _gateCenterX = collider.transform.position.x; _activeGateType = GateType.Exit; break;
+                case "Water Pool": TriggerDeathSequence(PlayerDeathSequence.Drowning); break;
             }
+        }
+
+        private void TriggerDeathSequence(PlayerDeathSequence sequenceToRun)
+        {
+            _lockMovement = true;
+            _sequenceController.DeathSequence = sequenceToRun;
+            CurrentGame.GameData.Energy = 0;
         }
 
         private void OnTriggerExit2D(Collider2D collider)
