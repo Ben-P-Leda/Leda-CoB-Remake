@@ -49,11 +49,11 @@ namespace Gameplay.Shared.Scripts.Special_Platforms
                 {
                     if (ShouldApplyPhysicsToPlayer(_platforms[i].Transform.position))
                     {
-                        _platforms[i].GameObject.layer = Below_Player_Sorting_Layer;
+                        _platforms[i].GameObject.layer = Constants.Affect_Player_Impact_Sorting_Layer;
                     }
                     else
                     {
-                        _platforms[i].GameObject.layer = Above_Player_Sorting_Layer;
+                        _platforms[i].GameObject.layer = Constants.Ignore_Player_Impact_Sorting_Layer;
                     }
                 }
             }
@@ -72,7 +72,5 @@ namespace Gameplay.Shared.Scripts.Special_Platforms
 
         private const float Jumpthru_Offset = 0.365f;
         private const float Horizontal_Margin = 0.35f;
-        private const int Above_Player_Sorting_Layer = 9;
-        private const int Below_Player_Sorting_Layer = 8;
     }
 }

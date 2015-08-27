@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+using Shared.Scripts;
+
 namespace Gameplay.Shared.Scripts.Environment
 {
     public class Water : MonoBehaviour
@@ -12,25 +14,39 @@ namespace Gameplay.Shared.Scripts.Environment
         private GameObject[] _meshObjects;
         private Mesh[] _meshes;
 
+        private float _left;
+        private float _width;
+        private float _top;
+        private float _bottom;
+
         private int _edgeCount;
         private int _nodeCount { get { return _edgeCount + 1; } }
 
         private LineRenderer _topLine;
-
-        public float Left;
-        public float Width;
-        public float Top;
-        public float Bottom;
+        private GameObject _jetpackBlocker;
+        private GameObject _playerDeathTrigger;
 
         public GameObject WaterMesh;
 
         private void Awake()
         {
-            _edgeCount = Mathf.RoundToInt(Width) * Edges_Per_Unity_Unit;
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetMetricsFromTransform();
+
+            _edgeCount = Mathf.RoundToInt(_width) * Edges_Per_Unity_Unit;
 
             InitializeContainerArrays();
             InitializeTopLine();
             InitializeMeshes();
+            InitializeInteractionColliders();
+        }
+
+        private void GetMetricsFromTransform()
+        {
+            _left = transform.position.x - ((transform.localScale.x * 0.5f) * Transform_To_Mesh_Size_Modifier);
+            _width = transform.localScale.x  * Transform_To_Mesh_Size_Modifier;
+            _top = transform.position.y + ((transform.localScale.y * 0.5f) * Transform_To_Mesh_Size_Modifier);
+            _bottom = transform.position.y - ((transform.localScale.y * 0.5f) * Transform_To_Mesh_Size_Modifier);
         }
 
         private void InitializeContainerArrays()
@@ -42,8 +58,8 @@ namespace Gameplay.Shared.Scripts.Environment
 
             for (int i = 0; i < _nodeCount; i++)
             {
-                _yPositions[i] = Top;
-                _xPositions[i] = Left + Width * i / _edgeCount;
+                _yPositions[i] = _top;
+                _xPositions[i] = _left + _width * i / _edgeCount;
                 _accelerations[i] = 0;
                 _velocities[i] = 0;
             }
@@ -89,11 +105,10 @@ namespace Gameplay.Shared.Scripts.Environment
 
                 _colliders[i] = new GameObject();
                 _colliders[i].name = "Trigger";
-                _colliders[i].tag = "Water Pool";
                 _colliders[i].AddComponent<BoxCollider2D>();
                 _colliders[i].transform.parent = transform;
-                _colliders[i].transform.position = new Vector3(Left + Width * (i + 0.5f) / _edgeCount, Top - 0.5f, 0);
-                _colliders[i].transform.localScale = new Vector3(Width / _edgeCount, 1, 1);
+                _colliders[i].transform.position = new Vector3(_left + _width * (i + 0.5f) / _edgeCount, _top - 0.5f, 0);
+                _colliders[i].transform.localScale = new Vector3(_width / _edgeCount, 1, 1);
                 _colliders[i].GetComponent<BoxCollider2D>().isTrigger = true;
                 _colliders[i].AddComponent<WaterDetector>();
             }
@@ -109,16 +124,38 @@ namespace Gameplay.Shared.Scripts.Environment
             Vector3[] Vertices = new Vector3[4];
             Vertices[0] = new Vector3(_xPositions[i], _yPositions[i], 0.0f);
             Vertices[1] = new Vector3(_xPositions[i + 1], _yPositions[i + 1], 0.0f);
-            Vertices[2] = new Vector3(_xPositions[i], Bottom, 0.0f);
-            Vertices[3] = new Vector3(_xPositions[i + 1], Bottom, 0.0f);
+            Vertices[2] = new Vector3(_xPositions[i], _bottom, 0.0f);
+            Vertices[3] = new Vector3(_xPositions[i + 1], _bottom, 0.0f);
 
             _meshes[i].vertices = Vertices;
+        }
+
+        private void InitializeInteractionColliders()
+        {
+            _jetpackBlocker = new GameObject();
+            _jetpackBlocker.name = "Jetpack Blocker";
+            _jetpackBlocker.tag = "Wall Collider";
+            _jetpackBlocker.AddComponent<BoxCollider2D>();
+            _jetpackBlocker.transform.parent = transform;
+            _jetpackBlocker.transform.localPosition = new Vector3(transform.parent.localPosition.x, transform.parent.localPosition.y + ((transform.parent.localScale.y * 0.5f) * Transform_To_Mesh_Size_Modifier), 0);
+            _jetpackBlocker.transform.localScale = new Vector3(transform.parent.localScale.x * Transform_To_Mesh_Size_Modifier, 0.2f, 1);
+
+            _playerDeathTrigger = new GameObject();
+            _playerDeathTrigger.name = "Death Trigger";
+            _playerDeathTrigger.tag = "Water Pool";
+            _playerDeathTrigger.AddComponent<BoxCollider2D>();
+            _playerDeathTrigger.GetComponent<BoxCollider2D>().isTrigger = true;
+            _playerDeathTrigger.transform.parent = transform;
+            _playerDeathTrigger.transform.localPosition = new Vector3(transform.parent.localPosition.x, transform.parent.localPosition.y, 0);
+            _playerDeathTrigger.transform.localScale = new Vector3(transform.parent.localScale.x * Transform_To_Mesh_Size_Modifier, 0.2f, 1);
         }
 
         public void Splash(float xPosition, float velocity)
         {
             if (xPosition >= _xPositions[0] && xPosition <= _xPositions[_xPositions.Length - 1])
             {
+                velocity = Mathf.Clamp(velocity, -.045f, 0.0f);
+
                 xPosition -= _xPositions[0];
 
                 int index = Mathf.RoundToInt((_xPositions.Length - 1) * (xPosition / (_xPositions[_xPositions.Length - 1] - _xPositions[0])));
@@ -127,13 +164,19 @@ namespace Gameplay.Shared.Scripts.Environment
             }
         }
 
+        private void Update()
+        {
+            if (CurrentGame.GameData.ActiveTool == ToolType.Jetpack) { _jetpackBlocker.layer = Constants.Affect_Player_Impact_Sorting_Layer; }
+            else { _jetpackBlocker.layer = Constants.Ignore_Player_Impact_Sorting_Layer; }
+        }
+
         //Called regularly by Unity
         private void FixedUpdate()
         {
             //Here we use the Euler method to handle all the physics of our springs:
             for (int i = 0; i < _xPositions.Length; i++)
             {
-                float force = Spring_Constant * (_yPositions[i] - Top) + _velocities[i] * Damping_Modifier;
+                float force = Spring_Constant * (_yPositions[i] - _top) + _velocities[i] * Damping_Modifier;
                 _accelerations[i] = -force;
                 _yPositions[i] += _velocities[i];
                 _velocities[i] += _accelerations[i];
@@ -174,8 +217,9 @@ namespace Gameplay.Shared.Scripts.Environment
         }
 
         private const int Edges_Per_Unity_Unit = 5;
+        private const float Transform_To_Mesh_Size_Modifier = 0.639f;
         private const float Spring_Constant = 0.02f;
-        private const float Damping_Modifier = 0.02f;
+        private const float Damping_Modifier = 0.05f;
         private const float Spread_Modifier = 0.05f;
     }
 
