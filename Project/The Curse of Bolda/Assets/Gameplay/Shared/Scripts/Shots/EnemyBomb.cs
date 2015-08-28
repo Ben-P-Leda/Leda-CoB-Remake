@@ -45,6 +45,6 @@ namespace Gameplay.Shared.Scripts.Shots
         }
 
         private const float Initial_Drop_Velocity = -0.05f;
-        private const float Energy_Drain_Value = 80.0f; 
+        private const float Energy_Drain_Value = 50.0f; 
     }
 }

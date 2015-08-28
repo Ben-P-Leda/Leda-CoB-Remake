@@ -5,17 +5,19 @@ Fixes & arising
 
 To complete level 1-1:
 	- Pickaxe functionality
-	- Jetpack functionality
 	- Level complete exit to next scene
 	- Enforce gem limit
 	
 Bugs:
 	- Fire extinguisher spray collects gems
-
+	
+Next design:
+	- Type 3 enemy
+	- Time stop bonus
 
 Epic-level
 ==========
-- Enemies (Types 3, 9)
+- Enemies (Types 3)
 - Bonuses (Time stop, Extra life)
 - Tools (Invincibility, Jetpack functionality, Super-jump, Firepower-up, Pickaxe functionality)
 - Support
@@ -26,7 +28,6 @@ Missing Tiles
 - Shadows for jump-through type platforms (half height)
 - Twist poles with no shadow
 - Edge brick shadows
-- Platform extending off edge of rock (see 1-2 secret room)
 - Warp door tops (jump-through)
 
 Effects & nice-to-have
