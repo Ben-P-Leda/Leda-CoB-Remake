@@ -67,6 +67,7 @@
      <Compile Include="Assets\Gameplay\Shared\Scripts\Effects\LevelClearChrome.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Effects\PooledParticleEffect.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Effects\SmokeCloudPool.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Effects\WaterSplashPool.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\BasicBehaviour.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\DamageComponentBehaviour.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\FireBehaviour.cs" />

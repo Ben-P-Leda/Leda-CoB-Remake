@@ -2,6 +2,7 @@
 
 using Shared.Scripts;
 using Gameplay.Shared.Scripts.Player;
+using Gameplay.Shared.Scripts.Effects;
 
 namespace Gameplay.Normal.Scripts.Player_Control
 {
@@ -50,6 +51,8 @@ namespace Gameplay.Normal.Scripts.Player_Control
             _activeGateType = GateType.None;
             _gateCenterX = 0.0f;
             _enteringGate = false;
+
+            _rigidBody2D.gravityScale = 1.0f;
         }
 
         private void Update()
@@ -227,6 +230,7 @@ namespace Gameplay.Normal.Scripts.Player_Control
             switch (collider.tag)
             {
                 case "Exit Gate": _gateCenterX = collider.transform.position.x; _activeGateType = GateType.Exit; break;
+                case "Water Surface": WaterSplashPool.ActivateWaterSplash(_transform.position + new Vector3(0,-0.15f,0)); break;
                 case "Water Pool": TriggerDeathSequence(PlayerDeathSequence.Drowning); break;
             }
         }

@@ -41,7 +41,7 @@ namespace Shared.Scripts
             _gameData.CarryingKey = false;
 
             if (stage == AreaStage.One) { ClearInventory(); }
-            _gameData.ToolCounts[1] = 2;
+            _gameData.ToolCounts[1] = 2; // TODO: remove this once water tests are done
 
             RestorePlayerEnergy();
         }

@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 
+using Gameplay.Shared.Scripts.Effects;
+
 namespace Gameplay.Shared.Scripts.Enemy_Behaviours
 {
     public class Type07Movement : MonoBehaviour, ICanBeFrozen
     {
         private Transform _transform;
         private SpriteRenderer _spriteRenderer;
-        private GameObject _splashEffect;
         private GameObject _damageComponent;
         private Rigidbody2D _rigidBody2D;
         private Vector2 _velocityBeforeFreeze;
@@ -21,7 +22,6 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
             _transform = transform;
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _rigidBody2D = GetComponent<Rigidbody2D>();
-            _splashEffect = _transform.FindChild("Splash Effect").gameObject;
             _damageComponent = _transform.FindChild("Damage Component").gameObject;
 
             _startPosition = _transform.position;
@@ -85,7 +85,8 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
         {
             _spriteRenderer.enabled = false;
             _damageComponent.SetActive(false);
-            _splashEffect.SetActive(true);
+
+            WaterSplashPool.ActivateWaterSplash(_transform.position);
 
             _stateTimer = Regeneration_Delay_Base + (Random.value * Regeneration_Delay_Range);
             _state = State.AwaitingRegeneration;
@@ -98,7 +99,6 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
             _rigidBody2D.isKinematic = true;
             _spriteRenderer.enabled = true;
             _damageComponent.SetActive(true);
-            _splashEffect.SetActive(false);
 
             _transform.position = _startPosition;
             _stateTimer = Regeneration_Time_Base;

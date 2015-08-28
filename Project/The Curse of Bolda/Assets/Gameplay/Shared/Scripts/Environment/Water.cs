@@ -105,8 +105,9 @@ namespace Gameplay.Shared.Scripts.Environment
 
                 _colliders[i] = new GameObject();
                 _colliders[i].name = "Trigger";
+                _colliders[i].tag = "Water Surface";
                 _colliders[i].AddComponent<BoxCollider2D>();
-                _colliders[i].transform.parent = transform;
+                _colliders[i].transform.parent = _meshObjects[i].transform;
                 _colliders[i].transform.position = new Vector3(_left + _width * (i + 0.5f) / _edgeCount, _top - 0.5f, 0);
                 _colliders[i].transform.localScale = new Vector3(_width / _edgeCount, 1, 1);
                 _colliders[i].GetComponent<BoxCollider2D>().isTrigger = true;
@@ -154,7 +155,7 @@ namespace Gameplay.Shared.Scripts.Environment
         {
             if (xPosition >= _xPositions[0] && xPosition <= _xPositions[_xPositions.Length - 1])
             {
-                velocity = Mathf.Clamp(velocity, -.045f, 0.0f);
+                velocity = Mathf.Clamp(velocity, -0.45f, 0.0f);
 
                 xPosition -= _xPositions[0];
 
@@ -229,7 +230,7 @@ namespace Gameplay.Shared.Scripts.Environment
 
         private void Awake()
         {
-            _water = transform.parent.GetComponent<Water>();
+            _water = transform.parent.parent.GetComponent<Water>();
         }
 
         private void OnTriggerEnter2D(Collider2D Hit)
