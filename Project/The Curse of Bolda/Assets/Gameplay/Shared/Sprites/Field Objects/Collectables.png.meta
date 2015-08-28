@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 246e52c35e7ae764c8e8c73814f151eb
-timeCreated: 1438674312
+timeCreated: 1440781565
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -12,6 +12,8 @@ TextureImporter:
     21300010: Jetpack Flash
     21300012: Fire Extinguisher
     21300014: Fire Extingusher Flash
+    21300016: Time Freeze
+    21300018: Time Freeze Flash
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -134,6 +136,26 @@ TextureImporter:
         y: 104
         width: 50
         height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Time Freeze
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 53
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Time Freeze Flash
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 53
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
