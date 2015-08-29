@@ -59,8 +59,8 @@
     <Compile Include="Assets\Gameplay\Shared\Scripts\Collectables\CollectableBase.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\Collectables\EnergyRestore.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\Collectables\Key.cs" />
+    <Compile Include="Assets\Gameplay\Shared\Scripts\Collectables\TimeFreeze.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\Collectables\Tool.cs" />
-    <Compile Include="Assets\Gameplay\Shared\Scripts\Effects\WaterSplashPool.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\Effects\BoltBurstPool.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\Effects\FireballPool.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\Effects\GameOverChrome.cs" />
@@ -69,6 +69,7 @@
     <Compile Include="Assets\Gameplay\Shared\Scripts\Effects\LevelClearChrome.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\Effects\PooledParticleEffect.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\Effects\SmokeCloudPool.cs" />
+    <Compile Include="Assets\Gameplay\Shared\Scripts\Effects\WaterSplashPool.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\BasicBehaviour.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\DamageComponentBehaviour.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\FireBehaviour.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\ICanBeFrozen.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\PlayerFollowEyeMovement.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type01Movement.cs" />
+    <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type03Movement.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type02Movement.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type05Movement.cs" />
     <Compile Include="Assets\Gameplay\Shared\Scripts\Enemy Behaviours\Type07Movement.cs" />

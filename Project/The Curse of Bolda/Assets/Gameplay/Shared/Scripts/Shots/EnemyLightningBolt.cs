@@ -40,6 +40,6 @@ namespace Gameplay.Shared.Scripts.Shots
         }
 
         private const float Movement_Speed = 5.0f;
-        private const float Energy_Drain_Value = 80.0f; 
+        private const float Energy_Drain_Value = 30.0f; 
     }
 }
