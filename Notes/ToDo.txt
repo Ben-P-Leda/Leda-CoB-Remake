@@ -10,16 +10,11 @@ To complete level 1-1:
 	
 Bugs:
 	- Fire extinguisher spray collects gems
-	
-Next design:
-	- Type 3 enemy
-	- Time stop bonus
 
 Epic-level
 ==========
-- Enemies (Types 3)
-- Bonuses (Time stop, Extra life)
-- Tools (Invincibility, Jetpack functionality, Super-jump, Firepower-up, Pickaxe functionality)
+- Bonuses (Extra life)
+- Tools (Invincibility, Super-jump, Firepower-up, Pickaxe functionality)
 - Support
 - Autoplay
 
