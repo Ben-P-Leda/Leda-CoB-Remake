@@ -12,6 +12,7 @@
     {
         GetReady,
         InPlay,
+        Warping,
         SequenceRunning,
         LevelComplete,
         GameOver

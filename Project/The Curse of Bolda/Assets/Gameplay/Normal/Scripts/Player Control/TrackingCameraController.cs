@@ -9,20 +9,19 @@ namespace Gameplay.Normal.Scripts.Player_Control
     public class TrackingCameraController : MonoBehaviour
     {
         private Transform _transform;
-        private Transform _objectToTrack;
         private Transform _bgTransform;
         private Rect _cameraMovementArea;
         private Vector2 _bgMovementExtent;
         private BackgroundLayer[] _backgroundLayers;
 
-        public GameObject ObjectToTrack;
+        public Transform TransformToTrack { private get; set; }
+
         public GameObject LevelMap;
         public List<GameObject> BackgroundLayers;
 
         private void Awake()
         {
             _transform = transform;
-            _objectToTrack = ObjectToTrack.transform;
 
             _backgroundLayers = new BackgroundLayer[BackgroundLayers.Count];
             for (int i = 0; i < BackgroundLayers.Count; i++) { _backgroundLayers[i] = BackgroundLayers[i].GetComponent<BackgroundLayer>(); }
@@ -42,18 +41,21 @@ namespace Gameplay.Normal.Scripts.Player_Control
             for (int i = 0; i < _backgroundLayers.Length; i++) { _backgroundLayers[i].CalculateMovementExtent(cameraMargins); }
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
-            _transform.position = new Vector3(
-                Mathf.Clamp(_objectToTrack.position.x, _cameraMovementArea.xMin, _cameraMovementArea.xMax),
-                Mathf.Clamp(_objectToTrack.position.y, _cameraMovementArea.yMin, _cameraMovementArea.yMax),
-                _transform.position.z);
+            if (TransformToTrack != null)
+            {
+                _transform.position = new Vector3(
+                    Mathf.Clamp(TransformToTrack.position.x, _cameraMovementArea.xMin, _cameraMovementArea.xMax),
+                    Mathf.Clamp(TransformToTrack.position.y, _cameraMovementArea.yMin, _cameraMovementArea.yMax),
+                    _transform.position.z);
 
-            Vector2 offset = new Vector2(
-                (_transform.position.x - _cameraMovementArea.center.x) / (_cameraMovementArea.width * 0.5f),
-                (_transform.position.y - _cameraMovementArea.center.y) / (_cameraMovementArea.height * 0.5f));
+                Vector2 offset = new Vector2(
+                    (_transform.position.x - _cameraMovementArea.center.x) / (_cameraMovementArea.width * 0.5f),
+                    (_transform.position.y - _cameraMovementArea.center.y) / (_cameraMovementArea.height * 0.5f));
 
-            for (int i = 0; i < _backgroundLayers.Length; i++) { _backgroundLayers[i].PositionRelativeToCamera(_transform.position, offset); }
+                for (int i = 0; i < _backgroundLayers.Length; i++) { _backgroundLayers[i].PositionRelativeToCamera(_transform.position, offset); }
+            }
         }
     }
 }

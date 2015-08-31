@@ -17,7 +17,7 @@ namespace Gameplay.Normal.Scripts.Player_Control
         private VerticalMovementState _verticalMovementState;
         private bool _isMoving;
         private bool _lockMovement;
-        private float _gateCenterX;
+        private Vector2 _gateCenter;
         private bool _enteringGate;
         private GateType _activeGateType;
 
@@ -49,7 +49,7 @@ namespace Gameplay.Normal.Scripts.Player_Control
             _isMoving = false;
 
             _activeGateType = GateType.None;
-            _gateCenterX = 0.0f;
+            _gateCenter = Vector2.zero;
             _enteringGate = false;
 
             _rigidBody2D.gravityScale = 1.0f;
@@ -149,7 +149,7 @@ namespace Gameplay.Normal.Scripts.Player_Control
 
         private int GetDirectionFromGateCenter()
         {
-            return (int)Mathf.Sign(_gateCenterX - _transform.position.x);
+            return (int)Mathf.Sign(_gateCenter.x - _transform.position.x);
         }
 
         private int GetDirectionFromInput()
@@ -229,7 +229,8 @@ namespace Gameplay.Normal.Scripts.Player_Control
         {
             switch (collider.tag)
             {
-                case "Exit Gate": _gateCenterX = collider.transform.position.x; _activeGateType = GateType.Exit; break;
+                case "Exit Gate": _gateCenter = collider.transform.position; _activeGateType = GateType.Exit; break;
+                case "Warp Gate": _gateCenter = collider.transform.position; _activeGateType = GateType.Warp; break;
                 case "Water Surface": WaterSplashPool.ActivateWaterSplash(_transform.position + new Vector3(0,-0.15f,0)); break;
                 case "Water Pool": TriggerDeathSequence(PlayerDeathSequence.Drowning); break;
             }
@@ -244,9 +245,9 @@ namespace Gameplay.Normal.Scripts.Player_Control
 
         private void OnTriggerExit2D(Collider2D collider)
         {
-            if (collider.tag == "Exit Gate")
+            if ((collider.tag == "Exit Gate") || (collider.tag == "Warp Gate"))
             {
-                _gateCenterX = 0.0f;
+                _gateCenter = Vector2.zero;
                 _activeGateType = GateType.None;
             }
         }
@@ -262,7 +263,7 @@ namespace Gameplay.Normal.Scripts.Player_Control
             {
                 if (_enteringGate) { return false; }
                 if (_verticalMovementState != VerticalMovementState.OnGround) { return false; }
-                if (_gateCenterX <= 0.0f) { return false; }
+                if (_gateCenter.x <= 0.0f) { return false; }
                 if (CurrentGame.ToolIsActive) { return false; }
 
                 return true;
@@ -271,10 +272,10 @@ namespace Gameplay.Normal.Scripts.Player_Control
 
         private void CheckForGateEntry()
         {
-            if ((_enteringGate) && (Mathf.Abs(_gateCenterX - _transform.position.x) <Gate_Entry_Center_Proximity))
+            if ((_enteringGate) && (Mathf.Abs(_gateCenter.x - _transform.position.x) < Gate_Entry_Center_Proximity))
             {
                 _enteringGate = false;
-                _sequenceController.EnterGate(_activeGateType);
+                _sequenceController.EnterGate(_activeGateType, _gateCenter);
             }
         }
 

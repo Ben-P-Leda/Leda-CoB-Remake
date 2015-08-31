@@ -50,9 +50,9 @@
      <Compile Include="Assets\Gameplay\Normal\Scripts\Activators\ActivatorBase.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Activators\InfoScreen.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Activators\Lock.cs" />
-     <Compile Include="Assets\Gameplay\Normal\Scripts\Field Objects\ExitGate.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Player Control\KevActionController.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Player Control\TrackingCameraController.cs" />
+     <Compile Include="Assets\Gameplay\Normal\Scripts\Player Control\WarpTracker.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Status Display\KeyDisplay.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Status Display\MessagePopup.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Collectables\CollectableBase.cs" />
