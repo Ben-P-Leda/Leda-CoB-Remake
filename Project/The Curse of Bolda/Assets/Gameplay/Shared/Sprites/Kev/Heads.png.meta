@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ae1347f7072b2f545beabed3b38b350d
-timeCreated: 1439848105
+timeCreated: 1441125305
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,7 @@ TextureImporter:
     21300002: Kev Normal Face
     21300004: Kev Death Generic Face
     21300006: Kev Enter Gate Head
+    21300008: Kev Front Face
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -79,6 +80,16 @@ TextureImporter:
         x: 47
         y: 34
         width: 40
+        height: 29
+      alignment: 9
+      pivot: {x: .5, y: .100000001}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kev Front Face
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 34
+        width: 39
         height: 29
       alignment: 9
       pivot: {x: .5, y: .100000001}

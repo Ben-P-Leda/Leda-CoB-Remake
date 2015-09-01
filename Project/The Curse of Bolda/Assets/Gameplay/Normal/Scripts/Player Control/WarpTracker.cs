@@ -6,11 +6,15 @@ namespace Gameplay.Normal.Scripts.Player_Control
 {
     public class WarpTracker : MonoBehaviour
     {
+        public delegate void WarpCompletionHandler();
+
         private Transform _transform = null;
         private Rigidbody2D _rigidBody2D = null;
         private GameObject _gameObject = null;
 
         private Vector2 _targetPosition;
+
+        public WarpCompletionHandler WarpCompletionCallback { private get; set; }
 
         public List<GameObject> Gates;
 
@@ -55,6 +59,17 @@ namespace Gameplay.Normal.Scripts.Player_Control
             _rigidBody2D.velocity = trajectory * Movement_Speed;
         }
 
-        private const float Movement_Speed = 2.0f;
+        private void Update()
+        {
+            if (Vector2.Distance(_transform.position, _targetPosition) < Completion_Proximity)
+            {
+                _transform.position = new Vector3(_targetPosition.x, _targetPosition.y, _transform.position.z);
+                _rigidBody2D.velocity = Vector2.zero;
+                WarpCompletionCallback();
+            }
+        }
+
+        private const float Movement_Speed = 10.0f;
+        private const float Completion_Proximity = 0.5f;
     }
 }

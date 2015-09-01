@@ -40,6 +40,7 @@ namespace Gameplay.Shared.Scripts.Player
 
             _basicShotPool = transform.FindChild("Kev Basic Shots").GetComponent<KevShotPool>();
             _warpTracker = transform.Find("Warp Gate Tracker").GetComponent<WarpTracker>();
+            _warpTracker.WarpCompletionCallback = CompleteWarp;
 
             _sequenceRunning = false;
 
@@ -118,6 +119,16 @@ namespace Gameplay.Shared.Scripts.Player
             SequencedAvatar.SetActive(false);
             _warpTracker.Activate(_gateCenter);
             _cameraController.TransformToTrack = _warpTracker.transform;
+        }
+
+        public void CompleteWarp()
+        {
+            // TODO: Initiate gate exit sequence
+
+            InputDrivenAvatar.SetActive(true);
+            _inputDrivenAvatarTransform.position = _warpTracker.transform.position;
+            _cameraController.TransformToTrack = _inputDrivenAvatarTransform;
+            _warpTracker.Reset();
         }
 
         public const int Player_Physics_Layer_Index = 1024;
