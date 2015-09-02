@@ -50,8 +50,8 @@ namespace Gameplay.Normal.Scripts.Player_Control
 
         private void SetTrajectory(Vector2 startPosition, Vector3 targetPosition)
         {
-            _transform.position = new Vector3(startPosition.x, startPosition.y, _transform.position.z);
-            _targetPosition = new Vector3(targetPosition.x, targetPosition.y);
+            _transform.position = new Vector3(startPosition.x, startPosition.y + Gate_To_Player_Vertical_Offset, _transform.position.z);
+            _targetPosition = new Vector3(targetPosition.x, targetPosition.y + Gate_To_Player_Vertical_Offset);
 
             Vector2 trajectory = new Vector2(targetPosition.x - startPosition.x, targetPosition.y - startPosition.y);
             trajectory.Normalize();
@@ -71,5 +71,6 @@ namespace Gameplay.Normal.Scripts.Player_Control
 
         private const float Movement_Speed = 10.0f;
         private const float Completion_Proximity = 0.5f;
+        private const float Gate_To_Player_Vertical_Offset = -0.22f;
     }
 }

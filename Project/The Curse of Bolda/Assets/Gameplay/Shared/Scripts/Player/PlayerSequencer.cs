@@ -102,6 +102,7 @@ namespace Gameplay.Shared.Scripts.Player
             SwitchToSequencedAvatar();
             _sequencedAvatarController.SequenceCompleteHandler = CompleteGateEntrySequence;
             _sequencedAvatarAnimator.SetInteger("DeathSequence", 0);
+            _sequencedAvatarAnimator.SetBool("ExitingGate", false);
             _sequencedAvatarAnimator.SetBool("EnteringGate", true);
         }
 
@@ -116,21 +117,39 @@ namespace Gameplay.Shared.Scripts.Player
 
         public void InitiateWarp()
         {
-            SequencedAvatar.SetActive(false);
             _warpTracker.Activate(_gateCenter);
             _cameraController.TransformToTrack = _warpTracker.transform;
         }
 
         public void CompleteWarp()
         {
-            // TODO: Initiate gate exit sequence
-
-            InputDrivenAvatar.SetActive(true);
-            _inputDrivenAvatarTransform.position = _warpTracker.transform.position;
-            _cameraController.TransformToTrack = _inputDrivenAvatarTransform;
+            _sequencedAvatarTransform.position = new Vector3(
+                _warpTracker.transform.position.x,
+                _warpTracker.transform.position.y,
+                _sequencedAvatarTransform.position.z);
             _warpTracker.Reset();
+
+            _sequencedAvatarController.SequenceCompleteHandler = CompleteGateExitSequence;
+            _sequencedAvatarAnimator.SetBool("EnteringGate", false);
+            _sequencedAvatarAnimator.SetBool("ExitingGate", true);
+
+            _cameraController.TransformToTrack = _sequencedAvatarTransform;
+        }
+
+        private void CompleteGateExitSequence()
+        {
+            _basicShotPool.CanShoot = false;
+
+            _sequencedAvatarAnimator.SetBool("EnteringGate", false);
+            _sequencedAvatarAnimator.SetBool("ExitingGate", true);
+            SequencedAvatar.SetActive(false);
+
+            _inputDrivenAvatarTransform.position = _sequencedAvatarTransform.position;
+            _cameraController.TransformToTrack = _inputDrivenAvatarTransform;
+            InputDrivenAvatar.SetActive(true);
         }
 
         public const int Player_Physics_Layer_Index = 1024;
+        
     }
 }
