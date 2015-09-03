@@ -138,7 +138,7 @@ namespace Gameplay.Shared.Scripts.Environment
             _jetpackBlocker.tag = "Wall Collider";
             _jetpackBlocker.AddComponent<BoxCollider2D>();
             _jetpackBlocker.transform.parent = transform;
-            _jetpackBlocker.transform.localPosition = new Vector3(transform.parent.localPosition.x, transform.parent.localPosition.y + ((transform.parent.localScale.y * 0.5f) * Transform_To_Mesh_Size_Modifier), 0);
+            _jetpackBlocker.transform.localPosition = new Vector3(transform.parent.localPosition.x, transform.parent.localPosition.y + ((transform.parent.localScale.y * 0.3f) * Transform_To_Mesh_Size_Modifier), 0);
             _jetpackBlocker.transform.localScale = new Vector3(transform.parent.localScale.x * Transform_To_Mesh_Size_Modifier, 0.2f, 1);
 
             _playerDeathTrigger = new GameObject();
