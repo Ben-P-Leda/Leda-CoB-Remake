@@ -37,16 +37,28 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
             float startDirection = Mathf.Sign(midPoint - _transform.position.x);
 
             _velocityBeforeFreeze = new Vector2(Speed * startDirection, 0.0f);
-            _rigidBody2D.velocity = _velocityBeforeFreeze;
+
             _transform.localScale = new Vector3(_transform.localScale.x * startDirection, _transform.localScale.y, _transform.localScale.z);
+
+            _rigidBody2D.velocity = _velocityBeforeFreeze;
         }
 
         protected virtual void Update()
         {
             if (ShouldSwitchFreezeState) { SwitchFreezeState(); }
 
-            if (_transform.position.x <= _leftSideLimit) { ApplyAcceleration(Acceleration); }
-            if (_transform.position.x >= _rightSideLimit) { ApplyAcceleration(-Acceleration); }
+            float currentDirection = _rigidBody2D.velocity.x == 0.0f ? 0.0f : Mathf.Sign(_rigidBody2D.velocity.x);
+
+            if (((_transform.position.x <= _rightSideLimit) && (currentDirection > 0.0f)) || (_transform.position.x <= _leftSideLimit)) 
+            { 
+                ApplyAcceleration(Acceleration); 
+            }
+            if (((_transform.position.x >= _leftSideLimit) && (currentDirection < 0.0f)) || (_transform.position.x >= _rightSideLimit))
+            { 
+                ApplyAcceleration(-Acceleration); 
+            }
+
+            SetSpriteFacing(currentDirection);
         }
 
         public virtual void SwitchFreezeState()
@@ -75,10 +87,12 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
 
         protected virtual void ApplyAcceleration(float acceleration)
         {
-            float currentDirection = _rigidBody2D.velocity.x == 0.0f ? 0.0f : Mathf.Sign(_rigidBody2D.velocity.x);
             _rigidBody2D.velocity = new Vector2(Mathf.Clamp(_rigidBody2D.velocity.x + acceleration, -Speed, Speed), _rigidBody2D.velocity.y);
+        }
 
-            if ((_rigidBody2D.velocity.x != 0.0f) && (Mathf.Sign(_rigidBody2D.velocity.x) != currentDirection))
+        protected virtual void SetSpriteFacing(float direction)
+        {
+            if ((_rigidBody2D.velocity.x != 0.0f) && (Mathf.Sign(_rigidBody2D.velocity.x) != direction))
             {
                 _transform.localScale = new Vector3(
                     Mathf.Abs(_transform.localScale.x) * Mathf.Sign(_rigidBody2D.velocity.x), _transform.localScale.y, _transform.localScale.z);
