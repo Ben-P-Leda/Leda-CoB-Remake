@@ -138,7 +138,7 @@ namespace Gameplay.Shared.Scripts.Player
 
         private void CompleteGateExitSequence()
         {
-            _basicShotPool.CanShoot = false;
+            _basicShotPool.CanShoot = true;
 
             _sequencedAvatarAnimator.SetBool("EnteringGate", false);
             _sequencedAvatarAnimator.SetBool("ExitingGate", true);
