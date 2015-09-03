@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 
+using Gameplay.Shared.Scripts.Generic;
+
 namespace Gameplay.Shared.Scripts.Switches
 {
-    public class SwitchBase : MonoBehaviour
+    public class SwitchBase : MonoBehaviour, IChangesStateOnNewLifeStart
     {
         private bool _isActive;
         private bool _canBeToggled;
@@ -40,12 +42,23 @@ namespace Gameplay.Shared.Scripts.Switches
 
         private void OnTriggerEnter2D(Collider2D collider)
         {
-            if (collider.tag == "Kev") { _canBeToggled = true; }
+            if (collider.tag == "Kev") 
+            { 
+                _canBeToggled = true;
+            }
         }
 
         private void OnTriggerExit2D(Collider2D collider)
         {
-            if (collider.tag == "Kev") { _canBeToggled = false; }
+            if (collider.tag == "Kev") 
+            { 
+                _canBeToggled = false;
+            }
+        }
+
+        public void SetForPlayerNewLifeStart()
+        {
+            _canBeToggled = false;
         }
     }
 }

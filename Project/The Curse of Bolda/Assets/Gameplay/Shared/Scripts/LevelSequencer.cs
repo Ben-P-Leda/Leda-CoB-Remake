@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using Shared.Scripts;
+using Gameplay.Shared.Scripts.Generic;
 using Gameplay.Shared.Scripts.Player;
 using Gameplay.Shared.Scripts.Enemy_Behaviours;
 
@@ -11,6 +12,7 @@ namespace Gameplay.Shared.Scripts
         private FadeTransitioner _fadeTransitioner;
         private PlayerSequencer _playerSequencer;
         private List<ICanBeFrozen> _freezableEnemyScripts;
+        private List<IChangesStateOnNewLifeStart> _objectsToUpdateOnNewLifeStart;
         private GameObject _getReadySequencer;
         private GameObject _endLevelSequencer;
         private GameObject _gameOverSequencer;
@@ -27,6 +29,7 @@ namespace Gameplay.Shared.Scripts
 
         public GameObject PlayerSequencer;
         public GameObject Enemies;
+        public GameObject Switches;
 
         private void Awake()
         {
@@ -37,11 +40,21 @@ namespace Gameplay.Shared.Scripts
             _endLevelSequencer = transform.FindChild("End Level Sequencer").gameObject;
             _gameOverSequencer = transform.FindChild("Game Over Sequencer").gameObject;
 
+            _objectsToUpdateOnNewLifeStart = new List<IChangesStateOnNewLifeStart>();
             _freezableEnemyScripts = new List<ICanBeFrozen>();
             for (int i = 0; i < Enemies.transform.childCount; i++)
             {
                 ICanBeFrozen freezableScript = Enemies.transform.GetChild(i).GetComponent<ICanBeFrozen>();
                 if (freezableScript != null) { _freezableEnemyScripts.Add(freezableScript); }
+
+                IChangesStateOnNewLifeStart newLifeScript = Enemies.transform.GetChild(i).GetComponent<IChangesStateOnNewLifeStart>();
+                if (newLifeScript != null) { _objectsToUpdateOnNewLifeStart.Add(newLifeScript); }
+            }
+
+            for (int i=0; i < Switches.transform.childCount; i++)
+            {
+                IChangesStateOnNewLifeStart newLifeScript = Switches.transform.GetChild(i).GetComponent<IChangesStateOnNewLifeStart>();
+                if (newLifeScript != null) { _objectsToUpdateOnNewLifeStart.Add(newLifeScript); }
             }
         }
 
@@ -71,6 +84,7 @@ namespace Gameplay.Shared.Scripts
             _playerSequencer.StartNewLife();
 
             CurrentGame.SetForNewLife();
+            for (int i = 0; i < _objectsToUpdateOnNewLifeStart.Count; i++) { _objectsToUpdateOnNewLifeStart[i].SetForPlayerNewLifeStart(); }
 
             SetEnemiesFreezeState(true);
 

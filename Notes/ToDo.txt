@@ -10,6 +10,10 @@ To complete level 1-1:
 	
 Bugs:
 	- Fire extinguisher spray collects gems
+	- Type 6s (11s) - restore to starting positions when a new life is imposed, or otherwise fix slow-down
+	- Infoscreen switch-on after death
+	
+UNITY BUG: OnTriggerExit2D does not fire if object is positioned outside collider by updaing transform.position?
 
 Epic-level
 ==========
