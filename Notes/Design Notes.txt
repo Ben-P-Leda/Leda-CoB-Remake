@@ -124,7 +124,13 @@ Level 1-2 Activators (Block positions)
 	Exit gate
 
 
-
+TOOLS
+- Invicibility: Timed
+- Jetpack: Timed
+- SuperJump: One-shot
+- Firepower: Timed
+- Pickaxe: Timed
+- Fire Extiguisher: No display
 
 
 

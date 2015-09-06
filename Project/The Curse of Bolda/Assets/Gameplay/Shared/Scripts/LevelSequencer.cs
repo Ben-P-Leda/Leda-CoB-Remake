@@ -119,7 +119,7 @@ namespace Gameplay.Shared.Scripts
 
         private void UpdateForInPlay()
         {
-            CurrentGame.UpdateTimer(Time.deltaTime);
+            CurrentGame.UpdateTimers(Time.deltaTime);
 
             if (CurrentGame.GameData.Energy <= 0.0f) { HandlePlayerDeath(); }
             if (CurrentGame.GameData.TimeRemaining <= 0.0f) { HandlePlayerDeath(); }

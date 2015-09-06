@@ -8,26 +8,25 @@ To complete level 1-1:
 	- Level complete exit to next scene
 	- Enforce gem limit
 	
+To complete level 1-2:
+	- Super-jump functionality
+	- Invincibility on exiting warp gate
+	
 Bugs:
 	- Fire extinguisher spray collects gems
-	- Type 6s (11s) - restore to starting positions when a new life is imposed, or otherwise fix slow-down
-	- Infoscreen switch-on after death
 	
 UNITY BUG: OnTriggerExit2D does not fire if object is positioned outside collider by updaing transform.position?
 
 Epic-level
 ==========
 - Bonuses (Extra life)
-- Tools (Invincibility, Super-jump, Firepower-up, Pickaxe functionality)
+- Tools (Invincibility, Super-jump functionality, Firepower-up, Pickaxe functionality)
 - Support
 - Autoplay
 
 Missing Tiles
 =============
-- Shadows for jump-through type platforms (half height)
-- Twist poles with no shadow
 - Edge brick shadows
-- Warp door tops (jump-through)
 
 Effects & nice-to-have
 ======================

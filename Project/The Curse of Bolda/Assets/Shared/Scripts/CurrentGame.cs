@@ -41,7 +41,7 @@ namespace Shared.Scripts
             _gameData.CarryingKey = false;
 
             if (stage == AreaStage.One) { ClearInventory(); }
-            _gameData.ToolCounts[1] = 2; // TODO: remove this once water tests are done
+            _gameData.ToolCounts[1] = 2;
 
             RestorePlayerEnergy();
         }
@@ -57,9 +57,17 @@ namespace Shared.Scripts
             _gameData.TimerIsFrozen = false;
         }
 
-        public static void UpdateTimer(float deltaTime)
+        public static void UpdateTimers(float deltaTime)
         {
-            if (!_gameData.TimerIsFrozen) { _gameData.TimeRemaining = Mathf.Max(_gameData.TimeRemaining - deltaTime, 0.0f); }
+            if (!_gameData.TimerIsFrozen) 
+            { 
+                _gameData.TimeRemaining = Mathf.Max(_gameData.TimeRemaining - deltaTime, 0.0f); 
+            }
+
+            if (_gameData.ActiveToolTimeRemaining > 0.0f)
+            {
+                _gameData.ActiveToolTimeRemaining = Mathf.Max(_gameData.ActiveToolTimeRemaining - deltaTime, 0.0f);
+            }
         }
 
         public static void AddTool(ToolType toolType)

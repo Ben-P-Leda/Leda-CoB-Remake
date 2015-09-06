@@ -27,7 +27,6 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
             {
                 ApplyAcceleration((Acceleration * Mathf.Sign(_playerTransform.position.x - Position.x)));
                 SetSpriteFacing(Mathf.Sign(Position.x - _playerTransform.position.x));
-                Diagnostics.DiagnosticsDisplay.SetDiagnostic(gameObject.name, gameObject.name + ":" + Mathf.Sign(_playerTransform.position.x - Position.x).ToString());
             }
             else if (HorizontalSpeed != 0.0f)
             {

@@ -105,12 +105,12 @@
      <Compile Include="Assets\Gameplay\Shared\Scripts\Special Platforms\JumpthroughPlatformManager.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Special Platforms\VanishingPlatform.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Special Platforms\VanishingPlatformManager.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\ActiveToolMonitor.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\DisplayBase.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\GemCounter.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\PlayerStatus.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\Score.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\StageTimer.cs" />
-     <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\ToolTimer.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Status Display\Toolbox.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Switches\RestartPoint.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Switches\RestartPointManager.cs" />
