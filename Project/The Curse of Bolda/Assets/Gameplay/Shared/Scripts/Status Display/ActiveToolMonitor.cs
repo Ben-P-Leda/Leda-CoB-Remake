@@ -90,6 +90,7 @@ namespace Gameplay.Shared.Scripts.Status_Display
         {
             if ((CurrentGame.ToolIsActive) && (_activeTool == ToolType.None)) { return true; }
             if ((!CurrentGame.ToolIsActive) && (_activeTool != ToolType.None)) { return true; }
+            if (CurrentGame.GameData.ActiveTool != _activeTool) { return true; }
 
             return false;
         }

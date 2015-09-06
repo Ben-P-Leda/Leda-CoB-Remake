@@ -41,7 +41,8 @@ namespace Shared.Scripts
             _gameData.CarryingKey = false;
 
             if (stage == AreaStage.One) { ClearInventory(); }
-            _gameData.ToolCounts[1] = 2;
+            _gameData.ToolCounts[1] = 5;
+            _gameData.ToolCounts[2] = 5;
 
             RestorePlayerEnergy();
         }
@@ -83,7 +84,7 @@ namespace Shared.Scripts
         public static void ActivateTool(ToolType toolType)
         {
             _gameData.ActiveTool = toolType;
-            _gameData.ToolCounts[(int)toolType] -= 1;
+            if (toolType != ToolType.SuperJump) { _gameData.ToolCounts[(int)toolType] -= 1; }
 
             switch (toolType)
             {
@@ -92,8 +93,31 @@ namespace Shared.Scripts
             }
         }
 
-        public static bool ToolIsActive { get { return _gameData.ActiveToolTimeRemaining > 0.0f; } }
-        public static bool ToolReadyForDeactivation { get { return ((_gameData.ActiveTool != ToolType.None) && (_gameData.ActiveToolTimeRemaining <= 0.0f)); } }
+        public static void UseSuperJump()
+        {
+            _gameData.ToolCounts[(int)ToolType.SuperJump] -= 1;
+            _gameData.ActiveTool = ToolType.None;
+        }
+
+        public static bool ToolIsActive 
+        { 
+            get 
+            {
+                return ((_gameData.ActiveToolTimeRemaining > 0.0f) || (_gameData.ActiveTool == ToolType.SuperJump));
+            } 
+        }
+
+        public static bool ToolReadyForDeactivation 
+        { 
+            get 
+            {
+                if (_gameData.ActiveTool == ToolType.None) { return false; }
+                if (_gameData.ActiveTool == ToolType.SuperJump) { return false; }
+                if (_gameData.ActiveToolTimeRemaining > 0.0f) { return false; }
+
+                return true;
+            }
+        }
 
         public static void DeactivateTool()
         {

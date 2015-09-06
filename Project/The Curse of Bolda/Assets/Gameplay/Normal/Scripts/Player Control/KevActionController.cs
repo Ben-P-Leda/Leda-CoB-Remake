@@ -114,7 +114,15 @@ namespace Gameplay.Normal.Scripts.Player_Control
         {
             if ((!_lockMovement) && (!_enteringGate) && (Input.GetKeyDown(KeyCode.W)))
             {
-                _rigidBody2D.AddForce(new Vector2(0.0f, Jump_Power));
+                if (CurrentGame.GameData.ActiveTool == ToolType.SuperJump)
+                {
+                    _rigidBody2D.AddForce(new Vector2(0.0f, Super_Jump_Power));
+                    CurrentGame.UseSuperJump();
+                }
+                else
+                {
+                    _rigidBody2D.AddForce(new Vector2(0.0f, Jump_Power));
+                }
                 _verticalMovementState = VerticalMovementState.Rising;
                 _animator.SetBool("Jumping", true);
             }
@@ -181,12 +189,13 @@ namespace Gameplay.Normal.Scripts.Player_Control
         private void CheckForToolActivation()
         {
             if ((Input.GetKeyDown(KeyCode.F2)) && (CurrentGame.HasTool(ToolType.Jetpack))) { ActivateJetpack(); }
+            if ((Input.GetKeyDown(KeyCode.F3)) && (CurrentGame.HasTool(ToolType.SuperJump))) { ActivateSuperJump(); }
             if ((Input.GetKeyDown(KeyCode.F6)) && (CurrentGame.HasTool(ToolType.FireExtinguisher)) && (!_isMoving)) { ActivateFireExtinguisher(); }
         }
 
         private void ActivateJetpack()
         {
-            if (!CurrentGame.ToolIsActive)
+            if ((!CurrentGame.ToolIsActive) || (CurrentGame.GameData.ActiveTool == ToolType.SuperJump))
             {
                 _animator.SetBool("Jumping", false);
                 _animator.SetBool("Walking", false);
@@ -200,9 +209,21 @@ namespace Gameplay.Normal.Scripts.Player_Control
             }
         }
 
-        private void ActivateFireExtinguisher()
+        private void ActivateSuperJump()
         {
             if (!CurrentGame.ToolIsActive)
+            {
+                CurrentGame.ActivateTool(ToolType.SuperJump);
+            }
+            else if (CurrentGame.GameData.ActiveTool == ToolType.SuperJump)
+            {
+                CurrentGame.GameData.ActiveTool = ToolType.None;
+            }
+        }
+
+        private void ActivateFireExtinguisher()
+        {
+            if ((!CurrentGame.ToolIsActive) || (CurrentGame.GameData.ActiveTool == ToolType.SuperJump))
             {
                 _lockMovement = true;
                 _animator.SetBool("Extinguisher", true);
@@ -288,6 +309,7 @@ namespace Gameplay.Normal.Scripts.Player_Control
 
         private const float Speed = 2.0f;
         private const float Jump_Power = 290.0f;
+        private const float Super_Jump_Power = 2900.0f;
         private const float Normal_Jump_Max_Vertical_Velocity = 5.6f;
         private const float Fall_Velocity_Threshold = -0.6f;
         private const float Touchdown_Velocity_Threshold = -0.001f;
