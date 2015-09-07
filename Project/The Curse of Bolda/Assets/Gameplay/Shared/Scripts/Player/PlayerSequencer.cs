@@ -147,6 +147,8 @@ namespace Gameplay.Shared.Scripts.Player
             _inputDrivenAvatarTransform.position = _sequencedAvatarTransform.position;
             _cameraController.TransformToTrack = _inputDrivenAvatarTransform;
             InputDrivenAvatar.SetActive(true);
+
+            CurrentGame.ActivateInvincibilityFollowingWarp();
         }
 
         public const int Player_Physics_Layer_Index = 1024;

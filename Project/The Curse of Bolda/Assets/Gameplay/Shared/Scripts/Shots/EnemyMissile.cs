@@ -40,7 +40,10 @@ namespace Gameplay.Shared.Scripts.Shots
         {
             if (collider.tag == "Kev")
             {
-                CurrentGame.GameData.Energy -= Energy_Drain_Value;
+                if (CurrentGame.GameData.ActiveTool != ToolType.Invincibility)
+                {
+                    CurrentGame.GameData.Energy -= Energy_Drain_Value;
+                }
                 Deactivate();
             }
         }

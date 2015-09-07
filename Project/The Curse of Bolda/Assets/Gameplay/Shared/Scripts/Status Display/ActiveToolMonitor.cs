@@ -112,7 +112,7 @@ namespace Gameplay.Shared.Scripts.Status_Display
         {
             switch (toolType)
             {
-                case ToolType.Invincibility: _displayOption = DisplayOption.DisplayTimer; break;
+                case ToolType.Invincibility: _displayOption = DisplayOption.DisplayTimer; _totalTime = Constants.Invincibility_Duration; break;
                 case ToolType.Jetpack: _displayOption = DisplayOption.DisplayTimer; _totalTime = Constants.Jetpack_Duration; break;
                 case ToolType.SuperJump: _displayOption = DisplayOption.DisplayOneShot; break;
                 case ToolType.FirepowerUp: _displayOption = DisplayOption.DisplayTimer; break;

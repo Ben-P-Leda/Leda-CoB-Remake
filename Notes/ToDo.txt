@@ -3,15 +3,11 @@
 Fixes & arising
 ===============
 
-To complete level 1-1:
+To complete levels 1-1/1-2:
 	- Pickaxe functionality
 	- Level complete exit to next scene
 	- Enforce gem limit
-	
-To complete level 1-2:
-	- Super-jump functionality
-	- Invincibility on exiting warp gate
-	
+		
 Bugs:
 	- Fire extinguisher spray collects gems
 	

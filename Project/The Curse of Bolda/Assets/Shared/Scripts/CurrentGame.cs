@@ -42,7 +42,7 @@ namespace Shared.Scripts
 
             if (stage == AreaStage.One) { ClearInventory(); }
             _gameData.ToolCounts[1] = 5;
-            _gameData.ToolCounts[2] = 5;
+
 
             RestorePlayerEnergy();
         }
@@ -88,9 +88,16 @@ namespace Shared.Scripts
 
             switch (toolType)
             {
+                case ToolType.Invincibility: _gameData.ActiveToolTimeRemaining = Constants.Invincibility_Duration; break;
                 case ToolType.Jetpack: _gameData.ActiveToolTimeRemaining = Constants.Jetpack_Duration; break;
                 case ToolType.FireExtinguisher: _gameData.ActiveToolTimeRemaining = Constants.Fire_Extinguisher_Duration; break;
             }
+        }
+
+        public static void ActivateInvincibilityFollowingWarp()
+        {
+            _gameData.ActiveTool = ToolType.Invincibility;
+            _gameData.ActiveToolTimeRemaining = Constants.Invincibility_Duration_Post_Warp;
         }
 
         public static void UseSuperJump()

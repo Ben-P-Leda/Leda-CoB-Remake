@@ -13,6 +13,8 @@ namespace Gameplay.Normal.Scripts.Player_Control
         private Animator _animator;
         private PlayerSequencer _sequenceController;
 
+        private GameObject _invincibilityEffect;
+
         private bool _facingRight;
         private VerticalMovementState _verticalMovementState;
         private bool _isMoving;
@@ -28,6 +30,7 @@ namespace Gameplay.Normal.Scripts.Player_Control
             _animator = GetComponent<Animator>();
 
             _sequenceController = _transform.parent.GetComponent<PlayerSequencer>();
+            _invincibilityEffect = _transform.FindChild("Invincibility Effect").gameObject;
         }
 
         private void Start()
@@ -44,15 +47,20 @@ namespace Gameplay.Normal.Scripts.Player_Control
         {
             _facingRight = (_transform.localScale.x > 0.0f);
             _verticalMovementState = VerticalMovementState.OnGround;
-
-            _lockMovement = false;
             _isMoving = false;
 
             _activeGateType = GateType.None;
             _gateCenter = Vector2.zero;
             _enteringGate = false;
 
+            _invincibilityEffect.SetActive(false);
+            _animator.SetBool("Jetpack", false);
+            _animator.SetBool("Extinguisher", false);
+            _animator.SetBool("Walking", false);
             _rigidBody2D.gravityScale = 1.0f;
+            _lockMovement = false;
+
+            CurrentGame.DeactivateTool();
         }
 
         private void Update()
@@ -66,7 +74,7 @@ namespace Gameplay.Normal.Scripts.Player_Control
             CheckForToolDeactivation();
 
             CheckForGateActivation();
-            CheckForGateEntry();;
+            CheckForGateEntry();
 
             if (Input.GetKeyDown(KeyCode.Escape)) { Application.Quit(); }
         }
@@ -188,9 +196,25 @@ namespace Gameplay.Normal.Scripts.Player_Control
 
         private void CheckForToolActivation()
         {
+            if ((Input.GetKeyDown(KeyCode.F1)) && (CurrentGame.HasTool(ToolType.Invincibility))) { ActivateInvincibility(); }
             if ((Input.GetKeyDown(KeyCode.F2)) && (CurrentGame.HasTool(ToolType.Jetpack))) { ActivateJetpack(); }
             if ((Input.GetKeyDown(KeyCode.F3)) && (CurrentGame.HasTool(ToolType.SuperJump))) { ActivateSuperJump(); }
             if ((Input.GetKeyDown(KeyCode.F6)) && (CurrentGame.HasTool(ToolType.FireExtinguisher)) && (!_isMoving)) { ActivateFireExtinguisher(); }
+
+            if ((CurrentGame.GameData.ActiveTool == ToolType.Invincibility) && (!_invincibilityEffect.activeInHierarchy))
+            {
+                _invincibilityEffect.SetActive(true);
+            }
+        }
+
+        private void ActivateInvincibility()
+        {
+            if ((!CurrentGame.ToolIsActive) || (CurrentGame.GameData.ActiveTool == ToolType.SuperJump))
+            {
+                _invincibilityEffect.SetActive(true);
+
+                CurrentGame.ActivateTool(ToolType.Invincibility);
+            }
         }
 
         private void ActivateJetpack()
@@ -236,14 +260,20 @@ namespace Gameplay.Normal.Scripts.Player_Control
         {
             if (CurrentGame.ToolReadyForDeactivation)
             {
-                _animator.SetBool("Jetpack", false);
-                _animator.SetBool("Extinguisher", false);
-                _animator.SetBool("Walking", false);
-                _rigidBody2D.gravityScale = 1.0f;
-                _lockMovement = false;
-
-                CurrentGame.DeactivateTool();
+                ResetToolEffects();
             }
+        }
+
+        private void ResetToolEffects()
+        {
+            _invincibilityEffect.SetActive(false);
+            _animator.SetBool("Jetpack", false);
+            _animator.SetBool("Extinguisher", false);
+            _animator.SetBool("Walking", false);
+            _rigidBody2D.gravityScale = 1.0f;
+            _lockMovement = false;
+
+            CurrentGame.DeactivateTool();
         }
 
         private void OnTriggerEnter2D(Collider2D collider)

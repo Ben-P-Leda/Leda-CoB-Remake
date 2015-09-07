@@ -53,7 +53,10 @@ namespace Gameplay.Shared.Scripts.Enemy_Behaviours
 
         protected virtual void HandleCollisionWithPlayer()
         {
-            CurrentGame.GameData.Energy -= PlayerEnergyDrainValue;
+            if (CurrentGame.GameData.ActiveTool != ToolType.Invincibility)
+            {
+                CurrentGame.GameData.Energy -= PlayerEnergyDrainValue;
+            }
         }
 
         private float Minimum_Time_Between_Hits = 0.0001f;
