@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 73c4ffc54098e584981ca03d33921e1b
-timeCreated: 1440014520
+timeCreated: 1441715398
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -21,6 +21,9 @@ TextureImporter:
     21300028: O
     21300030: M
     21300032: V
+    21300034: Not
+    21300036: Enough
+    21300038: Gems
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -44,7 +47,7 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 512
+  maxTextureSize: 1024
   textureSettings:
     filterMode: -1
     aniso: 16
@@ -66,102 +69,12 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Area
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 155
-        width: 259
-        height: 74
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Past
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 78
-        width: 238
-        height: 75
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: 2
-      rect:
-        serializedVersion: 2
-        x: 241
-        y: 77
-        width: 59
-        height: 76
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: 3
-      rect:
-        serializedVersion: 2
-        x: 302
-        y: 77
-        width: 61
-        height: 75
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Got
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 1
-        width: 188
-        height: 75
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Kev
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 1
-        width: 189
-        height: 74
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
     - name: Get
       rect:
         serializedVersion: 2
         x: 1
-        y: 309
+        y: 386
         width: 182
-        height: 75
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Ready
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 231
-        width: 299
-        height: 74
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Exclamation
-      rect:
-        serializedVersion: 2
-        x: 262
-        y: 155
-        width: 43
-        height: 75
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: 1
-      rect:
-        serializedVersion: 2
-        x: 307
-        y: 154
-        width: 49
         height: 75
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -170,7 +83,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 185
-        y: 309
+        y: 387
         width: 74
         height: 74
       alignment: 0
@@ -180,7 +93,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 261
-        y: 309
+        y: 387
         width: 71
         height: 74
       alignment: 0
@@ -190,9 +103,19 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 334
-        y: 311
+        y: 389
         width: 81
         height: 73
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ready
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 310
+        width: 299
+        height: 74
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,7 +123,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 302
-        y: 235
+        y: 313
         width: 77
         height: 72
       alignment: 0
@@ -210,9 +133,39 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 380
-        y: 237
+        y: 315
         width: 78
         height: 73
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Area
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 233
+        width: 259
+        height: 74
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Exclamation
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 233
+        width: 43
+        height: 75
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 1
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 232
+        width: 49
+        height: 75
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -220,9 +173,39 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 358
-        y: 154
+        y: 232
         width: 88
         height: 72
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Past
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 156
+        width: 238
+        height: 75
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 2
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 155
+        width: 59
+        height: 76
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 3
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 155
+        width: 61
+        height: 75
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -230,9 +213,59 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 365
-        y: 81
+        y: 159
         width: 78
         height: 71
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Got
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 79
+        width: 188
+        height: 75
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Kev
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 79
+        width: 189
+        height: 74
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Not
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 84
+        width: 188
+        height: 74
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Enough
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2
+        width: 357
+        height: 75
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gems
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 1
+        width: 252
+        height: 76
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

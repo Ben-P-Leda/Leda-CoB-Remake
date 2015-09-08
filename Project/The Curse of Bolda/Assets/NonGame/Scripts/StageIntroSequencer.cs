@@ -4,9 +4,11 @@ using Shared.Scripts;
 
 namespace NonGame.Scripts
 {
-    public class TitleSceneSequencer : MonoBehaviour
+    public class StageIntroSequencer : MonoBehaviour
     {
         private FadeTransitioner _fadeTransitioner;
+
+        public string GameplaySceneName;
 
         private void Awake()
         {
@@ -29,7 +31,7 @@ namespace NonGame.Scripts
 
         private void HandleFadeOutComplete()
         {
-            Application.LoadLevel("Level 1-1 Intro");
+            Application.LoadLevel(GameplaySceneName);
         }
     }
 }

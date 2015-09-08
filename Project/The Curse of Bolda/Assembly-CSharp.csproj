@@ -116,8 +116,8 @@
      <Compile Include="Assets\Gameplay\Shared\Scripts\Switches\RestartPoint.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Switches\RestartPointManager.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Switches\SwitchBase.cs" />
+     <Compile Include="Assets\NonGame\Scripts\StageIntroSequencer.cs" />
      <Compile Include="Assets\NonGame\Scripts\TitleSceneSequencer.cs" />
-     <Compile Include="Assets\NonGame\Stage Intro\StageIntroPresenter.cs" />
      <Compile Include="Assets\Shared\Scripts\Constants.cs" />
      <Compile Include="Assets\Shared\Scripts\CurrentGame.cs" />
      <Compile Include="Assets\Shared\Scripts\Enumerations.cs" />
