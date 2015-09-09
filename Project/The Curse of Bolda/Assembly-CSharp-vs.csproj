@@ -67,6 +67,7 @@
      <Compile Include="Assets\Gameplay\Shared\Scripts\Effects\GetReadyChrome.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Effects\Invincibility.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Effects\LevelClearChrome.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Effects\NotEnoughGemsChrome.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Effects\PooledParticleEffect.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Effects\SmokeCloudPool.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Effects\WaterSplashPool.cs" />

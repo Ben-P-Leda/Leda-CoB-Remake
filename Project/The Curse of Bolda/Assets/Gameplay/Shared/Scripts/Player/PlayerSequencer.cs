@@ -2,6 +2,7 @@
 
 using Shared.Scripts;
 using Gameplay.Shared.Scripts.Shots;
+using Gameplay.Shared.Scripts.Effects;
 using Gameplay.Normal.Scripts.Player_Control;
 
 namespace Gameplay.Shared.Scripts.Player
@@ -15,6 +16,7 @@ namespace Gameplay.Shared.Scripts.Player
         private WarpTracker _warpTracker;
         private TrackingCameraController _cameraController;
         private KevShotPool _basicShotPool;
+        private GameObject _notEnoughGemsPopup;
 
         private bool _sequenceRunning;
         private GateType _gateBeingEntered;
@@ -41,6 +43,7 @@ namespace Gameplay.Shared.Scripts.Player
             _basicShotPool = transform.FindChild("Kev Basic Shots").GetComponent<KevShotPool>();
             _warpTracker = transform.Find("Warp Gate Tracker").GetComponent<WarpTracker>();
             _warpTracker.WarpCompletionCallback = CompleteWarp;
+            _notEnoughGemsPopup = transform.FindChild("Not Enough Gems Sequencer").gameObject;
 
             _sequenceRunning = false;
 
@@ -84,6 +87,7 @@ namespace Gameplay.Shared.Scripts.Player
 
             SequencedAvatar.SetActive(false);
             InputDrivenAvatar.SetActive(true);
+            _notEnoughGemsPopup.SetActive(false);
             _warpTracker.Reset();
 
             _basicShotPool.CanShoot = true;
@@ -95,15 +99,25 @@ namespace Gameplay.Shared.Scripts.Player
 
         public void EnterGate(GateType gateBeingEntered, Vector2 gateCenter)
         {
-            _gateBeingEntered = gateBeingEntered;
-            _gateCenter = gateCenter;
+            if ((gateBeingEntered == GateType.Exit) && (CurrentGame.GameData.GemsCollected < CurrentGame.GameData.GemsRequired))
+            {
+                if (!_notEnoughGemsPopup.activeInHierarchy)
+                {
+                    _notEnoughGemsPopup.SetActive(true);
+                }
+            }
+            else
+            {
+                _gateBeingEntered = gateBeingEntered;
+                _gateCenter = gateCenter;
 
-            CurrentGame.GameData.TimerIsFrozen = true;
-            SwitchToSequencedAvatar();
-            _sequencedAvatarController.SequenceCompleteHandler = CompleteGateEntrySequence;
-            _sequencedAvatarAnimator.SetInteger("DeathSequence", 0);
-            _sequencedAvatarAnimator.SetBool("ExitingGate", false);
-            _sequencedAvatarAnimator.SetBool("EnteringGate", true);
+                CurrentGame.GameData.TimerIsFrozen = true;
+                SwitchToSequencedAvatar();
+                _sequencedAvatarController.SequenceCompleteHandler = CompleteGateEntrySequence;
+                _sequencedAvatarAnimator.SetInteger("DeathSequence", 0);
+                _sequencedAvatarAnimator.SetBool("ExitingGate", false);
+                _sequencedAvatarAnimator.SetBool("EnteringGate", true);
+            }
         }
 
         public void CompleteGateEntrySequence()
