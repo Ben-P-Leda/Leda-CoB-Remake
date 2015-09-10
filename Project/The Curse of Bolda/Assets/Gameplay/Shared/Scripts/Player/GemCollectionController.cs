@@ -19,7 +19,7 @@ namespace Gameplay.Shared.Scripts.Player
 
         private void OnTriggerEnter2D(Collider2D collider)
         {
-            if (collider.tag == "Gem")
+            if ((collider.tag == "Gem") && (CurrentGame.GameData.ActiveTool != ToolType.FireExtinguisher))
             {
                 GemCollectSparklePool.ActivateGemCollectSparkle(collider.transform.position);
 
