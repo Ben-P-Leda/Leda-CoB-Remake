@@ -14,6 +14,7 @@ namespace Gameplay.Normal.Scripts.Player_Control
         private PlayerSequencer _sequenceController;
 
         private GameObject _invincibilityEffect;
+        private GameObject _pickaxe;
 
         private bool _facingRight;
         private VerticalMovementState _verticalMovementState;
@@ -31,6 +32,7 @@ namespace Gameplay.Normal.Scripts.Player_Control
 
             _sequenceController = _transform.parent.GetComponent<PlayerSequencer>();
             _invincibilityEffect = _transform.FindChild("Invincibility Effect").gameObject;
+            _pickaxe = _transform.FindChild("Kev Body").FindChild("Kev Bicep Front").FindChild("Kev Forearm Front").FindChild("Pickaxe").gameObject;
         }
 
         private void Start()
