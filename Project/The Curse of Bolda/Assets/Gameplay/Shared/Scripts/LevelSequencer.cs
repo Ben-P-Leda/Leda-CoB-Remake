@@ -4,6 +4,7 @@ using Shared.Scripts;
 using Gameplay.Shared.Scripts.Generic;
 using Gameplay.Shared.Scripts.Player;
 using Gameplay.Shared.Scripts.Enemy_Behaviours;
+using Gameplay.Shared.Scripts.Effects;
 
 namespace Gameplay.Shared.Scripts
 {
@@ -15,6 +16,7 @@ namespace Gameplay.Shared.Scripts
         private List<IChangesStateOnNewLifeStart> _objectsToUpdateOnNewLifeStart;
         private GameObject _getReadySequencer;
         private GameObject _endLevelSequencer;
+        private LevelClearChrome _endLevelSequencerScript;
         private GameObject _gameOverSequencer;
         private float _timeSinceGameOver;
 
@@ -24,6 +26,7 @@ namespace Gameplay.Shared.Scripts
         public int RequiredGems;
         public Vector2 PlayerStartPosition;
         public bool PlayerStartFacingLeft;
+        public string NextLevel;
 
         public bool DebuggingLevel;
 
@@ -38,6 +41,7 @@ namespace Gameplay.Shared.Scripts
 
             _getReadySequencer = transform.FindChild("Get Ready Sequencer").gameObject;
             _endLevelSequencer = transform.FindChild("End Level Sequencer").gameObject;
+            _endLevelSequencerScript = _endLevelSequencer.GetComponent<LevelClearChrome>();
             _gameOverSequencer = transform.FindChild("Game Over Sequencer").gameObject;
 
             _objectsToUpdateOnNewLifeStart = new List<IChangesStateOnNewLifeStart>();
@@ -157,6 +161,13 @@ namespace Gameplay.Shared.Scripts
             {
                 _endLevelSequencer.SetActive(true);
             }
+            else if ((_endLevelSequencerScript.BonusCountComplete) && (Input.anyKeyDown))
+            {
+                _fadeTransitioner.TransitionCompletionHandler = StartNextLevel;
+                _fadeTransitioner.FadeOut();
+
+                CurrentGame.GameData.GameplayState = GameplayState.CueNextLevel;
+            }
         }
 
         private void UpdateForGameOver()
@@ -174,6 +185,11 @@ namespace Gameplay.Shared.Scripts
         private void ExitGame()
         {
             Application.LoadLevel("TitleScene");
+        }
+
+        private void StartNextLevel()
+        {
+            Application.LoadLevel(NextLevel);
         }
 
         private const float Game_Over_State_Duration = 5.0f;

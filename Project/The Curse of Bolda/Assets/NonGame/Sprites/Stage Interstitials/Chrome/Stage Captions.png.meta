@@ -1,12 +1,13 @@
 fileFormatVersion: 2
 guid: 927e324306da75943be5bd544784a29f
-timeCreated: 1441715890
+timeCreated: 1441816607
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Stage Captions_0
     21300002: Stage Captions_1
     21300004: Stage Captions_2
+    21300006: Stage Captions_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -60,7 +61,7 @@ TextureImporter:
         width: 184
         height: 76
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Stage Captions_1
       rect:
@@ -81,6 +82,16 @@ TextureImporter:
         height: 79
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stage Captions_3
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 22
+        width: 105
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

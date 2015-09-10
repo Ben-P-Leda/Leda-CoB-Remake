@@ -14,6 +14,14 @@ namespace Gameplay.Shared.Scripts.Effects
         private int _gemBonus;
         private int _gemBonusDisplayCounter;
 
+        public bool BonusCountComplete 
+        { 
+            get 
+            { 
+                return ((_entryComplete) && (_timeBonusDisplayCounter == _timeBonus) && (_gemBonusDisplayCounter == _gemBonus)); 
+            } 
+        }
+
         public Font Font;
 
         private void Awake()

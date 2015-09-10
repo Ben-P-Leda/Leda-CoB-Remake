@@ -29,6 +29,7 @@ namespace NonGame.Scripts
 
         private void HandleFadeOutComplete()
         {
+            CurrentGame.SetForNewGame();
             Application.LoadLevel("Level 1-1 Intro");
         }
     }

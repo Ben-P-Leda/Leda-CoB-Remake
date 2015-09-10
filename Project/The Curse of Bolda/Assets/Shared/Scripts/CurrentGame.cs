@@ -41,7 +41,6 @@ namespace Shared.Scripts
             _gameData.CarryingKey = false;
 
             if (stage == AreaStage.One) { ClearInventory(); }
-            _gameData.ToolCounts[1] = 2;
 
             RestorePlayerEnergy();
         }

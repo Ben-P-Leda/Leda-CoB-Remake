@@ -15,6 +15,7 @@
         Warping,
         SequenceRunning,
         LevelComplete,
+        CueNextLevel,
         GameOver
     }
 

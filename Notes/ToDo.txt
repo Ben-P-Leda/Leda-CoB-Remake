@@ -5,8 +5,6 @@ Fixes & arising
 
 To complete levels 1-1/1-2:
 	- Pickaxe functionality
-	- Level complete exit to next scene
-	- Enforce gem limit
 		
 Bugs:
 	- Fire extinguisher spray collects gems

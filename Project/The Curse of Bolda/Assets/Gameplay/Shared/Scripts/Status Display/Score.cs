@@ -21,7 +21,7 @@ namespace Gameplay.Shared.Scripts.Status_Display
             DisplayArea = displayArea;
             TextArea = new Rect(displayArea.x, displayArea.y + Text_Vertical_Offset, displayArea.width, displayArea.height - Text_Vertical_Offset);
 
-            _displayedScore = 0;
+            _displayedScore = CurrentGame.GameData.Score;
         }
 
         private void Update()
