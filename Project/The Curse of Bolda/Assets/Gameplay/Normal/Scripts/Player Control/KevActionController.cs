@@ -24,6 +24,8 @@ namespace Gameplay.Normal.Scripts.Player_Control
         private bool _enteringGate;
         private GateType _activeGateType;
 
+        public bool PickaxeHasGripped { private get; set; }
+
         private void Awake()
         {
             _transform = GetComponent<Transform>();
@@ -59,8 +61,11 @@ namespace Gameplay.Normal.Scripts.Player_Control
             _animator.SetBool("Jetpack", false);
             _animator.SetBool("Extinguisher", false);
             _animator.SetBool("Walking", false);
+            _animator.SetBool("Pickaxe", false);
             _rigidBody2D.gravityScale = 1.0f;
             _lockMovement = false;
+
+            PickaxeHasGripped = false;
 
             CurrentGame.DeactivateTool();
         }
@@ -108,6 +113,19 @@ namespace Gameplay.Normal.Scripts.Player_Control
             {
                 case VerticalMovementState.OnGround: CheckForJumpStart(); break;
                 case VerticalMovementState.Falling: HandleFalling(); break;
+            }
+
+            if ((PickaxeHasGripped) && (_verticalMovementState == VerticalMovementState.Falling))
+            {
+                _rigidBody2D.velocity = new Vector2(_rigidBody2D.velocity.x, 0.0f);
+                _rigidBody2D.gravityScale = 0.0f;
+                _verticalMovementState = VerticalMovementState.OnGround;
+                _animator.SetBool("Pickaxe", true);
+            }
+            else if ((_rigidBody2D.gravityScale != 1.0f) && ((!PickaxeHasGripped) || (_verticalMovementState == VerticalMovementState.Rising)))
+            {
+                _animator.SetBool("Pickaxe", false);
+                _rigidBody2D.gravityScale = 1.0f;
             }
 
             if (_verticalMovementState != VerticalMovementState.OnGround) { _isMoving = true; }
@@ -201,6 +219,7 @@ namespace Gameplay.Normal.Scripts.Player_Control
             if ((Input.GetKeyDown(KeyCode.F1)) && (CurrentGame.HasTool(ToolType.Invincibility))) { ActivateInvincibility(); }
             if ((Input.GetKeyDown(KeyCode.F2)) && (CurrentGame.HasTool(ToolType.Jetpack))) { ActivateJetpack(); }
             if ((Input.GetKeyDown(KeyCode.F3)) && (CurrentGame.HasTool(ToolType.SuperJump))) { ActivateSuperJump(); }
+            if ((Input.GetKeyDown(KeyCode.F5)) && (CurrentGame.HasTool(ToolType.Pickaxe))) { ActivatePickaxe(); }
             if ((Input.GetKeyDown(KeyCode.F6)) && (CurrentGame.HasTool(ToolType.FireExtinguisher)) && (!_isMoving)) { ActivateFireExtinguisher(); }
 
             if ((CurrentGame.GameData.ActiveTool == ToolType.Invincibility) && (!_invincibilityEffect.activeInHierarchy))
@@ -247,6 +266,16 @@ namespace Gameplay.Normal.Scripts.Player_Control
             }
         }
 
+        private void ActivatePickaxe()
+        {
+            if ((!CurrentGame.ToolIsActive) || (CurrentGame.GameData.ActiveTool == ToolType.SuperJump))
+            {
+                _pickaxe.SetActive(true);
+
+                CurrentGame.ActivateTool(ToolType.Pickaxe);
+            }
+        }
+
         private void ActivateFireExtinguisher()
         {
             if ((!CurrentGame.ToolIsActive) || (CurrentGame.GameData.ActiveTool == ToolType.SuperJump))
@@ -269,11 +298,15 @@ namespace Gameplay.Normal.Scripts.Player_Control
         private void ResetToolEffects()
         {
             _invincibilityEffect.SetActive(false);
+            _pickaxe.SetActive(false);
             _animator.SetBool("Jetpack", false);
             _animator.SetBool("Extinguisher", false);
             _animator.SetBool("Walking", false);
+            _animator.SetBool("Pickaxe", false);
             _rigidBody2D.gravityScale = 1.0f;
             _lockMovement = false;
+
+            PickaxeHasGripped = false;
 
             CurrentGame.DeactivateTool();
         }

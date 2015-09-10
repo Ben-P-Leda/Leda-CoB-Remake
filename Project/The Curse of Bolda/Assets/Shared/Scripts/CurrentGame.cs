@@ -34,6 +34,7 @@ namespace Shared.Scripts
             _gameData.Area = areaIndex;
             _gameData.Stage = stage;
             _gameData.TotalTime = duration;
+            _gameData.TimeRemaining = duration;
             _gameData.GemsRequired = requiredGems;
             _gameData.GemsCollected = 0;
             _gameData.RestartPoint = startPosition;
@@ -88,6 +89,7 @@ namespace Shared.Scripts
             {
                 case ToolType.Invincibility: _gameData.ActiveToolTimeRemaining = Constants.Invincibility_Duration; break;
                 case ToolType.Jetpack: _gameData.ActiveToolTimeRemaining = Constants.Jetpack_Duration; break;
+                case ToolType.Pickaxe: _gameData.ActiveToolTimeRemaining = Constants.Pickaxe_Duration; break;
                 case ToolType.FireExtinguisher: _gameData.ActiveToolTimeRemaining = Constants.Fire_Extinguisher_Duration; break;
             }
         }

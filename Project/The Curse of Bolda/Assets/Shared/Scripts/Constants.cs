@@ -7,6 +7,7 @@
 
         public const float Invincibility_Duration = 3.5f;
         public const float Jetpack_Duration = 4.0f;
+        public const float Pickaxe_Duration = 3.5f;
         public const float Fire_Extinguisher_Duration = 2.0f;
 
         public const float Invincibility_Duration_Post_Warp = 1.0f;

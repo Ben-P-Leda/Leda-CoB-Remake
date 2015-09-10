@@ -116,7 +116,7 @@ namespace Gameplay.Shared.Scripts.Status_Display
                 case ToolType.Jetpack: _displayOption = DisplayOption.DisplayTimer; _totalTime = Constants.Jetpack_Duration; break;
                 case ToolType.SuperJump: _displayOption = DisplayOption.DisplayOneShot; break;
                 case ToolType.FirepowerUp: _displayOption = DisplayOption.DisplayTimer; break;
-                case ToolType.Pickaxe: _displayOption = DisplayOption.DisplayTimer; break;
+                case ToolType.Pickaxe: _displayOption = DisplayOption.DisplayTimer; _totalTime = Constants.Pickaxe_Duration; break;
                 case ToolType.FireExtinguisher: _displayOption = DisplayOption.DoNotDisplay; break;
             }
         }

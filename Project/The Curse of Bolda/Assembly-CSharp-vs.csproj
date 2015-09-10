@@ -96,6 +96,7 @@
      <Compile Include="Assets\Gameplay\Shared\Scripts\LevelSequencer.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\ExtinguisherSpray.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\GemCollectionController.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Player\Pickaxe.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\PlayerSequencer.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\SequencedPlayer.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Shots\EnemyBomb.cs" />
