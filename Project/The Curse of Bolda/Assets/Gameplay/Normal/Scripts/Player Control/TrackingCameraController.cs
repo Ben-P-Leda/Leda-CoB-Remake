@@ -18,6 +18,7 @@ namespace Gameplay.Normal.Scripts.Player_Control
 
         public GameObject LevelMap;
         public List<GameObject> BackgroundLayers;
+        public bool LockVerticalMovement;
 
         private void Awake()
         {
@@ -50,9 +51,15 @@ namespace Gameplay.Normal.Scripts.Player_Control
                     Mathf.Clamp(TransformToTrack.position.y, _cameraMovementArea.yMin, _cameraMovementArea.yMax),
                     _transform.position.z);
 
+                float verticalOffset = 0.0f;
+                if (!LockVerticalMovement)
+                {
+                    verticalOffset = (_transform.position.y - _cameraMovementArea.center.y) / (_cameraMovementArea.height * 0.5f);
+                }
+
                 Vector2 offset = new Vector2(
                     (_transform.position.x - _cameraMovementArea.center.x) / (_cameraMovementArea.width * 0.5f),
-                    (_transform.position.y - _cameraMovementArea.center.y) / (_cameraMovementArea.height * 0.5f));
+                    verticalOffset);
 
                 for (int i = 0; i < _backgroundLayers.Length; i++) { _backgroundLayers[i].PositionRelativeToCamera(_transform.position, offset); }
             }

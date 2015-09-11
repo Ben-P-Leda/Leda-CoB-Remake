@@ -3,9 +3,6 @@
 Fixes & arising
 ===============
 
-To complete levels 1-1/1-2:
-	- Pickaxe functionality
-		
 Bugs:
 	
 UNITY BUG: OnTriggerExit2D does not fire if object is positioned outside collider by updaing transform.position?
@@ -13,7 +10,7 @@ UNITY BUG: OnTriggerExit2D does not fire if object is positioned outside collide
 Epic-level
 ==========
 - Bonuses (Extra life)
-- Tools (Invincibility collectable, Firepower-up, Pickaxe functionality)
+- Tools (Invincibility collectable, Firepower-up)
 - Push-scroll levels
 - Support
 - Autoplay
