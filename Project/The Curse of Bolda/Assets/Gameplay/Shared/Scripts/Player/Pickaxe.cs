@@ -1,17 +1,16 @@
 ﻿using UnityEngine;
 
-using Gameplay.Normal.Scripts.Player_Control;
 using Shared.Scripts;
 
 namespace Gameplay.Shared.Scripts.Player
 {
     public class Pickaxe : MonoBehaviour
     {
-        private KevActionController _playerController;
+        private InputDrivenPlayer _playerController;
 
         private void Awake()
         {
-            _playerController = transform.parent.GetComponent<KevActionController>();
+            _playerController = transform.parent.GetComponent<InputDrivenPlayer>();
         }
 
         private void OnCollisionEnter2D(Collision2D collider)

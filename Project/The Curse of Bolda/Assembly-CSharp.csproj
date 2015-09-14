@@ -51,7 +51,6 @@
      <Compile Include="Assets\Gameplay\Normal\Scripts\Activators\InfoScreen.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Activators\Lock.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\NormalLevelSequencer.cs" />
-     <Compile Include="Assets\Gameplay\Normal\Scripts\Player Control\KevActionController.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Player\NormalPlayerController.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Player\NormalPlayerSequencer.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Player\WarpTracker.cs" />
