@@ -7,31 +7,27 @@ namespace Gameplay.Shared.Scripts.Player
 {
     public class InputDrivenPlayer : MonoBehaviour
     {
-        private Transform _transform;
+        protected Transform _transform { get; private set; }
         private Rigidbody2D _rigidBody2D;
-        private Animator _animator;
-        private PlayerSequencer _sequenceController;
+        protected Animator _animator;
+        protected IPlayerSequencer SequenceController { private get; set; }
 
         private GameObject _invincibilityEffect;
         private GameObject _pickaxe;
 
         private bool _facingRight;
-        private VerticalMovementState _verticalMovementState;
+        protected VerticalMovementState _verticalMovementState { get; private set; }
         private bool _isMoving;
         private bool _lockMovement;
-        private Vector2 _gateCenter;
-        private bool _enteringGate;
-        private GateType _activeGateType;
 
         public bool PickaxeHasGripped { private get; set; }
 
-        private void Awake()
+        protected virtual void Awake()
         {
             _transform = GetComponent<Transform>();
             _rigidBody2D = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
 
-            _sequenceController = _transform.parent.GetComponent<PlayerSequencer>();
             _invincibilityEffect = _transform.FindChild("Invincibility Effect").gameObject;
             _pickaxe = _transform.FindChild("Kev Body").FindChild("Kev Bicep Front").FindChild("Kev Forearm Front").FindChild("Pickaxe").gameObject;
         }
@@ -46,15 +42,11 @@ namespace Gameplay.Shared.Scripts.Player
             Reset();
         }
 
-        private void Reset()
+        protected virtual void Reset()
         {
             _facingRight = (_transform.localScale.x > 0.0f);
             _verticalMovementState = VerticalMovementState.OnGround;
             _isMoving = false;
-
-            _activeGateType = GateType.None;
-            _gateCenter = Vector2.zero;
-            _enteringGate = false;
 
             _invincibilityEffect.SetActive(false);
             _animator.SetBool("Jetpack", false);
@@ -69,7 +61,7 @@ namespace Gameplay.Shared.Scripts.Player
             CurrentGame.DeactivateTool();
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             _isMoving = false;
 
@@ -78,9 +70,6 @@ namespace Gameplay.Shared.Scripts.Player
 
             CheckForToolActivation();
             CheckForToolDeactivation();
-
-            CheckForGateActivation();
-            CheckForGateEntry();
 
             if (Input.GetKeyDown(KeyCode.Escape)) { Application.Quit(); }
         }
@@ -137,9 +126,9 @@ namespace Gameplay.Shared.Scripts.Player
             _animator.SetBool("Jumping", false);
         }
 
-        private void CheckForJumpStart()
+        protected virtual void CheckForJumpStart()
         {
-            if ((!_lockMovement) && (!_enteringGate) && (Input.GetKeyDown(KeyCode.W)))
+            if ((!_lockMovement) && (Input.GetKeyDown(KeyCode.W)))
             {
                 if (CurrentGame.GameData.ActiveTool == ToolType.SuperJump)
                 {
@@ -169,9 +158,7 @@ namespace Gameplay.Shared.Scripts.Player
         {
             if (!_lockMovement)
             {
-                int direction = 0;
-                if (_enteringGate) { direction = GetDirectionFromGateCenter(); }
-                else { direction = GetDirectionFromInput(); }
+                int direction = GetDirection();
 
                 _rigidBody2D.velocity = new Vector2(direction * Speed, _rigidBody2D.velocity.y);
 
@@ -182,9 +169,9 @@ namespace Gameplay.Shared.Scripts.Player
             }
         }
 
-        private int GetDirectionFromGateCenter()
+        protected virtual int GetDirection()
         {
-            return (int)Mathf.Sign(_gateCenter.x - _transform.position.x);
+            return GetDirectionFromInput();
         }
 
         private int GetDirectionFromInput()
@@ -310,12 +297,10 @@ namespace Gameplay.Shared.Scripts.Player
             CurrentGame.DeactivateTool();
         }
 
-        private void OnTriggerEnter2D(Collider2D collider)
+        protected virtual void OnTriggerEnter2D(Collider2D collider)
         {
             switch (collider.tag)
             {
-                case "Exit Gate": _gateCenter = collider.transform.position; _activeGateType = GateType.Exit; break;
-                case "Warp Gate": _gateCenter = collider.transform.position; _activeGateType = GateType.Warp; break;
                 case "Water Surface": WaterSplashPool.ActivateWaterSplash(_transform.position + new Vector3(0, -0.15f, 0)); break;
                 case "Water Pool": TriggerDeathSequence(PlayerDeathSequence.Drowning); break;
             }
@@ -324,47 +309,11 @@ namespace Gameplay.Shared.Scripts.Player
         private void TriggerDeathSequence(PlayerDeathSequence sequenceToRun)
         {
             _lockMovement = true;
-            _sequenceController.DeathSequence = sequenceToRun;
+            SequenceController.DeathSequence = sequenceToRun;
             CurrentGame.GameData.Energy = 0;
         }
 
-        private void OnTriggerExit2D(Collider2D collider)
-        {
-            if ((collider.tag == "Exit Gate") || (collider.tag == "Warp Gate"))
-            {
-                _gateCenter = Vector2.zero;
-                _activeGateType = GateType.None;
-            }
-        }
-
-        private void CheckForGateActivation()
-        {
-            if ((GateEntryPermitted) && (Input.GetKeyDown(KeyCode.S))) { _enteringGate = true; }
-        }
-
-        private bool GateEntryPermitted
-        {
-            get
-            {
-                if (_enteringGate) { return false; }
-                if (_verticalMovementState != VerticalMovementState.OnGround) { return false; }
-                if (_gateCenter.x <= 0.0f) { return false; }
-                if (CurrentGame.ToolIsActive) { return false; }
-
-                return true;
-            }
-        }
-
-        private void CheckForGateEntry()
-        {
-            if ((_enteringGate) && (Mathf.Abs(_gateCenter.x - _transform.position.x) < Gate_Entry_Center_Proximity))
-            {
-                _enteringGate = false;
-                _sequenceController.EnterGate(_activeGateType, _gateCenter);
-            }
-        }
-
-        private enum VerticalMovementState
+        protected enum VerticalMovementState
         {
             OnGround,
             Rising,
@@ -377,6 +326,5 @@ namespace Gameplay.Shared.Scripts.Player
         private const float Normal_Jump_Max_Vertical_Velocity = 5.6f;
         private const float Fall_Velocity_Threshold = -0.6f;
         private const float Touchdown_Velocity_Threshold = -0.001f;
-        private const float Gate_Entry_Center_Proximity = 0.05f;
     }
 }

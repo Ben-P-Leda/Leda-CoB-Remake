@@ -7,20 +7,18 @@ using Gameplay.Normal.Scripts.Player;
 
 namespace Gameplay.Shared.Scripts.Player
 {
-    public class PlayerSequencer : MonoBehaviour
+    public class PlayerSequencer : MonoBehaviour, IPlayerSequencer
     {
-        private Animator _sequencedAvatarAnimator;
-        private Transform _inputDrivenAvatarTransform;
-        private Transform _sequencedAvatarTransform;
-        private SequencedPlayer _sequencedAvatarController;
-        private WarpTracker _warpTracker;
-        private TrackingCameraController _cameraController;
-        private KevShotPool _basicShotPool;
-        private GameObject _notEnoughGemsPopup;
+        protected Animator _sequencedAvatarAnimator { get; private set; }
+        protected Transform _inputDrivenAvatarTransform { get; private set; }
+        protected Transform _sequencedAvatarTransform { get; private set; }
+        protected SequencedPlayer _sequencedAvatarController { get; private set; }
+        protected TrackingCameraController _cameraController { get; private set; }
+        protected KevShotPool _basicShotPool { get; private set; }
+
+        protected GameObject _notEnoughGemsPopup { get; private set; }
 
         private bool _sequenceRunning;
-        private GateType _gateBeingEntered;
-        private Vector2 _gateCenter;
 
         public PlayerDeathSequence DeathSequence { private get; set; }
 
@@ -33,7 +31,7 @@ namespace Gameplay.Shared.Scripts.Player
         public GameObject InputDrivenAvatar;
         public GameObject SequencedAvatar;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             _sequencedAvatarTransform = SequencedAvatar.GetComponent<Transform>();
             _sequencedAvatarAnimator = SequencedAvatar.GetComponent<Animator>();
@@ -41,8 +39,6 @@ namespace Gameplay.Shared.Scripts.Player
             _cameraController = Camera.GetComponent<TrackingCameraController>();
 
             _basicShotPool = transform.FindChild("Kev Basic Shots").GetComponent<KevShotPool>();
-            _warpTracker = transform.Find("Warp Gate Tracker").GetComponent<WarpTracker>();
-            _warpTracker.WarpCompletionCallback = CompleteWarp;
             _notEnoughGemsPopup = transform.FindChild("Not Enough Gems Sequencer").gameObject;
 
             _sequenceRunning = false;
@@ -62,7 +58,7 @@ namespace Gameplay.Shared.Scripts.Player
             }
         }
 
-        private void SwitchToSequencedAvatar()
+        protected void SwitchToSequencedAvatar()
         {
             _basicShotPool.CanShoot = false;
 
@@ -72,7 +68,7 @@ namespace Gameplay.Shared.Scripts.Player
             SequencedAvatar.SetActive(true);
         }
 
-        public void StartNewLife()
+        public virtual void StartNewLife()
         {
             if ((SequencedAvatar.activeInHierarchy) && (_sequencedAvatarAnimator != null))
             {
@@ -88,7 +84,6 @@ namespace Gameplay.Shared.Scripts.Player
             SequencedAvatar.SetActive(false);
             InputDrivenAvatar.SetActive(true);
             _notEnoughGemsPopup.SetActive(false);
-            _warpTracker.Reset();
 
             _basicShotPool.CanShoot = true;
 
@@ -97,75 +92,6 @@ namespace Gameplay.Shared.Scripts.Player
             // TODO: "Let's rock!" sequence
         }
 
-        public void EnterGate(GateType gateBeingEntered, Vector2 gateCenter)
-        {
-            if ((gateBeingEntered == GateType.Exit) && (CurrentGame.GameData.GemsCollected < CurrentGame.GameData.GemsRequired))
-            {
-                if (!_notEnoughGemsPopup.activeInHierarchy)
-                {
-                    _notEnoughGemsPopup.SetActive(true);
-                }
-            }
-            else
-            {
-                _gateBeingEntered = gateBeingEntered;
-                _gateCenter = gateCenter;
-
-                CurrentGame.GameData.TimerIsFrozen = true;
-                SwitchToSequencedAvatar();
-                _sequencedAvatarController.SequenceCompleteHandler = CompleteGateEntrySequence;
-                _sequencedAvatarAnimator.SetInteger("DeathSequence", 0);
-                _sequencedAvatarAnimator.SetBool("ExitingGate", false);
-                _sequencedAvatarAnimator.SetBool("EnteringGate", true);
-            }
-        }
-
-        public void CompleteGateEntrySequence()
-        {
-            switch (_gateBeingEntered)
-            {
-                case GateType.Exit: CurrentGame.GameData.GameplayState = GameplayState.LevelComplete; break;
-                case GateType.Warp: InitiateWarp(); break;
-            }
-        }
-
-        public void InitiateWarp()
-        {
-            _warpTracker.Activate(_gateCenter);
-            _cameraController.TransformToTrack = _warpTracker.transform;
-        }
-
-        public void CompleteWarp()
-        {
-            _sequencedAvatarTransform.position = new Vector3(
-                _warpTracker.transform.position.x,
-                _warpTracker.transform.position.y,
-                _sequencedAvatarTransform.position.z);
-            _warpTracker.Reset();
-
-            _sequencedAvatarController.SequenceCompleteHandler = CompleteGateExitSequence;
-            _sequencedAvatarAnimator.SetBool("EnteringGate", false);
-            _sequencedAvatarAnimator.SetBool("ExitingGate", true);
-
-            _cameraController.TransformToTrack = _sequencedAvatarTransform;
-        }
-
-        private void CompleteGateExitSequence()
-        {
-            _basicShotPool.CanShoot = true;
-
-            _sequencedAvatarAnimator.SetBool("EnteringGate", false);
-            _sequencedAvatarAnimator.SetBool("ExitingGate", true);
-            SequencedAvatar.SetActive(false);
-
-            _inputDrivenAvatarTransform.position = _sequencedAvatarTransform.position;
-            _cameraController.TransformToTrack = _inputDrivenAvatarTransform;
-            InputDrivenAvatar.SetActive(true);
-
-            CurrentGame.ActivateInvincibilityFollowingWarp();
-        }
-
         public const int Player_Physics_Layer_Index = 1024;
-        
     }
 }

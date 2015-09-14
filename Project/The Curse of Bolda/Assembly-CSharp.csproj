@@ -97,6 +97,7 @@
      <Compile Include="Assets\Gameplay\Shared\Scripts\LevelSequencer.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\ExtinguisherSpray.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\GemCollectionController.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Player\IPlayerSequencer.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\InputDrivenPlayer.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\Pickaxe.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\PlayerSequencer.cs" />
