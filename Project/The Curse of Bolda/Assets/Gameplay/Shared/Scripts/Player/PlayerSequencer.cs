@@ -3,7 +3,7 @@
 using Shared.Scripts;
 using Gameplay.Shared.Scripts.Shots;
 using Gameplay.Shared.Scripts.Effects;
-using Gameplay.Normal.Scripts.Player_Control;
+using Gameplay.Normal.Scripts.Player;
 
 namespace Gameplay.Shared.Scripts.Player
 {

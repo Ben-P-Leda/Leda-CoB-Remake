@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 using Gameplay.Shared.Scripts.Environment;
 
-namespace Gameplay.Normal.Scripts.Player_Control
+namespace Gameplay.Shared.Scripts.Player
 {
     public class TrackingCameraController : MonoBehaviour
     {
