@@ -8,7 +8,7 @@ namespace Gameplay.Shared.Scripts.Player
     public class InputDrivenPlayer : MonoBehaviour
     {
         protected Transform _transform { get; private set; }
-        private Rigidbody2D _rigidBody2D;
+        protected Rigidbody2D _rigidBody2D { get; private set; }
         protected Animator _animator;
         protected IPlayerSequencer SequenceController { private get; set; }
 
@@ -83,8 +83,8 @@ namespace Gameplay.Shared.Scripts.Player
         private void HandleJetpackVerticalMovement()
         {
             float verticalSpeed = 0.0f;
-            if (Input.GetKey(KeyCode.W)) { verticalSpeed = Speed; }
-            if (Input.GetKey(KeyCode.S)) { verticalSpeed = -Speed; }
+            if (Input.GetKey(KeyCode.W)) { verticalSpeed = Walk_Speed; }
+            if (Input.GetKey(KeyCode.S)) { verticalSpeed = -Walk_Speed; }
 
             _rigidBody2D.velocity = new Vector2(_rigidBody2D.velocity.x, verticalSpeed);
         }
@@ -160,7 +160,7 @@ namespace Gameplay.Shared.Scripts.Player
             {
                 int direction = GetDirection();
 
-                _rigidBody2D.velocity = new Vector2(direction * Speed, _rigidBody2D.velocity.y);
+                _rigidBody2D.velocity = new Vector2(direction * Walk_Speed, _rigidBody2D.velocity.y);
 
                 if (FacingDirectionHasChanged(direction)) { Flip(); }
                 _animator.SetBool("Walking", direction != 0);
@@ -182,7 +182,7 @@ namespace Gameplay.Shared.Scripts.Player
             return 0;
         }
 
-        private bool FacingDirectionHasChanged(int movementDirection)
+        protected virtual bool FacingDirectionHasChanged(int movementDirection)
         {
             bool directionHasChanged = false;
             if ((_facingRight) && (movementDirection < 0)) { directionHasChanged = true; }
@@ -320,7 +320,8 @@ namespace Gameplay.Shared.Scripts.Player
             Falling
         }
 
-        private const float Speed = 2.0f;
+        public const float Walk_Speed = 2.0f;
+
         private const float Jump_Power = 290.0f;
         private const float Super_Jump_Power = 2900.0f;
         private const float Normal_Jump_Max_Vertical_Velocity = 5.6f;

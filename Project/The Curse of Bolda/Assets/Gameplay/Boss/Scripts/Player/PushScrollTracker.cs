@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+using Gameplay.Shared.Scripts.Player;
+
 namespace Gameplay.Boss.Scripts.Player
 {
     public class PushScrollTracker : MonoBehaviour
@@ -7,6 +9,7 @@ namespace Gameplay.Boss.Scripts.Player
         private Transform _playerTransform;
         private Rigidbody2D _rigidbody2D;
         private Transform _transform;
+        private float _leftSideLimit;
 
         public GameObject InputDrivenAvatar;
 
@@ -18,20 +21,21 @@ namespace Gameplay.Boss.Scripts.Player
             _playerTransform = InputDrivenAvatar.transform;
         }
 
+        private void Start()
+        {
+            Vector3 cameraMargins = (Camera.main.ViewportToWorldPoint(Vector3.one) - Camera.main.ViewportToWorldPoint(Vector3.zero)) * 0.5f;
+            _leftSideLimit = cameraMargins.x;
+        }
+
         public void LockToPlayerPosition()
         {
-            _transform.position = new Vector3(_playerTransform.position.x, _playerTransform.position.y, _transform.position.z);
+            _transform.position = new Vector3(Mathf.Max(_playerTransform.position.x, _leftSideLimit), _playerTransform.position.y, _transform.position.z);
             _rigidbody2D.velocity = Vector2.zero;
-
-            Diagnostics.DiagnosticsDisplay.SetDiagnostic("x", _playerTransform.position.x.ToString());
-            Diagnostics.DiagnosticsDisplay.SetDiagnostic("y", Camera.main.transform.position.x.ToString());
         }
 
         public void Activate()
         {
-            _rigidbody2D.velocity = new Vector2(Speed, 0.0f);
+            _rigidbody2D.velocity = new Vector2(InputDrivenPlayer.Walk_Speed, 0.0f);
         }
-
-        private const float Speed = 2.0f;
     }
 }
