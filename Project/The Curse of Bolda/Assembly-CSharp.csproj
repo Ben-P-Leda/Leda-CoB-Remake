@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Diagnostics\DiagnosticsDisplay.cs" />
+     <Compile Include="Assets\Gameplay\Boss\Scripts\Player\BossPlayerController.cs" />
+     <Compile Include="Assets\Gameplay\Boss\Scripts\Player\BossPlayerSequencer.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Activators\ActivatorBase.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Activators\InfoScreen.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Activators\Lock.cs" />
