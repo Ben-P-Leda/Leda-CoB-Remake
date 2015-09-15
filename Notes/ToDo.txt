@@ -4,6 +4,7 @@ Fixes & arising
 ===============
 
 Bugs:
+Timer not unfreezing post warp?
 	
 UNITY BUG: OnTriggerExit2D does not fire if object is positioned outside collider by updaing transform.position?
 

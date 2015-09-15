@@ -11,7 +11,7 @@ namespace Gameplay.Shared.Scripts
     public class LevelSequencer : MonoBehaviour
     {
         private FadeTransitioner _fadeTransitioner;
-        private PlayerSequencer _playerSequencer;
+        protected IPlayerSequencer PlayerSequencerController { private get; set; }
         private List<ICanBeFrozen> _freezableEnemyScripts;
         private List<IChangesStateOnNewLifeStart> _objectsToUpdateOnNewLifeStart;
         private GameObject _getReadySequencer;
@@ -34,10 +34,9 @@ namespace Gameplay.Shared.Scripts
         public GameObject Enemies;
         public GameObject Switches;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             _fadeTransitioner = GetComponent<FadeTransitioner>();
-            _playerSequencer = PlayerSequencer.GetComponent<PlayerSequencer>();
 
             _getReadySequencer = transform.FindChild("Get Ready Sequencer").gameObject;
             _endLevelSequencer = transform.FindChild("End Level Sequencer").gameObject;
@@ -85,7 +84,7 @@ namespace Gameplay.Shared.Scripts
 
         private void SetForNewLife()
         {
-            _playerSequencer.StartNewLife();
+            PlayerSequencerController.StartNewLife();
 
             CurrentGame.SetForNewLife();
             for (int i = 0; i < _objectsToUpdateOnNewLifeStart.Count; i++) { _objectsToUpdateOnNewLifeStart[i].SetForPlayerNewLifeStart(); }
@@ -116,9 +115,14 @@ namespace Gameplay.Shared.Scripts
         {
             if (Input.anyKeyDown)
             {
-                CurrentGame.StartGameplay();
-                SetEnemiesFreezeState(false);
+                StartGameplay();
             }
+        }
+
+        protected virtual void StartGameplay()
+        {
+            CurrentGame.StartGameplay();
+            SetEnemiesFreezeState(false);
         }
 
         private void UpdateForInPlay()
@@ -138,7 +142,7 @@ namespace Gameplay.Shared.Scripts
             CurrentGame.GameData.GameplayState = GameplayState.SequenceRunning;
 
             _fadeTransitioner.TransitionCompletionHandler = SetForNewLife;
-            _playerSequencer.StartDeathSequence(PlayerDeathSequence.Generic, HandleLifeLossSequenceComplete);
+            PlayerSequencerController.StartDeathSequence(PlayerDeathSequence.Generic, HandleLifeLossSequenceComplete);
         }
 
         private void HandleLifeLossSequenceComplete()
