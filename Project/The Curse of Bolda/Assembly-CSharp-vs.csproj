@@ -47,12 +47,18 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Diagnostics\DiagnosticsDisplay.cs" />
+     <Compile Include="Assets\Gameplay\Boss\Scripts\BossLevelSequencer.cs" />
+     <Compile Include="Assets\Gameplay\Boss\Scripts\Player\BossPlayerController.cs" />
+     <Compile Include="Assets\Gameplay\Boss\Scripts\Player\BossPlayerSequencer.cs" />
+     <Compile Include="Assets\Gameplay\Boss\Scripts\Player\ObstructionDetector.cs" />
+     <Compile Include="Assets\Gameplay\Boss\Scripts\Player\PushScrollTracker.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Activators\ActivatorBase.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Activators\InfoScreen.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Activators\Lock.cs" />
-     <Compile Include="Assets\Gameplay\Normal\Scripts\Player Control\KevActionController.cs" />
-     <Compile Include="Assets\Gameplay\Normal\Scripts\Player Control\TrackingCameraController.cs" />
-     <Compile Include="Assets\Gameplay\Normal\Scripts\Player Control\WarpTracker.cs" />
+     <Compile Include="Assets\Gameplay\Normal\Scripts\NormalLevelSequencer.cs" />
+     <Compile Include="Assets\Gameplay\Normal\Scripts\Player\NormalPlayerController.cs" />
+     <Compile Include="Assets\Gameplay\Normal\Scripts\Player\NormalPlayerSequencer.cs" />
+     <Compile Include="Assets\Gameplay\Normal\Scripts\Player\WarpTracker.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Status Display\KeyDisplay.cs" />
      <Compile Include="Assets\Gameplay\Normal\Scripts\Status Display\MessagePopup.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Collectables\CollectableBase.cs" />
@@ -96,9 +102,12 @@
      <Compile Include="Assets\Gameplay\Shared\Scripts\LevelSequencer.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\ExtinguisherSpray.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\GemCollectionController.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Player\IPlayerSequencer.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Player\InputDrivenPlayer.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\Pickaxe.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\PlayerSequencer.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Player\SequencedPlayer.cs" />
+     <Compile Include="Assets\Gameplay\Shared\Scripts\Player\TrackingCameraController.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Shots\EnemyBomb.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Shots\EnemyLightningBolt.cs" />
      <Compile Include="Assets\Gameplay\Shared\Scripts\Shots\EnemyMissile.cs" />
