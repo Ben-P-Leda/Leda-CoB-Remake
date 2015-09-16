@@ -19,9 +19,9 @@ namespace Gameplay.Boss.Scripts
 
         protected override void StartGameplay()
         {
-            base.StartGameplay();
-
             _playerSequencer.ActivatePushScrolling();
+
+            base.StartGameplay();
         }
     }
 }

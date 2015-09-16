@@ -27,18 +27,17 @@ namespace Gameplay.Boss.Scripts.Player
 
             _cameraController.TransformToTrack = _pushScrollTrackerTransform;
             _pushScrollTrackerController.LockToPlayerPosition();
-            _playerController.PushScrollActive = false;
         }
 
         public void ActivatePushScrolling()
         {
             _pushScrollTrackerController.Activate();
-            _playerController.PushScrollActive = true;
+            _playerController.LevelInProgress = true;
         }
 
         public override void StartDeathSequence(PlayerDeathSequence deathSequence, SequencedPlayer.PlayerSequenceCompleteCallback sequenceCompleteCallback)
         {
-            _playerController.PushScrollActive = false;
+            _playerController.LevelInProgress = false;
             _pushScrollTrackerController.Deactivate();
 
             base.StartDeathSequence(deathSequence, sequenceCompleteCallback);

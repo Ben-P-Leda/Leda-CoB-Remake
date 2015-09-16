@@ -12,6 +12,7 @@ namespace Gameplay.Boss.Scripts.Player
         private bool _beingPushed;
 
         public bool PushScrollActive { private get; set; }
+        public bool LevelInProgress { private get; set; }
         public bool Obstructed { private get; set; }
 
         protected override void Awake()
@@ -20,6 +21,9 @@ namespace Gameplay.Boss.Scripts.Player
 
             _sequenceController = _transform.parent.GetComponent<BossPlayerSequencer>();
             SequenceController = _sequenceController;
+
+            PushScrollActive = true;
+            LevelInProgress = false;
         }
 
         protected override void Reset()
@@ -28,6 +32,7 @@ namespace Gameplay.Boss.Scripts.Player
 
             _beingPushed = false;
 
+            LevelInProgress = false;
             Obstructed = false;
         }
 
@@ -35,7 +40,7 @@ namespace Gameplay.Boss.Scripts.Player
         {
             base.Update();
 
-            if ((_beingPushed) && (Obstructed))
+            if ((PushScrollActive) && (_beingPushed) && (Obstructed))
             {
                 CurrentGame.GameData.Energy = 0;
             }
@@ -45,8 +50,11 @@ namespace Gameplay.Boss.Scripts.Player
         {
             int direction = base.GetDirection();
 
-            if (PushScrollActive) { direction += 1; }
-            if ((_beingPushed) && (direction < 1)) { direction = 1; }
+            if ((LevelInProgress) && (PushScrollActive))
+            {
+                direction += 1;
+                if ((_beingPushed) && (direction < 1)) { direction = 1; }
+            }
 
             return direction;
         }
@@ -58,7 +66,7 @@ namespace Gameplay.Boss.Scripts.Player
 
         protected override void Flip()
         {
-            if (!PushScrollActive) { base.Flip(); }
+            if ((LevelInProgress) && (!PushScrollActive)) { base.Flip(); }
         }
 
         protected override void SetWalkingAnimationFlag(int direction)
