@@ -46,7 +46,7 @@ namespace Gameplay.Shared.Scripts.Player
             SequencedAvatar.SetActive(false);
         }
 
-        public void StartDeathSequence(PlayerDeathSequence deathSequence, SequencedPlayer.PlayerSequenceCompleteCallback sequenceCompleteCallback)
+        public virtual void StartDeathSequence(PlayerDeathSequence deathSequence, SequencedPlayer.PlayerSequenceCompleteCallback sequenceCompleteCallback)
         {
             if (!_sequenceRunning)
             {

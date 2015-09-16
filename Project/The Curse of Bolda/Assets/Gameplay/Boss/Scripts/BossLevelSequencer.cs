@@ -21,7 +21,7 @@ namespace Gameplay.Boss.Scripts
         {
             base.StartGameplay();
 
-            _playerSequencer.ActivatePushScrollTracker();
+            _playerSequencer.ActivatePushScrolling();
         }
     }
 }

@@ -10,6 +10,7 @@ namespace Gameplay.Boss.Scripts.Player
         private Rigidbody2D _rigidbody2D;
         private Transform _transform;
         private float _leftSideLimit;
+        private Transform _pushColliderTransform;
 
         public GameObject InputDrivenAvatar;
 
@@ -19,6 +20,7 @@ namespace Gameplay.Boss.Scripts.Player
             _rigidbody2D = GetComponent<Rigidbody2D>();
 
             _playerTransform = InputDrivenAvatar.transform;
+            _pushColliderTransform = _transform.FindChild("Push Collider").transform;
         }
 
         private void Start()
@@ -36,6 +38,19 @@ namespace Gameplay.Boss.Scripts.Player
         public void Activate()
         {
             _rigidbody2D.velocity = new Vector2(InputDrivenPlayer.Walk_Speed, 0.0f);
+        }
+
+        private void Update()
+        {
+            _transform.position = new Vector3(_transform.position.x, _playerTransform.position.y, _transform.position.z);
+
+            _pushColliderTransform.position = new Vector3(
+                _transform.position.x - _leftSideLimit, _transform.position.y, _pushColliderTransform.position.z);
+        }
+
+        public void Deactivate()
+        {
+            _rigidbody2D.velocity = Vector2.zero;
         }
     }
 }

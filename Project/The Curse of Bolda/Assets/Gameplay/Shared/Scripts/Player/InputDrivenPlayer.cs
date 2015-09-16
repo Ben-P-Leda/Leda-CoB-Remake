@@ -9,7 +9,7 @@ namespace Gameplay.Shared.Scripts.Player
     {
         protected Transform _transform { get; private set; }
         protected Rigidbody2D _rigidBody2D { get; private set; }
-        protected Animator _animator;
+        private Animator _animator;
         protected IPlayerSequencer SequenceController { private get; set; }
 
         private GameObject _invincibilityEffect;
@@ -163,7 +163,7 @@ namespace Gameplay.Shared.Scripts.Player
                 _rigidBody2D.velocity = new Vector2(direction * Walk_Speed, _rigidBody2D.velocity.y);
 
                 if (FacingDirectionHasChanged(direction)) { Flip(); }
-                _animator.SetBool("Walking", direction != 0);
+                SetWalkingAnimationFlag(direction);
 
                 if (direction != 0) { _isMoving = true; }
             }
@@ -191,13 +191,18 @@ namespace Gameplay.Shared.Scripts.Player
             return directionHasChanged;
         }
 
-        private void Flip()
+        protected virtual void Flip()
         {
             Vector3 currentScale = _transform.localScale;
             currentScale.x *= -1;
             _transform.localScale = currentScale;
 
             _facingRight = !_facingRight;
+        }
+
+        protected virtual void SetWalkingAnimationFlag(int direction)
+        {
+            _animator.SetBool("Walking", direction != 0);
         }
 
         private void CheckForToolActivation()
