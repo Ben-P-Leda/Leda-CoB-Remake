@@ -28,10 +28,8 @@ namespace Gameplay.Boss.Scripts.Environment
 
         private void SetEdgePositions()
         {
-            Vector3 cameraPosition = Camera.main.transform.position;
-
-            _leftEdgeTransform.position = new Vector3(cameraPosition.x - _halfWidth, cameraPosition.y, _leftEdgeTransform.position.z);
-            _rightEdgeTransform.position = new Vector3(cameraPosition.x + _halfWidth, cameraPosition.y, _rightEdgeTransform.position.z);
+            _leftEdgeTransform.localPosition = new Vector3(- _halfWidth, 0.0f, 0.0f);
+            _rightEdgeTransform.position = new Vector3(_halfWidth, 0.0f, 0.0f);
         }
     }
 }

@@ -48,12 +48,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Diagnostics\DiagnosticsDisplay.cs" />
+    <Compile Include="Assets\Gameplay\Boss\Scripts\BossBattleSequencer.cs" />
     <Compile Include="Assets\Gameplay\Boss\Scripts\BossLevelSequencer.cs" />
     <Compile Include="Assets\Gameplay\Boss\Scripts\Environment\ArenaBoundaries.cs" />
     <Compile Include="Assets\Gameplay\Boss\Scripts\Player\BossPlayerController.cs" />
     <Compile Include="Assets\Gameplay\Boss\Scripts\Player\BossPlayerSequencer.cs" />
     <Compile Include="Assets\Gameplay\Boss\Scripts\Player\ObstructionDetector.cs" />
     <Compile Include="Assets\Gameplay\Boss\Scripts\Player\PushScrollTracker.cs" />
+    <Compile Include="Assets\Gameplay\Boss\Scripts\Status Display\BossLifeBar.cs" />
     <Compile Include="Assets\Gameplay\Normal\Scripts\Activators\ActivatorBase.cs" />
     <Compile Include="Assets\Gameplay\Normal\Scripts\Activators\InfoScreen.cs" />
     <Compile Include="Assets\Gameplay\Normal\Scripts\Activators\Lock.cs" />
