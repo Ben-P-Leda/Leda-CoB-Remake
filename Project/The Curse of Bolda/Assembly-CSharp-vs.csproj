@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Diagnostics\DiagnosticsDisplay.cs" />
      <Compile Include="Assets\Gameplay\Boss\Scripts\BossLevelSequencer.cs" />
+     <Compile Include="Assets\Gameplay\Boss\Scripts\Environment\ArenaBoundaries.cs" />
      <Compile Include="Assets\Gameplay\Boss\Scripts\Player\BossPlayerController.cs" />
      <Compile Include="Assets\Gameplay\Boss\Scripts\Player\BossPlayerSequencer.cs" />
      <Compile Include="Assets\Gameplay\Boss\Scripts\Player\ObstructionDetector.cs" />

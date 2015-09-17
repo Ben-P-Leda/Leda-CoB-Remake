@@ -8,6 +8,7 @@ namespace Gameplay.Boss.Scripts
     public class BossLevelSequencer : LevelSequencer
     {
         private BossPlayerSequencer _playerSequencer;
+        private GameObject _bossBattleSequencer;
 
         public float BossBattleStartLine;
 
@@ -17,6 +18,8 @@ namespace Gameplay.Boss.Scripts
 
             _playerSequencer = PlayerSequencer.GetComponent<BossPlayerSequencer>();
             PlayerSequencerController = _playerSequencer;
+
+            _bossBattleSequencer = transform.FindChild("Boss Battle Sequencer").gameObject;
         }
 
         protected override void StartGameplay()
@@ -33,6 +36,7 @@ namespace Gameplay.Boss.Scripts
             if (_playerSequencer.PushScrollPosition >= BossBattleStartLine)
             {
                 _playerSequencer.StartBossBattle();
+                _bossBattleSequencer.SetActive(true);
             }
         }
     }
