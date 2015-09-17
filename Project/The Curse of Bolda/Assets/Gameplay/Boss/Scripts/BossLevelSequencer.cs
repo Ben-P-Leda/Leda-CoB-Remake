@@ -9,6 +9,8 @@ namespace Gameplay.Boss.Scripts
     {
         private BossPlayerSequencer _playerSequencer;
 
+        public float BossBattleStartLine;
+
         protected override void Awake()
         {
             base.Awake();
@@ -22,6 +24,16 @@ namespace Gameplay.Boss.Scripts
             _playerSequencer.ActivatePushScrolling();
 
             base.StartGameplay();
+        }
+
+        protected override void UpdateForInPlay()
+        {
+            base.UpdateForInPlay();
+
+            if (_playerSequencer.PushScrollPosition >= BossBattleStartLine)
+            {
+                _playerSequencer.StartBossBattle();
+            }
         }
     }
 }

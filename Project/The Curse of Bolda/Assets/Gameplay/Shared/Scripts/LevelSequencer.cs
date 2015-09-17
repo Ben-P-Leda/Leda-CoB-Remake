@@ -125,7 +125,7 @@ namespace Gameplay.Shared.Scripts
             SetEnemiesFreezeState(false);
         }
 
-        private void UpdateForInPlay()
+        protected virtual void UpdateForInPlay()
         {
             CurrentGame.UpdateTimers(Time.deltaTime);
 

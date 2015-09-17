@@ -12,6 +12,8 @@ namespace Gameplay.Boss.Scripts.Player
         private Transform _pushScrollTrackerTransform;
         private BossPlayerController _playerController;
 
+        public float PushScrollPosition { get { return _pushScrollTrackerTransform.position.x; } }
+
         protected override void Awake()
         {
             base.Awake();
@@ -41,6 +43,12 @@ namespace Gameplay.Boss.Scripts.Player
             _pushScrollTrackerController.Deactivate();
 
             base.StartDeathSequence(deathSequence, sequenceCompleteCallback);
+        }
+
+        public void StartBossBattle()
+        {
+            _pushScrollTrackerController.Deactivate();
+            _playerController.PushScrollActive = false;
         }
     }
 }
