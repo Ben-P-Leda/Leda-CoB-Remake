@@ -1,0 +1,154 @@
+fileFormatVersion: 2
+guid: e5d6357a1df11db478050b266d49adaa
+timeCreated: 1442594022
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Bolda Body
+    21300002: Bolda Forearm
+    21300004: Bolda Shin
+    21300006: Bolda Toe
+    21300008: Bolda Heel
+    21300010: Bolda Head
+    21300012: Bolda Bicep
+    21300014: Bolda Thigh
+    21300016: Bolda Shoulder
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 256
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Bolda Body
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 98
+        width: 79
+        height: 73
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bolda Forearm
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 78
+        width: 39
+        height: 93
+      alignment: 9
+      pivot: {x: .425000012, y: .899999976}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bolda Shin
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 101
+        width: 43
+        height: 70
+      alignment: 9
+      pivot: {x: .5, y: .899999976}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bolda Toe
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 64
+        width: 47
+        height: 30
+      alignment: 9
+      pivot: {x: .150000006, y: .75}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bolda Heel
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 68
+        width: 23
+        height: 26
+      alignment: 9
+      pivot: {x: .649999976, y: .75}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bolda Head
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 28
+        width: 72
+        height: 46
+      alignment: 9
+      pivot: {x: .349999994, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bolda Bicep
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 5
+        width: 29
+        height: 55
+      alignment: 9
+      pivot: {x: .5, y: .800000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bolda Thigh
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 3
+        width: 28
+        height: 61
+      alignment: 9
+      pivot: {x: .5, y: .850000024}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bolda Shoulder
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 2
+        width: 47
+        height: 22
+      alignment: 9
+      pivot: {x: .5, y: .699999988}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

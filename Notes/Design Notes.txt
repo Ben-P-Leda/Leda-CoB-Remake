@@ -16,6 +16,10 @@ KEV GFX RESIZE RATIOS:
 54x71 (build) => 44x44 (final)
 y = * 0.62
 
+BOLDA GFX RESIZE RATIOS:
+485 (build) => 200 (final)
+y = * 0.41
+
 Position offsets:
 - Body: 0,0
 	- Bicep: -0.05, 0.11
