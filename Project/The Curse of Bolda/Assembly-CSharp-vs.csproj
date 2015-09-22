@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Diagnostics\DiagnosticsDisplay.cs" />
+     <Compile Include="Assets\Gameplay\Boss\Scripts\Boss Behaviour\BossBehaviour.cs" />
      <Compile Include="Assets\Gameplay\Boss\Scripts\BossBattleSequencer.cs" />
      <Compile Include="Assets\Gameplay\Boss\Scripts\BossLevelSequencer.cs" />
      <Compile Include="Assets\Gameplay\Boss\Scripts\Environment\ArenaBoundaries.cs" />
