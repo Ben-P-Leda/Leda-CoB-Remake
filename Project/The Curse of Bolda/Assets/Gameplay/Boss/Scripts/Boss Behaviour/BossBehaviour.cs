@@ -50,7 +50,7 @@ namespace Gameplay.Boss.Scripts.Boss_Behaviour
             ActiveBehaviour = Behaviour.WaitingForPlayer;
             SelectNextAction();
 
-            _timedActionTimer = 5.0f;
+            _timedActionTimer = 3.0f;
         }
 
         private void SelectNextAction()
@@ -64,7 +64,7 @@ namespace Gameplay.Boss.Scripts.Boss_Behaviour
                 float actionPercentile = Random.Range(0.0f, 99.0f);
                 if (actionPercentile >= _minimumPercentileToFire) { StartAction(Behaviour.Firing); }
                 else if (actionPercentile >= _minimumPercentileToStamp) { StartAction(Behaviour.Stamping); }
-                //else if (actionPercentile >= _minimumPercentileToJump) { StartAction(Behaviour.Jumping); }
+                else if (actionPercentile >= _minimumPercentileToJump) { StartAction(Behaviour.Jumping); }
                 else { StartAction(Behaviour.Walking); }
             }
         }
@@ -81,6 +81,7 @@ namespace Gameplay.Boss.Scripts.Boss_Behaviour
             {
                 case Behaviour.Resting: StartResting(); break;
                 case Behaviour.Walking: StartWalking(); break;
+                case Behaviour.Jumping: SetAnimationFlags("Jumping"); break;
                 case Behaviour.Stamping: SetAnimationFlags("Stamping"); break;
                 case Behaviour.Firing: SetAnimationFlags("Firing"); break;
             }
@@ -114,7 +115,6 @@ namespace Gameplay.Boss.Scripts.Boss_Behaviour
             _timedActionTimer = Random.Range(minimumDuration, maximumDuration);
         }
 
-
         private void StartWalking()
         {
             SetAnimationFlags("Walking");
@@ -123,10 +123,18 @@ namespace Gameplay.Boss.Scripts.Boss_Behaviour
             _rigidBody2D.velocity = new Vector2(DirectionToPlayer * Walk_Speed, _rigidBody2D.velocity.y);
         }
 
+        private void StartJump()
+        {
+            _rigidBody2D.AddForce(new Vector2(0.0f, Jump_Power));
+            _rigidBody2D.velocity = new Vector2(DirectionToPlayer * Walk_Speed, _rigidBody2D.velocity.y);
+        }
+
         private void Update()
         {
             if (_timedActionTimer > 0.0f) { HandleTimerUpdate(); }
             if ((ActiveBehaviour == Behaviour.Walking) && (_forwardCollider.IsInCollision)) { SelectNextAction(); }
+
+            // TODO: Handle update for jump
         }
 
         private void HandleTimerUpdate()
@@ -164,5 +172,6 @@ namespace Gameplay.Boss.Scripts.Boss_Behaviour
         }
 
         private float Walk_Speed = 0.8f;
+        private float Jump_Power = 400.0f;
     }
 }
