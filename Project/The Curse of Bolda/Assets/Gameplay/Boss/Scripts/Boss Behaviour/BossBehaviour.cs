@@ -12,11 +12,18 @@ namespace Gameplay.Boss.Scripts.Boss_Behaviour
         private Transform _playerTransform;
         private float _timedActionTimer;
 
+        private float _minimumPercentileToFire;
+        private float _minimumPercentileToStamp;
+        private float _minimumPercentileToJump;
+
         private Vector3 _startingPosition;
 
         public Behaviour ActiveBehaviour { get; private set; }
 
         public GameObject Player;
+        public float FireChance;
+        public float StampChance;
+        public float JumpChance;
 
         private void Awake()
         {
@@ -31,6 +38,10 @@ namespace Gameplay.Boss.Scripts.Boss_Behaviour
 
             _playerTransform = Player.transform;
 
+            _minimumPercentileToFire = 100.0f - FireChance;
+            _minimumPercentileToStamp = _minimumPercentileToFire - StampChance;
+            _minimumPercentileToJump = _minimumPercentileToStamp - JumpChance;
+
             ActiveBehaviour = Behaviour.WaitingForPlayer;
         }
 
@@ -39,7 +50,7 @@ namespace Gameplay.Boss.Scripts.Boss_Behaviour
             ActiveBehaviour = Behaviour.WaitingForPlayer;
             SelectNextAction();
 
-            // TODO: Force timer up if required
+            _timedActionTimer = 5.0f;
         }
 
         private void SelectNextAction()
@@ -50,13 +61,11 @@ namespace Gameplay.Boss.Scripts.Boss_Behaviour
             }
             else
             {
-                StartAction(Behaviour.Walking);
-
-
-                //float actionPercentile = Random.Range(0.0f, 99.0f);
-                //if (actionPercentile >= 50.0f) { StartAction(Behaviour.Stamping); }
-                //else { StartAction(Behaviour.Walking); }
-                // TODO: Random action selection
+                float actionPercentile = Random.Range(0.0f, 99.0f);
+                if (actionPercentile >= _minimumPercentileToFire) { StartAction(Behaviour.Firing); }
+                else if (actionPercentile >= _minimumPercentileToStamp) { StartAction(Behaviour.Stamping); }
+                //else if (actionPercentile >= _minimumPercentileToJump) { StartAction(Behaviour.Jumping); }
+                else { StartAction(Behaviour.Walking); }
             }
         }
 
@@ -68,11 +77,12 @@ namespace Gameplay.Boss.Scripts.Boss_Behaviour
             _rigidBody2D.velocity = new Vector2(0.0f, _rigidBody2D.velocity.y);
             _timedActionTimer = 0.0f;
 
-            switch(actionToStart)
+            switch (actionToStart)
             {
                 case Behaviour.Resting: StartResting(); break;
                 case Behaviour.Walking: StartWalking(); break;
                 case Behaviour.Stamping: SetAnimationFlags("Stamping"); break;
+                case Behaviour.Firing: SetAnimationFlags("Firing"); break;
             }
         }
 
@@ -93,7 +103,7 @@ namespace Gameplay.Boss.Scripts.Boss_Behaviour
 
         private void SetAnimationFlags(string flagToActivate)
         {
-            for (int i=0; i < _animationParameters.Length; i++)
+            for (int i = 0; i < _animationParameters.Length; i++)
             {
                 _animator.SetBool(_animationParameters[i], (_animationParameters[i] == flagToActivate));
             }
@@ -129,6 +139,11 @@ namespace Gameplay.Boss.Scripts.Boss_Behaviour
         }
 
         private void StartRockfall()
+        {
+
+        }
+
+        private void StartFireWave()
         {
 
         }
