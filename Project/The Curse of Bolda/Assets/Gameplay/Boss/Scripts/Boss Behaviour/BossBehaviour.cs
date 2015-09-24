@@ -7,7 +7,10 @@ namespace Gameplay.Boss.Scripts.Boss_Behaviour
         private Transform _transform;
         private Rigidbody2D _rigidBody2D;
         private Animator _animator;
+        private BossFrontCollider _forwardCollider;
+        private string[] _animationParameters;
         private Transform _playerTransform;
+        private float _timedActionTimer;
 
         private Vector3 _startingPosition;
 
@@ -20,6 +23,9 @@ namespace Gameplay.Boss.Scripts.Boss_Behaviour
             _transform = transform;
             _rigidBody2D = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
+            _forwardCollider = transform.FindChild("Front Collider").GetComponent<BossFrontCollider>();
+
+            _animationParameters = new string[] { "Walking", "Jumping", "Falling", "Landing", "Stamping", "Firing" };
 
             _startingPosition = _transform.position;
 
@@ -30,15 +36,106 @@ namespace Gameplay.Boss.Scripts.Boss_Behaviour
 
         public void Activate()
         {
-            ActiveBehaviour = Behaviour.Resting;
+            ActiveBehaviour = Behaviour.WaitingForPlayer;
+            SelectNextAction();
+
+            // TODO: Force timer up if required
+        }
+
+        private void SelectNextAction()
+        {
+            if (ActiveBehaviour != Behaviour.Resting)
+            {
+                StartAction(Behaviour.Resting);
+            }
+            else
+            {
+                StartAction(Behaviour.Walking);
+
+
+                //float actionPercentile = Random.Range(0.0f, 99.0f);
+                //if (actionPercentile >= 50.0f) { StartAction(Behaviour.Stamping); }
+                //else { StartAction(Behaviour.Walking); }
+                // TODO: Random action selection
+            }
+        }
+
+        private void StartAction(Behaviour actionToStart)
+        {
             FacePlayer();
+            ActiveBehaviour = actionToStart;
+
+            _rigidBody2D.velocity = new Vector2(0.0f, _rigidBody2D.velocity.y);
+            _timedActionTimer = 0.0f;
+
+            switch(actionToStart)
+            {
+                case Behaviour.Resting: StartResting(); break;
+                case Behaviour.Walking: StartWalking(); break;
+                case Behaviour.Stamping: SetAnimationFlags("Stamping"); break;
+            }
         }
 
         private void FacePlayer()
         {
             Vector3 currentScale = _transform.localScale;
-            currentScale.x *= Mathf.Sign(_playerTransform.position.x - _transform.position.x);
+            currentScale.x = DirectionToPlayer;
             _transform.localScale = currentScale;
+        }
+
+        private float DirectionToPlayer { get { return Mathf.Sign(_playerTransform.position.x - _transform.position.x); } }
+
+        private void StartResting()
+        {
+            SetAnimationFlags("Resting");
+            StartActionTimer(1.0f, 2.0f);
+        }
+
+        private void SetAnimationFlags(string flagToActivate)
+        {
+            for (int i=0; i < _animationParameters.Length; i++)
+            {
+                _animator.SetBool(_animationParameters[i], (_animationParameters[i] == flagToActivate));
+            }
+        }
+
+        private void StartActionTimer(float minimumDuration, float maximumDuration)
+        {
+            _timedActionTimer = Random.Range(minimumDuration, maximumDuration);
+        }
+
+
+        private void StartWalking()
+        {
+            SetAnimationFlags("Walking");
+            StartActionTimer(3.0f, 5.0f);
+
+            _rigidBody2D.velocity = new Vector2(DirectionToPlayer * Walk_Speed, _rigidBody2D.velocity.y);
+        }
+
+        private void Update()
+        {
+            if (_timedActionTimer > 0.0f) { HandleTimerUpdate(); }
+            if ((ActiveBehaviour == Behaviour.Walking) && (_forwardCollider.IsInCollision)) { SelectNextAction(); }
+        }
+
+        private void HandleTimerUpdate()
+        {
+            _timedActionTimer -= Time.deltaTime;
+            if (_timedActionTimer <= 0.0f)
+            {
+                SelectNextAction();
+            }
+        }
+
+        private void StartRockfall()
+        {
+
+        }
+
+        private void CompleteAttackAction()
+        {
+            SelectNextAction();
         }
 
         public enum Behaviour
@@ -50,5 +147,7 @@ namespace Gameplay.Boss.Scripts.Boss_Behaviour
             Stamping,
             Firing
         }
+
+        private float Walk_Speed = 0.8f;
     }
 }

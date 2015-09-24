@@ -29,7 +29,7 @@ namespace Gameplay.Boss.Scripts.Environment
         private void SetEdgePositions()
         {
             _leftEdgeTransform.localPosition = new Vector3(- _halfWidth, 0.0f, 0.0f);
-            _rightEdgeTransform.position = new Vector3(_halfWidth, 0.0f, 0.0f);
+            _rightEdgeTransform.localPosition = new Vector3(_halfWidth, 0.0f, 0.0f);
         }
     }
 }
